@@ -21,8 +21,10 @@ window.logout = logout;
 };
 //
 
-
 const Root = () => {
+  const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+  
+
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -40,13 +42,9 @@ const initializeApp = () => {
     </React.StrictMode>
   );
 }
-
-if (sessionStorage.getItem('currentUser') === null || 
-    sessionStorage.getItem('X-CSRF-Token') === null
-  ) {
-    store.dispatch(restoreSession()).then(initializeApp);
-  } else {
-    initializeApp();
-  }
-
-restoreSession().then(initializeApp);
+if (sessionStorage.getItem("X-CSRF-Token") === null||
+    sessionStorage.getItem('currentUser') === null) {
+      store.dispatch(restoreSession()).then(initializeApp);
+    } else {
+      initializeApp();
+    }

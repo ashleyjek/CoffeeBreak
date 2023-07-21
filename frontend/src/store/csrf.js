@@ -3,6 +3,7 @@ export async function restoreSession() {
     const token = res.headers.get('X-CSRF-Token');
     sessionStorage.setItem('X-CSRF-Token', token);
     const data = await res.json();
+    debugger
     sessionStorage.setItem('currentUser', JSON.stringify(data.user));
 }
 
