@@ -1,14 +1,14 @@
-export const restoreSession = async () => {
-    let res = await fetch('/api/session');
-    let token = res.headers.get('X-CSRF-Token');
+export async function restoreSession() {
+    const res = await fetch('/api/session');
+    const token = res.headers.get('X-CSRF-Token');
     sessionStorage.setItem('X-CSRF-Token', token);
-    let data = await res.json();
+    const data = await res.json();
     sessionStorage.setItem('currentUser', JSON.stringify(data.user));
 }
 
-export const csrfFetch = async (url, options = {}) => {
-    options.method ||= 'GET';
-    options.headers ||= {};
+export async function csrfFetch(url, options = {}) {
+    options.method = options.method || 'GET';
+    options.headers = options.headers || {};
 
     if (options.method.toUpperCase() !== 'GET') {
         options.headers['Content-Type'] = 'application/json';
@@ -16,5 +16,5 @@ export const csrfFetch = async (url, options = {}) => {
     }
 
     const res = await fetch(url, options);
-    return res
+    return res;
 }
