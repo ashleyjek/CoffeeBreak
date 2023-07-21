@@ -8,9 +8,8 @@ const recieveCurrentUser = (user) => ({
     user
 });
 
-const removeCurrentUser = (userId) => ({
-    type: REMOVE_CURRENT_USER,
-    userId
+const removeCurrentUser = () => ({
+    type: REMOVE_CURRENT_USER
 });
 
 const storeCurrentUser = (user) => {
@@ -32,12 +31,12 @@ export const login = (user) => async (dispatch) => {
     return res;
 };
 
-export const logout = (userId) => async (dispatch) => {
+export const logout = () => async (dispatch) => {
     const res = await csrfFetch('/api/session', {
         method: 'DELETE'
     });
     storeCurrentUser(null);
-    dispatch(removeCurrentUser(userId));
+    dispatch(removeCurrentUser());
     return res;
 };
 
@@ -53,15 +52,20 @@ export const signUp = (user) => async (dispatch) => {
     return res;
 };
 
-const sessionReducer = (initialState = {}, action) => {
-    Object.freeze(initialState);
+const initialState = {
+    user: JSON.parse(sessionStorage.getItem('currentUser'))
+}
+const sessionReducer = (state = initialState, action) => {
+    // debugger
+    Object.freeze(state);
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            return Object.assign({}, { currentUser: action.user.id });
+            return Object.assign({}, { currentUser: action.user?.id });
         case REMOVE_CURRENT_USER:
             return { currentUser: null }
+
         default:
-            return initialState;
+            return state;
     };
 };
 

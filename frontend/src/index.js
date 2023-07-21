@@ -13,17 +13,17 @@ const store = configureStore();
 
 //
 if (process.env.NODE_ENV !== "production") {
-window.store = store;
-window.csrfFetch = csrfFetch;
-window.signUp = signUp;
-window.login = login;
-window.logout = logout;
+  window.store = store;
+  window.csrfFetch = csrfFetch;
+  window.signUp = signUp;
+  window.login = login;
+  window.logout = logout;
+  window.restoreSession = restoreSession;
 };
 //
 
+
 const Root = () => {
-  const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-  
 
   return (
     <Provider store={store}>

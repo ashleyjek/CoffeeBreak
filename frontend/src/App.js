@@ -1,13 +1,23 @@
-import { Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Route } from 'react-router-dom';
+import SignInModal from './components/SignInPage/SignInModal';
+import SplashPage from './components/Splash/SplashPage';
+import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import SignUpModal from './components/SignUpModal/SignUpModal';
 
 function App() {
-  const currentUser = useSelector(state => state.session);
-  if (!currentUser) {
-    <Redirect to = "/login"/>
-  }
+
   return (
-    <h1>Hello from App</h1>
+    <>
+      <Switch>
+        <Route exact path="/login">
+          <SignInModal/>
+        </Route>
+        <Route exact path="/">
+          <SplashPage/>
+        </Route>
+      </Switch>
+      <SignUpModal />
+    </>
   );
 }
 

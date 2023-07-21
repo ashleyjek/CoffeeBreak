@@ -1,9 +1,8 @@
-export async function restoreSession() {
+export const restoreSession = () => async (dispatch) => {
     const res = await fetch('/api/session');
     const token = res.headers.get('X-CSRF-Token');
     sessionStorage.setItem('X-CSRF-Token', token);
     const data = await res.json();
-    debugger
     sessionStorage.setItem('currentUser', JSON.stringify(data.user));
 }
 
