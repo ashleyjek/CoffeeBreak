@@ -13,6 +13,7 @@ const SignInPage = () => {
             </div>
         <SignUpModal/>
         </div>
+        <div className="footer"></div>
     </>
     )
 };
