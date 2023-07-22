@@ -15,7 +15,7 @@ const initialState = {
 };
 
 const uiReducer = (state = initialState, action) => {
-    const newState = { ...Object.freeze(state) };
+    Object.freeze(state);
 
     switch(action.type) {
         case OPEN_MODAL:

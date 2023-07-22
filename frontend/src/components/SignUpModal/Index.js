@@ -20,7 +20,7 @@ const SignUpModal = () => {
         {Component ? (
             <div className="signup-page">
                 <Component/>
-            </div> ) : null}
+            </div> ) : null }
         </>
     )
 }

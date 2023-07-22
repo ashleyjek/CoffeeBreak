@@ -1,43 +1,80 @@
-.signin-page {
+.signin-container {
     display: flex;
+    position: absolute;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     background-color: rgb(236, 239, 242);
-}
-
-.signin-modal div {
-    height: 70%;
-    width: 50%;
-}
-
-.signin-modal {
-    display: flex;
-    align-items: center;
-    height: 55%;
-    width: 70%;
-    background-color: rgb(236, 239, 242);
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    margin-bottom: 100px;
-    padding-bottom: 50px;
-}
-
-.footer {
-    background-color: white;
-    height: 20%;
+    z-index: 0;
+    height: 100%;
     width: 100%;
 }
 
-.signin-container, .logo-container {
+.signin-page {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    height: 60%;
+    width: 80%;
+    background-color: rgb(236, 239, 242);
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: black; */
+    margin-bottom: 150px;
+    /* padding-bottom: 50px; */
+}
+
+.signin-form-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.signin-form-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding-left: 50px;
-    padding-right: 50px;
-    border-width: 1px;
+    justify-content: flex-start;
+    /* padding-left: 50px; */
+    /* padding-right: 50px; */
+    padding-top: 40px;
+    height: 400px;
+    box-shadow: 0 0 3px #ccc;
+    /* border-width: 1px;
     border-style: solid;
-    border-color: black;
+    border-color: black; */
+}
+
+.signin-form {
+    padding-top: 40px;
+}
+
+.logo-box {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start ;
+    justify-content: flex-start;
+    /* padding-right: 50px; */
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: black; */
+}
+
+.logo-box h1 {
+    font-family: Klavika;
+    font-weight: bold;
+    font-size: 70px;
+    color: rgb(165, 124, 55);
+    padding-top: 70px;
+    /* padding-left: 200px; */
+}
+
+.logo-box h2 {
+    /* padding-left: 200px; */
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 26px;
 }

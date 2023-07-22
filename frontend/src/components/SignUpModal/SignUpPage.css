@@ -1,0 +1,24 @@
+.signup-page {
+    z-index: 1;
+    right: 50%;
+    top: 50%;
+    /* height: 25%;
+    width: 25%; */
+    height: 720px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+}
+
+.signup-form {
+    text-align: center;
+}
