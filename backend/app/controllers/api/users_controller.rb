@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
     before_action :require_logged_out, only: [:create]
 
-    wrap_parameters include: User.attribute_names + ['password'] + ['first_name'] + ['last_name']
+    wrap_parameters include: User.attribute_names + ['password'] + ['first_name'] + ['last_name'] + ['birthday']
 
     def index
         @users = User.all
@@ -9,9 +9,8 @@ class Api::UsersController < ApplicationController
     end
 
     def create
-        # debugger
         @user = User.new(user_params)
-
+        debugger
         if @user.save
             login(@user)
             render :show
@@ -23,7 +22,7 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:email, :first_name, :last_name, :birthday, :gender, :password)
+        params.require(:user).permit(:id, :email, :first_name, :last_name, :birthday, :gender, :password)
     end
 
 end
