@@ -36,20 +36,25 @@ const SignInForm = () => {
 
     return (
         <>
-            <button onClick={() => dispatch(closeModal())} >CLOSE MODAL</button>
             <div className="signup-container">
-                <form className="signup-form">
-                    <p className="signup-name">
-
-                        <input type="text" name={firstName} placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
-                        <input type="text" name={lastName} placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/>
-                    </p>
-                    <p className="signup-email-input"><input type="text" name={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)}/></p>
-                    <p className="signup-password-input"><input type="password" name={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/></p>
-                    <p>Birthday</p>
+                <div className="form-header">
+                    <h1 className="signup-header">Sign Up</h1>
+                    <p className="close-button"><button onClick={() => dispatch(closeModal())} >x</button></p>
+                </div>
+                <div className="form-sub-header">
+                    <h2 className="signup-desc">It's quick and easy.</h2>
+                </div>
+                    <form className="signup-form">
+                        <label className="signup-input-name">
+                            <input className="signup-input-f-name" type="text" name={firstName} placeholder="First Name" onChange={(e) => setFirstName(e.target.value)}/>
+                            <input className="signup-input-l-name" type="text" name={lastName} placeholder="Last Name" onChange={(e) => setLastName(e.target.value)}/></label>
+                        <input className="signup-input-email" type="text" name={email} placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+                        <input className="signup-input-password" type="password" name={password} placeholder="New Password" onChange={(e) => setPassword(e.target.value)}/>
+                        <div className="sign-up-input-bday">
+                            <label>Birthday</label>
+                        </div>
                     <p>Gender</p>
-                    <label></label>
-                    <input type="radio" name="gender" value={gender} onChange={(e) => setGender(e.target.value)}/>
+                        <input type="radio" name="gender" value={gender} onChange={(e) => setGender(e.target.value)}/>
                 </form>
                 <button className="signup-button" onClick={handleSubmit}>Sign Up</button>
             </div>
