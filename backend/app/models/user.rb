@@ -19,8 +19,9 @@ class User < ApplicationRecord
         length: { in: 3..255 },
         format: { with: URI::MailTo::EMAIL_REGEXP }
     validates :session_token, presence: true, uniqueness: true
-    validates :first_name, :last_name, :gender, :birthday, :password_digest, presence: true
+    validates :first_name, :last_name, :gender, :password_digest, presence: true
     validates :password, length: { minimum: 6 }, allow_nil: true
+    validate :birthday_valid?
 
     has_many :posts,
     foreign_key: :author_id,
@@ -33,6 +34,17 @@ class User < ApplicationRecord
     has_secure_password
 
     before_validation :ensure_session_token
+
+    def birthday_valid?        
+        if self.birthday > 13.years.ago.to_date
+            errors.add(:birthday, 'You must be 13 years or older')
+        end
+        # if
+        #     !Date.new(self.birthday)
+        #     debugger
+        #     errors.add(:birthday, 'Must enter a valid date')
+        # end
+    end
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
