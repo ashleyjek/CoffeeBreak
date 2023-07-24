@@ -36,14 +36,10 @@ class User < ApplicationRecord
     before_validation :ensure_session_token
 
     def birthday_valid?        
-        if self.birthday > 13.years.ago.to_date
+        if 
+            self.birthday > 13.years.ago.to_date
             errors.add(:birthday, 'You must be 13 years or older')
         end
-        # if
-        #     !Date.new(self.birthday)
-        #     debugger
-        #     errors.add(:birthday, 'Must enter a valid date')
-        # end
     end
 
     def self.find_by_credentials(email, password)
