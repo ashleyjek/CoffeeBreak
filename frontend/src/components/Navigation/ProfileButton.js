@@ -8,7 +8,6 @@ const ProfileButton = ({currentUser}) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
-    
 
     const openMenu = (e) => {
         e.stopPropagation();
@@ -18,7 +17,8 @@ const ProfileButton = ({currentUser}) => {
 
     const handleLogout = (e) => {
         e.preventDefault();
-        dispatch(logout()).then(() => history.push("/login"));
+        history.push("/login");
+        dispatch(logout())
     }
 
     useEffect(() => {
@@ -34,9 +34,22 @@ const ProfileButton = ({currentUser}) => {
         <>
             <button className="profile-icon" onClick={openMenu}></button>
             {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>
-                        <button onClick={handleLogout}>LogOut</button>
+                <ul className="profile-dropdown-container">
+                    <li className="profile-links-container">
+                        <div className="profile-name-container">
+                            <div className="name-container">
+                            <button className="profile-dropdown-icon"></button>
+                                <span id="profile-name">{currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1).toLowerCase()}</span>
+                                <span id="profile-name">{currentUser.lastName.charAt(0).toUpperCase() + currentUser.lastName.slice(1).toLowerCase()}</span>
+                            </div>
+                            <div className="view-profile-text">View your Profile</div>
+                        </div>
+                    </li>
+                    <li className="logout-tab">
+                        <div className="logout-button-container">
+                            <button className="logout-icon"></button>
+                            <button className="logout-button" onClick={handleLogout}>Log Out</button>
+                        </div>
                     </li>
                 </ul>
             )}

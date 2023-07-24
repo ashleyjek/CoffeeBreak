@@ -2,7 +2,9 @@
     display: flex;
     justify-content: space-between;
     height: 55px;
-    background-color: blueviolet;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    position: sticky;
 }
 
 .left-nav-links, .center-nav-links, .right-nav-links {
@@ -19,16 +21,103 @@
     width: 42px;
     margin: 6px;
     border-color: transparent;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
-.profile-dropdown {
-    position: absolute;
-    width: 300px;
-    background-color: blue;
-    top: 55px;
-    right: 0;
+.profile-dropdown-icon {
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+    margin: 4px;
+    border-color: transparent;
 }
+
+.logout-icon {
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+    margin: 6px;
+    border-color: transparent;
+}
+
+.profile-dropdown-container {
+    position: absolute;
+    width: 340px;
+    background-color: white;
+    top: 55px;
+    right: 15px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    border-radius: 8px;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.name-container span {
+    margin: 3px;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    margin-top: 17px;
+    height: 42px;
+}
+
+.profile-name-container {
+    background-color: white;
+    height: 110px;
+    width: 310px;
+    border-radius: 8px;
+    margin: 13px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.name-container {
+    height: 55px;
+    width: 290px;
+    margin: 10px;
+    display: flex;
+    border-bottom: solid 0.5px;
+    border-color: rgb(211, 211, 211);
+}
+
+.view-profile-text {
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 14.5px;
+    margin-left: 11px;
+    margin-top: 5px;
+    color: rgb(172, 136, 75);
+}
+
+.logout-button-container {
+    background-color: transparent;
+    width: 315px;
+    margin: 15px;
+    display: flex;
+}
+
+.logout-button {
+    border-color: transparent;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    background-color: transparent;
+    width: 260px;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 1px;
+    font-size: 14.5px;
+}
+
+.logout-tab :hover {
+    cursor: pointer;
+    background-color: rgb(246, 246, 246);
+    border-radius: 8px;
+}
+
+
+
+
 
 
 

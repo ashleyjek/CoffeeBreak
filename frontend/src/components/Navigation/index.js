@@ -3,7 +3,7 @@ import ProfileButton from "./ProfileButton";
 import './Navigation.css';
 
 const Navigation = () => {
-    const currentUser = useSelector(state => state.session.user);
+    const currentUser = useSelector(state => state.entities.users[state.session.currentUser]);
 
     return (
         <>
@@ -16,7 +16,7 @@ const Navigation = () => {
                 </div>
                 
                 <div className="right-nav-links">
-                    <ProfileButton currentUser={currentUser} />
+                    <ProfileButton currentUser={currentUser}/>
                 </div>
             </div>
         </>

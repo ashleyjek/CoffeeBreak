@@ -5,8 +5,7 @@ import './Splash.css';
 
 const SplashPage = () => {
     const history = useHistory();
-    const currentUser = useSelector(state => state.session.user);
-
+    const currentUser = useSelector(state => state.session.currentUser);
     if (currentUser === null) {
         history.push('/login');        
     }

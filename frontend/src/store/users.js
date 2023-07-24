@@ -1,42 +1,28 @@
-import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import { RECEIVE_CURRENT_USER } from "./session";
-import { csrfFetch } from "./csrf";
 
-const RECEIVE_USER = 'users/RECEIVE_USER';
-const RECEIVE_USERS = 'users/RECEIVE_USERS';
+// const RECEIVE_USERS = 'users/RECEIVE_USERS';
 
-const receiveUsers = (users) => ({
-    type: RECEIVE_USERS,
-    users
-})
+// const receiveUsers = (users) => ({
+//     type: RECEIVE_USERS,
+//     users
+// })
 
-const receiveUser = (user) => ({
-    type: RECEIVE_USER,
-    user
-})
-
-export const fetchUser = (user) => async (dispatch) => {
-    const res = await csrfFetch(`/api/users/${user.id}`);
-    if (res.ok) {
-        const data = await res.json();
-        dispatch(receiveUser(data.user))
-        return res;
-    }
+const initialState = {
+    [JSON.parse(sessionStorage.getItem('currentUser')).id]: JSON.parse(sessionStorage.getItem('currentUser'))
 }
-
-const usersReducer = ( state = {}, action ) => {
+const usersReducer = ( state = initialState, action ) => {
     const nextState = {...state};
     switch (action.type) {
-        case RECEIVE_USER:
+        case RECEIVE_CURRENT_USER:
         return {
             ...nextState,
-            [action.userId]: action.user
+            [action.user.id]: action.user
         }
-        case RECEIVE_USERS:
-            return {
-                ...nextState,
-                ...action.users
-            }
+        // case RECEIVE_USERS:
+        //     return {
+        //         ...nextState,
+        //         ...action.users
+        //     }
         default:
         return nextState;
     }
