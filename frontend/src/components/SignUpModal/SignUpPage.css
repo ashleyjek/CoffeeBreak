@@ -230,7 +230,10 @@
     height: 15px;
 }
 
-.signup-errors, .fname-error, .lname-error, .email-error, .password-error, .gender-error {
+.signup-errors, .fname-error, 
+.lname-error, .email-error, 
+.password-error, .gender-error, 
+.birthday-error {
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     font-size: 12px;
     color: rgb(108, 108, 108);
@@ -267,6 +270,13 @@
     margin-left: 125px;
     margin-top: -14px;
 }
+
+.birthday-error {
+    margin-left: 0px;
+    position: absolute;
+    margin-top: -10px;
+}
+
 
 
 

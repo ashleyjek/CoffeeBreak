@@ -21,7 +21,7 @@
     /* border-style: solid;
     border-color: black;
     margin-bottom: 150px; */
-    margin-top: -180px;
+    margin-top: -200px;
     /* padding-bottom: 50px; */
 }
 
@@ -31,6 +31,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
+    margin-top: 100px;
     /* border-width: 1px;
     border-style: solid;
     border-color: black; */
@@ -47,7 +48,7 @@
     justify-content: flex-start;
     background-color: white;
     border-radius: 8px;
-    margin-right: 11px;
+    margin-right: 40px;
     padding-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 }
@@ -71,7 +72,6 @@
     font-weight: bold;
     font-size: 62px;
     color: rgb(165, 124, 55);
-    padding-top: 70px;
     padding-bottom: 6px;
     /* padding-left: 200px; */
 }

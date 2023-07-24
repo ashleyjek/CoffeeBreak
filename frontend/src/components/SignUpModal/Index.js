@@ -1,6 +1,6 @@
 import SignUpForm from './SignUpForm';
-import './SignUpPage.css';
 import { useSelector } from 'react-redux';
+import './SignUpPage.css';
 
 const SignUpModal = () => {
     const modalType = useSelector(({ui}) => ui.modal);

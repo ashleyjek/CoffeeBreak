@@ -14,7 +14,7 @@ const SignUpForm = () => {
     const todaysDay = todaysDate.getDate();
     const todaysYear = todaysDate.getFullYear();
     const months = [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
-    const days = Array.from( { length: 31 }, (x, i) => i + 1 );
+    let days = Array.from( { length: 31 }, (x, i) => i + 1 );
     const years = Array.from( { length: 100 }, (x, i) => todaysYear - i );
     
     const [email, setEmail] = useState("");
@@ -101,9 +101,9 @@ const SignUpForm = () => {
                                 name={password} 
                                 placeholder="New Password" 
                                 onChange={(e) => setPassword(e.target.value)}/>
-                        {errors.birthday ? 
-                        <p className="signup-errors"> {errors.birthday[0]}</p> : null}
                         <label className="signup-label-bday">Birthday </label>
+                        {errors.birthday ? 
+                        <p className="birthday-error"> {errors.birthday[0]}</p> : null}
                         <div className="signup-input-bday">
                                 <select 
                                     name="month" 

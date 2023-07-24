@@ -1,22 +1,22 @@
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../store/session";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Navigation from "../Navigation/index";
+import './Splash.css';
 
 const SplashPage = () => {
     const history = useHistory();
-    const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
 
     if (currentUser === null) {
         history.push('/login');        
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(logout()).then(() => history.push("/login"));
-    }
     
     return (
-        <button onClick={(handleSubmit)}>Log Out</button>
+        <>
+            <div className="splash-index">
+                <Navigation/>
+            </div>
+        </>
     )
 }
 

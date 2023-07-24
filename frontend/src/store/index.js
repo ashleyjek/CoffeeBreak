@@ -4,11 +4,13 @@ import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import uiReducer from "./ui";
 import errorsReducer from "./errors";
+import entitiesReducer from "./entities";
 
 const rootReducer = combineReducers({
-  ui: uiReducer,
+  entities: entitiesReducer,
   session: sessionReducer,
-  errors: errorsReducer
+  errors: errorsReducer,
+  ui: uiReducer
 });
 
 let enhancer;

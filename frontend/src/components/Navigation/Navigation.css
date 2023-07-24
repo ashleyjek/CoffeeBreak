@@ -1,0 +1,35 @@
+.top-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    height: 55px;
+    background-color: blueviolet;
+}
+
+.left-nav-links, .center-nav-links, .right-nav-links {
+    width: auto;
+}
+
+.right-nav-links {
+    text-align: right;
+}
+
+.profile-icon, .home-page-icon {
+    border-radius: 50%;
+    height: 42px;
+    width: 42px;
+    margin: 6px;
+    border-color: transparent;
+    margin-right: 10px;
+}
+
+.profile-dropdown {
+    position: absolute;
+    width: 300px;
+    background-color: blue;
+    top: 55px;
+    right: 0;
+}
+
+
+
+
