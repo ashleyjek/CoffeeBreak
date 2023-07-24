@@ -8,6 +8,7 @@ import { login, signUp, logout } from './store/session';
 import configureStore from './store/index'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { removeErrors } from './store/errors';
 
 const store = configureStore();
 
@@ -19,6 +20,7 @@ if (process.env.NODE_ENV !== "production") {
   window.login = login;
   window.logout = logout;
   window.restoreSession = restoreSession;
+  window.removeErrors = removeErrors;
 };
 //
 

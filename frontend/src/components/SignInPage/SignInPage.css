@@ -39,7 +39,7 @@
 .signin-form-box {
     /* height: 77%;
     width: 80%; */
-    height: 350px;
+    height: auto;
     width: 380px;
     display: flex;
     flex-direction: column;
@@ -48,6 +48,7 @@
     background-color: white;
     border-radius: 8px;
     margin-right: 11px;
+    padding-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
 }
 
@@ -84,7 +85,7 @@
 
 .login-error {
     padding-left: 6px;
-    color: red;
+    color: rgb(191, 44, 44);
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     font-size: 14px;
 }

@@ -13,24 +13,26 @@
     background-color: rgba(255, 255, 255, 0.6);
 }
 
-.signup-container {
+.signup-form-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 50px;
     align-items: center;
-    height: 530px;
+    height: auto;
     width: 435px;
     border-radius: 8px;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    padding-top: 5px;
+    padding-bottom: 20px;
 }
 
 .signup-form {
     text-align: center;
 }
 
-.form-header {
+.signup-form-header {
     display: flex;
     justify-content: space-between;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
@@ -38,34 +40,36 @@
     height: 50px;
 }
 
-.form-header h1 {
+.signup-form-header h1 {
     padding-top: 12px;
     padding-left: 16px;
     padding-bottom: 3px;
     font-size: 33px;
 }
 
-.form-sub-header h2 {
+.signup-form-sub-header h2 {
     padding-left: 17px;
     height: 30px;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     color: rgb(117, 117, 117);
     border-width: 1px;
-    border-bottom: rgb(218, 218, 218) solid;
+    border-bottom: rgb(218, 218, 218) solid 1px;
 }
 
-.form-sub-header {
+.signup-form-sub-header {
     height: 45px;
     width: 100%;
+    margin-bottom: 5px;
 }
 
-.form-header button {
+.signup-form-header button {
     border-color: transparent;
     background-color: white;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     font-size: 25px;
     color: rgb(117, 117, 117);
     border-width: 0.5px;
+    margin-right: 5px;
 }
 
 .signup-input-name input {
@@ -81,6 +85,7 @@
     padding-left: 13px;
     background-color: rgb(246, 246, 246);
     margin-bottom: 10px;
+    margin-top: 5px;
 }
 
 .signup-input-f-name {
@@ -95,7 +100,7 @@
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     border-color: rgb(211, 211, 211);
     border-style: solid;
-    border-width: 1px;
+    border-width: 0.5px;
     font-size: 15px;
     padding-left: 13px;
     background-color: rgb(246, 246, 246);
@@ -106,17 +111,164 @@
     margin-bottom: 10px; 
 }
 
-.sign-up-input-bday {
-    height: 60px;
+.signup-label-bday, .signup-label-gender {
+    height: 8px;
     width: 409px;
     display: flex;
-    border: solid 1px black;
-    padding: 13px;
+    padding-left: 20px;
+    padding-right: 13px;
+    /* border: 1px solid red; */
+    padding-bottom: 4px;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     font-size: 13px;
-    color: rgb(117, 117, 117);
-
+    color: rgb(108, 108, 108);
 }
+
+.signup-label-gender {
+    margin-bottom: 15px;
+}
+
+.signup-input-bday select {
+    height: 38px;
+    width: 128px;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin: 5px;
+    border: 1px solid rgb(211, 211, 211);
+    background-color: white;
+    font-size: 14.5px;
+}
+
+.signup-input-bday {
+    height: 50px;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 10px;
+}
+
+.signup-input-gender {
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.signup-input-gender label {
+    border-radius: 5px;
+    padding: 9px;
+    margin: 5px;
+    padding-top: 12px;
+    border: 1px solid rgb(211, 211, 211);
+    background-color: white;
+    font-size: 14.5px;   
+}
+
+.signup-input-gender input {
+    margin-left: 49px;
+    padding-top: 5px;
+}
+
+.signup-form-custom-gender {
+    border-radius: 6px;
+    font-size: 17px;
+    width: 404px;
+    height: 38px;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    border-color: rgb(211, 211, 211);
+    border-style: solid;
+    border-width: 0.5px;
+    font-size: 15px;
+    background-color: white;
+    margin-bottom: 7px; 
+    margin-top: 3px;
+    padding-left: 5px;
+}
+
+.custom-gender-label {
+    height: 8px;
+    width: 409px;
+    display: flex;
+    padding-left: 22px;
+    padding-right: 13px;
+    padding-bottom: 4px;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: rgb(108, 108, 108);
+}
+
+.signup-gender-text-box {
+    margin-top: 10px;
+    border-radius: 6px;
+    font-size: 17px;
+    width: 390px;
+    height: 37px;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    border-color: rgb(211, 211, 211);
+    border-style: solid;
+    border-width: 0.5px;
+    font-size: 15px;
+    padding-left: 8px;
+    background-color: rgb(246, 246, 246);
+}
+
+.signup-button {
+    border-radius: 6px;
+    font-size: 17px;
+    width: 200px;
+    height: 38px;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    color: white;
+    font-weight: 550;
+    background-color: #41aa2d;
+    border-color: transparent;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+
+
+.name-errors {
+    height: 15px;
+}
+
+.signup-errors, .fname-error, .lname-error, .email-error, .password-error, .gender-error {
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: rgb(108, 108, 108);
+    padding: 0px;
+    margin: 0px;
+    width: 300px;
+    height: 15px;
+    color: rgb(191, 44, 44);
+}
+
+.email-error {
+    margin-left: 20px;
+    text-align: left;
+}
+
+.password-error {
+    margin-left: -65px;
+}
+
+.gender-error {
+    margin-left: -80px;
+}
+
+.fname-error {
+    margin-top: -10px;
+    text-align: left;
+    position: block;
+    margin-left: 20px;
+}
+
+.lname-error {
+    text-align: right;
+    position: absolute;
+    margin-left: 125px;
+    margin-top: -14px;
+}
+
+
 
 
 

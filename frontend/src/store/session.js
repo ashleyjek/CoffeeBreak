@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf";
+import { receiveErrors } from "./errors";
 
 export const RECEIVE_CURRENT_USER = 'session/RECEIVE_CURRENT_USER';
 export const REMOVE_CURRENT_USER = 'session/REMOVE_CURRENT_USER';
@@ -33,7 +34,6 @@ export const login = (user) => async (dispatch) => {
             dispatch(recieveCurrentUser(data.user));
             return res;
         } 
-        // throw res;
     } catch (error) {
         throw error;
     }
@@ -49,22 +49,35 @@ export const logout = () => async (dispatch) => {
 };
 
 export const signUp = (user) => async (dispatch) => {
-    // const { email, firstName, lastName, birthday, gender } = user
-    const res = await csrfFetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify(user)
-    });
-    const data = await res.json();
-    storeCurrentUser(data.user);
-    dispatch(recieveCurrentUser(data.user));
-    return res;
+        const { email, password, firstName, lastName, birthday, gender } = user
+        const res = await csrfFetch('/api/users', {
+            method: 'POST',
+            body: JSON.stringify({
+                user: {
+                    email,
+                    password,
+                    firstName,
+                    lastName,
+                    birthday,
+                    gender
+                }
+            })
+        });
+        const data = await res.json();
+        if (res.ok) {
+            storeCurrentUser(data.user);
+            dispatch(recieveCurrentUser(data.user));
+            return res;
+        } else {
+            dispatch(receiveErrors(data))
+            return res;
+        }
 };
 
 const initialState = {
     user: JSON.parse(sessionStorage.getItem('currentUser'))
 }
 const sessionReducer = (state = initialState, action) => {
-    // debugger
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_CURRENT_USER:

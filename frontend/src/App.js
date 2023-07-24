@@ -11,7 +11,7 @@ function App() {
     <>
       <Switch>
         <Route exact path="/login">
-          {currentUser ? <Redirect to="/"/> : <SignInPage/>}
+            {currentUser ? <Redirect to="/"/> : <SignInPage/>}
         </Route>
         <Route exact path="/">
           <SplashPage/>
