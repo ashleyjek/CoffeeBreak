@@ -9,8 +9,8 @@ import configureStore from './store/index'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { removeErrors } from './store/errors';
-import { fetchUser } from './store/users';
-import { deletePost, fetchPost, fetchPosts } from './store/posts';
+import { fetchUsers } from './store/users';
+import { deletePost, fetchPost, fetchPosts, updatePost } from './store/posts';
 
 const store = configureStore();
 
@@ -23,10 +23,11 @@ if (process.env.NODE_ENV !== "production") {
   window.logout = logout;
   window.restoreSession = restoreSession;
   window.removeErrors = removeErrors;
-  window.fetchUser = fetchUser;
+  window.fetchUsers = fetchUsers;
   window.fetchPosts = fetchPosts;
   window.fetchPost = fetchPost;
   window.deletePost = deletePost;
+  window.updatePost = updatePost;
 };
 //
 

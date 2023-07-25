@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 
-const NewPostForm = () => {
+const PostForm = () => {
     const dispatch = useDispatch();
     const [body, setBody] = useState("");
 
@@ -21,4 +21,4 @@ const NewPostForm = () => {
     )
 }
 
-export default NewPostForm;
+export default PostForm;

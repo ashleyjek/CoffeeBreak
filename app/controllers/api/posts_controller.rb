@@ -1,4 +1,6 @@
 class Api::PostsController < ApplicationController
+    wrap_parameters include: Post.attribute_names + ['author_id']
+
     def index 
         @posts = Post.all;
         render :index
@@ -11,10 +13,12 @@ class Api::PostsController < ApplicationController
 
     def update
         @post = Post.find_by(id: params[:id])
-        if @post.author_id == current_user.id
-            @post.update
+        @post.author_id = current_user.id
+        if @post.update
+            render :show
         else
             render json: ['Post does not belong to user'], status: 422
+        end
     end
 
     def create
@@ -38,7 +42,7 @@ class Api::PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:body, :author_id)
+        params.require(:post).permit(:body, :author_id, :id)
     end
 
 end

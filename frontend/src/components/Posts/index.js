@@ -1,21 +1,26 @@
 import { useDispatch, useSelector } from 'react-redux';
-import NewPostForm from './NewPostForm';
+import PostForm from './PostForm';
 import './Posts.css';
 import { getPosts } from '../../store/posts';
 import { useEffect } from 'react';
 import { fetchPosts } from '../../store/posts';
+import { fetchUsers, fetchUser } from '../../store/users';
 import { deletePost } from '../../store/posts';
+import { getUsers } from '../../store/users';
 
 const Posts = ({currentUser}) => {
     const allPosts = useSelector(getPosts);
+    const allUsers = useSelector(state => state.entities.users);
     const dispatch = useDispatch();
-    
+
     useEffect(() => {
-        dispatch(fetchPosts())
+        dispatch(fetchUsers());
+        dispatch(fetchPosts());
     }, []);
+    console.log(allUsers)
+
     
     if (!currentUser) return null;
-    // debugger;
 
     return (
         <>
@@ -27,29 +32,30 @@ const Posts = ({currentUser}) => {
                         placeholder={`What's on your mind, ${currentUser.firstName}?`}/>
                     )}
             </div>
-    <NewPostForm />
+    <PostForm />
             {allPosts.map((post) => 
             <div key={post?.id} className="post-container">
                 {/* post container */}
                 <div className="post-header-container">
                     {/* * post-header-container */}
                     <div className="post-profile-icon"> 
-                        ** post-profile-icon
+                        icon
                     </div>
                     <div className="post-details-container">
-                        ** post-details-container
-                        <div className="post-author">*** post-author</div>
-                        <div className="post-date-time">*** post-date-time</div>
+                        {/* ** post-details-container */}
+                        <div className="post-author">AUTHOR NAME</div>
+                        <div className="post-date-time">date</div>
                     </div>
-                    <div className="post-edit-button">** post-edit-button
+                    <div className="post-edit-button">edit
+        
+                    </div>
                     { currentUser.id === post.authorId ? (
-                        <button onClick={() => dispatch(deletePost(post?.id))}/>
+                        <button onClick={() => {dispatch(deletePost(post.id))}} >Delete</button>
                     ) : null }
-                    </div>
-                    <div className="post-close-button">** post-close-button</div>
+                    {/* <div className="post-close-button">close</div> */}
                 </div>
                 <div className="post-body-container">
-                    * post-body-container
+                    {/* * post-body-container */}
                     <div className="post-body-text">
                         {/* ** post-body-text */}
                         {post.body}

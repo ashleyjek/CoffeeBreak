@@ -13,11 +13,14 @@ class Post < ApplicationRecord
     
     belongs_to :author,
     foreign_key: :author_id,
-    class_name: :User
+    class_name: :User,
+    dependent: :destroy
 
     has_many :comments,
     foreign_key: :post_id,
-    class_name: :Comment
+    class_name: :Comment,
+    dependent: :destroy
 
-    has_one_attached :photo
+    has_one_attached :photo,
+    dependent: :destroy
 end

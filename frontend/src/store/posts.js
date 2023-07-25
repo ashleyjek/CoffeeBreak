@@ -22,7 +22,7 @@ const removePost = (postId) => ({
 
 export const getPosts = (state) => {
     if (state.entities.posts) {
-        return Object.values(state.entities.posts)
+        return Object.values(state.entities.posts);
     } else {
         return [];
     }
@@ -37,7 +37,7 @@ export const getPost = (postId) => (state) => {
 };
 
 export const fetchPosts = () => async (dispatch) => {
-    const res = await csrfFetch('/api/posts')
+    const res = await csrfFetch('/api/posts');
     if (res.ok) {
         const posts = await res.json();
         dispatch(receivePosts(posts));
@@ -53,6 +53,26 @@ export const fetchPost = (postId) => async (dispatch) => {
         return res;
     }
 };
+
+export const updatePost = (post) => async (dispatch) => {
+    const { id, body } = post;
+    const res = await csrfFetch(`/api/posts/${post.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+            id,
+            body
+        })
+    });
+    const data = await res.json();
+    debugger
+    if (res.ok) {
+        dispatch(receivePost(data.post));
+        return res;
+    } else {
+        dispatch(receiveErrors(data.post));
+        return res;
+    }
+}
 
 export const createPost = (post) => async (dispatch) => {
     const { body } = post;

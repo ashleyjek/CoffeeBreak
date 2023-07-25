@@ -12,6 +12,10 @@ const SignInForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
+
+    useEffect(() => {
+        console.log("re-rendering")
+    }, [])
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,7 +32,7 @@ const SignInForm = () => {
     
     
     const handleDemoUser = () => {
-        dispatch(login({email: "demo@email.com", password: "password"}))
+        dispatch(login({email: "Demo@email.com", password: "password"}))
         .then(() => history.push("/"))
     }
     

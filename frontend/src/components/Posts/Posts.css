@@ -32,6 +32,7 @@
 }
 
 .post-container {
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     margin: 10px 10px 5px 10px;
     height: auto;
     width: 685px;
@@ -49,10 +50,25 @@
     height: auto;
     background-color: pink;
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .post-body-text {
     background-color: yellow;
 }
+
+.post-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.posts-body-container {
+    display: flex;
+    text-align: left;
+}
+
+
 
 
