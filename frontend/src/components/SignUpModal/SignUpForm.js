@@ -163,10 +163,10 @@ const SignUpForm = () => {
                                     className="signup-form-custom-gender"
                                     name="gender"
                                     defaultValue="Select your pronoun">
-                                        <option disabled={true}>Select your pronoun</option>
-                                        <option>She: "Wish her a happy birthday!</option>
-                                        <option>He: "Wish him a happy birthday!</option>
-                                        <option>They: "Wish them a happy birthday!</option>
+                                        <option key="disabled" disabled={true}>Select your pronoun</option>
+                                        <option key="she">She: "Wish her a happy birthday!</option>
+                                        <option key="he" >He: "Wish him a happy birthday!</option>
+                                        <option key="they">They: "Wish them a happy birthday!</option>
                                 </select> <br></br>
                                 <label className="custom-gender-label">Your pronoun is visible to everyone.</label>
                                 <input 

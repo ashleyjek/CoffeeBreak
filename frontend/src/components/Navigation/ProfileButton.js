@@ -10,20 +10,20 @@ const ProfileButton = ({currentUser}) => {
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = (e) => {
-        e.stopPropagation();
         if (showMenu) return;
+        e.stopPropagation();
         setShowMenu(true);
     };
 
     const handleLogout = (e) => {
         e.preventDefault();
-        history.push("/login");
-        dispatch(logout())
+        (history.push("/login"));
+        dispatch(logout());
     }
 
     useEffect(() => {
         if (!showMenu) return;
-        const closeMenu = () => {
+        const closeMenu = (e) => {
             setShowMenu(false);
         };
         document.addEventListener('click', closeMenu);
@@ -31,23 +31,26 @@ const ProfileButton = ({currentUser}) => {
     }, [showMenu]);
 
     return (
+        
         <>
             <button className="profile-icon" onClick={openMenu}></button>
             {showMenu && (
                 <ul className="profile-dropdown-container">
-                    <li className="profile-links-container">
+                    <li key="p-link" className="profile-links-container">
                         <div className="profile-name-container">
-                            <div className="name-container">
-                            <button className="profile-dropdown-icon"></button>
-                                <span id="profile-name">{currentUser.firstName}</span>
-                                <span id="profile-name">{currentUser.lastName}</span>
-                            </div>
+                            {currentUser && (
+                                <div className="name-container">
+                                    <button className="profile-dropdown-icon"></button>
+                                    <span id="profile-name">{currentUser.firstName}</span>
+                                    <span id="profile-name">{currentUser.lastName}</span>
+                                </div>
+                            )}
                             <div className="view-profile-text-container">
                                 <div className="view-profile-text">View your Profile</div>
                             </div>
                         </div>
                     </li>
-                    <li className="logout-tab">
+                    <li key="logout-button" className="logout-tab">
                         <div className="logout-button-container">
                             <button className="logout-icon"></button>
                             <button className="logout-button" onClick={handleLogout}>Log Out</button>

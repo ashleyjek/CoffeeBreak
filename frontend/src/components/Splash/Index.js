@@ -1,16 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Navigation from "../Navigation/index";
 import Newsfeed from "../Newsfeed";
+import { useEffect } from "react";
+import { fetchUser } from "../../store/users";
 import './Splash.css';
 
 const SplashPage = () => {
-    const history = useHistory();
-    const currentUser = useSelector(state => state.session.currentUser);
-    if (currentUser === null) {
-        history.push('/login');        
-    }
-    
+    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    const dispatch = useDispatch();
+    useEffect(() => {
+      dispatch(fetchUser(currentUser));
+    }, [])
+
     return (
         <>
             <div className="splash-index">

@@ -1,8 +1,10 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { login } from "../../store/session";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { openModal } from "../../store/ui";
+import { useEffect } from "react";
+import fetchUser from '../../store/users'
 
 const SignInForm = () => {
     const history = useHistory();
@@ -10,7 +12,6 @@ const SignInForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
-    
     
     const handleSubmit = async (e) => {
         e.preventDefault();

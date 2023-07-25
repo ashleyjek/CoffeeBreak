@@ -9,6 +9,8 @@ import configureStore from './store/index'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { removeErrors } from './store/errors';
+import { fetchUser } from './store/users';
+import { deletePost, fetchPost, fetchPosts } from './store/posts';
 
 const store = configureStore();
 
@@ -21,12 +23,15 @@ if (process.env.NODE_ENV !== "production") {
   window.logout = logout;
   window.restoreSession = restoreSession;
   window.removeErrors = removeErrors;
+  window.fetchUser = fetchUser;
+  window.fetchPosts = fetchPosts;
+  window.fetchPost = fetchPost;
+  window.deletePost = deletePost;
 };
 //
 
 
 const Root = () => {
-
   return (
     <Provider store={store}>
       <BrowserRouter>
@@ -38,13 +43,14 @@ const Root = () => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const initializeApp = () => {
+
   root.render(
     <React.StrictMode>
         <Root />
     </React.StrictMode>
   );
 }
-if (sessionStorage.getItem("X-CSRF-Token") === null||
+if (sessionStorage.getItem("X-CSRF-Token") === null ||
     sessionStorage.getItem('currentUser') === null) {
       store.dispatch(restoreSession()).then(initializeApp);
     } else {

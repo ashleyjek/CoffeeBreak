@@ -1,18 +1,35 @@
-
+import { useDispatch, useSelector } from 'react-redux';
+import NewPostForm from './NewPostForm';
 import './Posts.css';
+import { getPosts } from '../../store/posts';
+import { useEffect } from 'react';
+import { fetchPosts } from '../../store/posts';
+import { deletePost } from '../../store/posts';
 
 const Posts = ({currentUser}) => {
-    const allPosts = ['post1', 'post2']
+    const allPosts = useSelector(getPosts);
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(fetchPosts())
+    }, []);
+    
+    if (!currentUser) return null;
+    // debugger;
+
     return (
         <>
             <div className="create-post-container">
-                <a><img className="create-post-profile-icon"></img></a>
+                <img alt="profile-favicon" className="create-post-profile-icon"></img>
+                { currentUser && (
                 <input 
                     className="create-post-input"
-                    placeholder={`What's on your mind, ${currentUser.firstName}?`}/>
+                        placeholder={`What's on your mind, ${currentUser.firstName}?`}/>
+                    )}
             </div>
+    <NewPostForm />
             {allPosts.map((post) => 
-            <div className="post-container">
+            <div key={post?.id} className="post-container">
                 {/* post container */}
                 <div className="post-header-container">
                     {/* * post-header-container */}
@@ -24,13 +41,18 @@ const Posts = ({currentUser}) => {
                         <div className="post-author">*** post-author</div>
                         <div className="post-date-time">*** post-date-time</div>
                     </div>
-                    <div className="post-edit-button">** post-edit-button</div>
+                    <div className="post-edit-button">** post-edit-button
+                    { currentUser.id === post.authorId ? (
+                        <button onClick={() => dispatch(deletePost(post?.id))}/>
+                    ) : null }
+                    </div>
                     <div className="post-close-button">** post-close-button</div>
                 </div>
                 <div className="post-body-container">
                     * post-body-container
                     <div className="post-body-text">
-                        ** post-body-text
+                        {/* ** post-body-text */}
+                        {post.body}
                     </div>
                 </div>
                 <div className="post-photo-container">

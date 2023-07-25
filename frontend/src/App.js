@@ -2,19 +2,24 @@ import { Route } from 'react-router-dom';
 import SignInPage from './components/SignInPage/Index';
 import SplashPage from './components/Splash/Index';
 import { Redirect, Switch } from 'react-router-dom/cjs/react-router-dom.min';
-import { useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchUser } from './store/users';
+import { recieveCurrentUser } from './store/session';
 
 function App() {
-  const currentUser = useSelector(state => state.session.user);
+  const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+
+  { currentUser ? <Redirect to="/"/> : <Redirect to="/login"/> }
 
   return (
     <>
       <Switch>
         <Route exact path="/login">
-            {currentUser ? <Redirect to="/"/> : <SignInPage/>}
+          <SignInPage/>
         </Route>
-        <Route exact path="/">
-          <SplashPage/>
+        <Route path="/">
+            <SplashPage /> 
         </Route>
       </Switch>
     </>

@@ -4,7 +4,7 @@ import { receiveErrors } from "./errors";
 export const RECEIVE_CURRENT_USER = 'session/RECEIVE_CURRENT_USER';
 export const REMOVE_CURRENT_USER = 'session/REMOVE_CURRENT_USER';
 
-const recieveCurrentUser = (user) => ({
+export const recieveCurrentUser = (user) => ({
     type: RECEIVE_CURRENT_USER,
     user
 });
@@ -74,14 +74,15 @@ export const signUp = (user) => async (dispatch) => {
         }
 };
 
+
 const initialState = {
-    currentUser: JSON.parse(sessionStorage.getItem('currentUser')).id
+    user: JSON.parse(sessionStorage.getItem('currentUser'))
 }
 const sessionReducer = (state = initialState, action) => {
     Object.freeze(state);
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            return Object.assign({}, { currentUser: action.user?.id });
+            return Object.assign({}, { currentUser: action.user});
         case REMOVE_CURRENT_USER:
             return { currentUser: null }
 

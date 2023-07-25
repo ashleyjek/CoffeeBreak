@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
 import Posts from '../Posts/index';
+
 import './Newsfeed.css'
 
 const Newsfeed = () => {
-    const currentUser = useSelector(state => state.entities.users[state.session.currentUser]);
+    const currentUser = useSelector(state => state.session.currentUser);
 
     return (
         <>
