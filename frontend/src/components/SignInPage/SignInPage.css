@@ -71,7 +71,8 @@
     font-family: Klavika;
     font-weight: bold;
     font-size: 62px;
-    color: rgb(165, 124, 55);
+    /* color: rgb(165, 124, 55); */
+    color: rgb(154, 137, 120);
     padding-bottom: 6px;
     /* padding-left: 200px; */
 }
@@ -114,7 +115,7 @@
     margin: 5px;
     color: white;
     font-weight: bold;
-    background-color: rgb(192, 154, 87);
+    background-color: rgb(154, 137, 120);
     border-color: transparent;
 }
 
@@ -128,7 +129,7 @@
     margin-top: 15px;
     color: white;
     font-weight: 550;
-    background-color: #41aa2d;
+    background-color: #1877f2;
     border-color: transparent;
 }
 

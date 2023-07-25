@@ -1,0 +1,27 @@
+.homepage-container {
+    background-color: white;
+    height: 700px;
+    margin-top: 55px;
+}
+
+.left-side-bar-container {
+    /* background-color: green; */
+    width: 760px;
+    height: 700px;
+}
+
+.newsfeed-container {
+    /* background-color: blue; */
+    width: 2500px;
+    height: 1000px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right-side-bar-container {
+    /* background-color: red; */
+    width: 760px;
+    height: 700px; 
+}

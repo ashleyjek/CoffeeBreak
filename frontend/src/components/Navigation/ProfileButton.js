@@ -39,10 +39,12 @@ const ProfileButton = ({currentUser}) => {
                         <div className="profile-name-container">
                             <div className="name-container">
                             <button className="profile-dropdown-icon"></button>
-                                <span id="profile-name">{currentUser.firstName.charAt(0).toUpperCase() + currentUser.firstName.slice(1).toLowerCase()}</span>
-                                <span id="profile-name">{currentUser.lastName.charAt(0).toUpperCase() + currentUser.lastName.slice(1).toLowerCase()}</span>
+                                <span id="profile-name">{currentUser.firstName}</span>
+                                <span id="profile-name">{currentUser.lastName}</span>
                             </div>
-                            <div className="view-profile-text">View your Profile</div>
+                            <div className="view-profile-text-container">
+                                <div className="view-profile-text">View your Profile</div>
+                            </div>
                         </div>
                     </li>
                     <li className="logout-tab">

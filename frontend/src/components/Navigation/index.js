@@ -9,10 +9,13 @@ const Navigation = () => {
         <>
             <div className="top-nav-bar">
                 <div className="left-nav-links">
-                    <button className="home-page-icon"></button>
+                    <img src="https://live.staticflickr.com/65535/53069030957_d9041f159e_b.jpg" className="home-page-icon"/>
+                    <input className="home-search-bar" placeholder="Search Coffeebook"/>
                 </div>
                 <div className="center-nav-links">
-                    <p>centernav</p>
+                    {/* <button className="nav-friends-button">Friends</button> */}
+                    <button className="nav-home-button">Home</button>
+                    {/* <button className="nav-groups-button">Groups</button> */}
                 </div>
                 
                 <div className="right-nav-links">

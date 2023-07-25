@@ -27,7 +27,7 @@ const SignInForm = () => {
     
     
     const handleDemoUser = () => {
-        dispatch(login({email: "ashley@email.com", password: "password"}))
+        dispatch(login({email: "demo@email.com", password: "password"}))
         .then(() => history.push("/"))
     }
     

@@ -37,8 +37,8 @@ const SignUpForm = () => {
         dispatch(signUp({
             email: email, 
             password: password,
-            firstName: firstName,
-            lastName: lastName,
+            firstName: firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase(),
+            lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase(),
             birthday: new Date(`${year}-${month}-${day}`),
             gender: gender
         })).then((resp) => {

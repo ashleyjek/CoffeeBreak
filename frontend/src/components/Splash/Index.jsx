@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Navigation from "../Navigation/index";
+import Newsfeed from "../Newsfeed";
 import './Splash.css';
 
 const SplashPage = () => {
@@ -14,6 +15,7 @@ const SplashPage = () => {
         <>
             <div className="splash-index">
                 <Navigation/>
+                <Newsfeed />
             </div>
         </>
     )

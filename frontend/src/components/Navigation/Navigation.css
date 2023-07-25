@@ -3,25 +3,61 @@
     justify-content: space-between;
     height: 55px;
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-    position: sticky;
-}
-
-.left-nav-links, .center-nav-links, .right-nav-links {
-    width: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .1);
+    position: fixed;
 }
 
 .right-nav-links {
-    text-align: right;
+    width: 33%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.center-nav-links {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-home-button {
+    margin: 0px 5px 0px 5px;
+    height: 55px;
+    background-color: white;
+    border: 0px;
+    width:100px;
+}
+
+.left-nav-links {
+    width: 33%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.home-search-bar {
+    width: 210px;
+    border-radius: 50px;
+    font-size: 16px;
+    height: 35px;
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    padding: 0px 0px 0px 15px;
+    margin: 5px 5px 5px 0px;
+    border-color: transparent;
+    background-color: rgb(237,	239, 243);
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    color: rgb(237, 239, 243)
+
 }
 
 .profile-icon, .home-page-icon {
     border-radius: 50%;
     height: 42px;
     width: 42px;
-    margin: 6px;
     border-color: transparent;
-    margin-right: 15px;
+    margin: 0px 10px 0px 10px;
 }
 
 .profile-dropdown-icon {
@@ -36,15 +72,15 @@
     border-radius: 50%;
     height: 38px;
     width: 38px;
-    margin: 6px;
+    margin: 5px;
     border-color: transparent;
 }
 
 .profile-dropdown-container {
     position: absolute;
-    width: 340px;
+    width: 350px;
     background-color: white;
-    top: 55px;
+    top: 52px;
     right: 15px;
     display: flex;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
@@ -56,16 +92,21 @@
 
 
 .name-container span {
-    margin: 3px;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
-    margin-top: 17px;
-    height: 42px;
+    margin: 17px 3px 0px 3px;
+    height: 40px;
+}
+
+.profile-links-container {
+    height: auto;
+    width: auto;
+    background-color: white;
 }
 
 .profile-name-container {
     background-color: white;
     height: 110px;
-    width: 310px;
+    width: 320px;
     border-radius: 8px;
     margin: 13px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
@@ -77,23 +118,45 @@
 .name-container {
     height: 55px;
     width: 290px;
-    margin: 10px;
+    margin: 10px 10px 0px 10px;
     display: flex;
     border-bottom: solid 0.5px;
     border-color: rgb(211, 211, 211);
 }
 
+
 .view-profile-text {
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
-    font-size: 14.5px;
-    margin-left: 11px;
-    margin-top: 5px;
-    color: rgb(172, 136, 75);
+    font-size: 15px;
+    font-weight: 300;
+    height: 40px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+}
+
+.view-profile-text-container :hover {
+    cursor: pointer;
+    background-color: rgb(237,	239, 243);
+    border-radius: 4px;
+}
+
+.view-profile-text-container {
+    height: 40px;
+    width: 285px;
+    margin-left: 10px;
+    padding-left: 5px;
+}
+
+.profile-name-container :hover {
+    cursor: pointer;
+    background-color: rgb(237,	239, 243);
+    border-radius: 4px;
 }
 
 .logout-button-container {
     background-color: transparent;
-    width: 315px;
+    width: 325px;
     margin: 15px;
     display: flex;
 }
@@ -111,7 +174,7 @@
 
 .logout-tab :hover {
     cursor: pointer;
-    background-color: rgb(246, 246, 246);
+    background-color: rgb(237,	239, 243);
     border-radius: 8px;
 }
 
