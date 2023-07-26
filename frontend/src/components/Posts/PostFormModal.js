@@ -61,7 +61,7 @@ const PostFormModal = ({post, currentUser}) => {
                     {/* <div className="photo-modal-button">
                         <button onClick={}>X</button>
                     </div> */}
-                    { post.post.photoSrc ? (<img src={post.post?.photoSrc}></img>) : null }
+                    {post.post.photoSrc ? (<img src={post.post?.photoSrc}></img>) : null }
                 </div>
                 <div className="form-icon-container">
                     <div className="icons-label">
