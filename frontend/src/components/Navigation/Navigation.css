@@ -5,6 +5,7 @@
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 2px 4px rgba(0, 0, 0, .1);
     position: fixed;
+    z-index: 2;
 }
 
 .right-nav-links {
@@ -138,7 +139,7 @@
 
 .view-profile-text-container :hover {
     cursor: pointer;
-    background-color: rgb(237,	239, 243);
+    background-color: rgb(239, 242, 245);
     border-radius: 4px;
 }
 
@@ -151,7 +152,7 @@
 
 .profile-name-container :hover {
     cursor: pointer;
-    background-color: rgb(237,	239, 243);
+    background-color: rgb(239, 242, 245);
     border-radius: 4px;
 }
 
@@ -175,7 +176,7 @@
 
 .logout-tab :hover {
     cursor: pointer;
-    background-color: rgb(237,	239, 243);
+    background-color: rgb(239, 242, 245);
     border-radius: 8px;
 }
 

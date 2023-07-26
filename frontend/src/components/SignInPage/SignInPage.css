@@ -118,6 +118,7 @@
     font-weight: bold;
     background-color: rgb(154, 137, 120);
     border-color: transparent;
+    cursor: pointer;
 }
 
 .create-acct-button {
@@ -132,6 +133,7 @@
     font-weight: 550;
     background-color: #1877f2;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .divider {

@@ -8,10 +8,11 @@
     display: flex;
     align-items: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    justify-content: center;
 }
 
 .create-post-input {
-    width: 590px;
+    width: 585px;
     height: 35px;
     border-radius: 50px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
@@ -23,7 +24,7 @@
 }
 
 .create-post-profile-icon {
-    margin: 10px;
+    margin: 10px 10px 10px 0px;
     height: 40px;
     width: 40px;
     border-radius: 50px;
@@ -40,8 +41,9 @@
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
+    justify-content: flex-start;
 }
 
 .options-button-container {
@@ -57,10 +59,11 @@
     -webkit-text-stroke-width: 5%;
     font-size: 18px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 15px 15px 5px 0px;
+    margin: 15px 20px 5px 0px;
     color: rgb(112, 112, 112);
     position: absolute;
-    z-index: 1;
+    z-index: 0;
+    cursor: pointer;
 }
 
 .options-menu {
@@ -100,13 +103,13 @@
 }
 
 .options-menu :hover {
-    background-color: rgb(232, 232, 232);
+    background-color: rgb(239, 242, 245);
 }
 
 
 .post-header-container {
     width: 665px;
-    margin: 10px;
+    margin: 10px 10px 10px 10px;
     height: 50px;
     display: flex;
     justify-content: flex-start;
@@ -122,9 +125,6 @@
     background-color: rgb(219, 219, 219);
 }
 
-.post-body-text {
-    background-color: yellow;
-}
 
 .post-details-container {
     display: flex;
@@ -141,6 +141,82 @@
 .post-date-time {
     font-size: 12px;
     font-weight: 300;
+}
+
+.post-body-container {
+    /* background-color: yellow; */
+    padding: 2px 0 10px 0;
+    width: 660px;
+    /* border-bottom: 1px rgb(219, 219, 219) solid; */
+}
+
+.post-body-text {
+    /* background-color: yellow; */
+    height: auto;
+    width: 640px;
+    font-size: 20px;
+    padding: 5px 10px 10px 10px;
+}
+
+.post-photo-container {
+    /* background-color: yellow; */
+    width: 645px;
+    height: auto;
+    padding: 5px 10px 10px 10px;
+}
+
+.post-photo-source img {
+    width: 640px;
+    height: auto;
+}
+
+.posts-cmts-ctr-container {
+    display: flex;
+    /* background-color: yellow; */
+    height: auto;
+    align-items: center;
+    justify-content: space-between;
+    width: 640px;
+}
+
+.likes-count, .comments-count {
+    width: 300px;
+    height: auto;
+    /* background-color: blue; */
+}
+
+.post-reaction-container {
+    display: flex;
+    background-color: pink;
+    background-color: white;
+    height: 39px;
+    align-items: center;
+    justify-content: center;
+    width: 640px;
+    border-bottom: 1px rgb(219, 219, 219) solid;
+    border-top: 1px rgb(219, 219, 219) solid;
+    margin-bottom: 15px;
+}
+
+.post-reaction-container button {
+    width: 320px;
+    height: 33px;
+    border-radius: 3px;
+    border: transparent;
+    /* background-color: green; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+    /* background-color: rgb(219, 219, 219); */
+    background-color: white;
+    margin: 3px 0 3px 0;
+}
+
+.post-reaction-container button:hover {
+    background-color: rgb(239, 242, 245);
 }
 
 .post-form-modal-bg {
@@ -236,8 +312,9 @@
     margin: 0px 10px 0px 10px;
     border: transparent;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
-    font-size: 15px;
+    font-size: 23px;
     resize: none;
+    white-space: pre-wrap
 }
 
 

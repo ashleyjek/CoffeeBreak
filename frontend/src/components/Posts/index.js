@@ -16,7 +16,7 @@ const Posts = ({currentUser}) => {
     const dispatch = useDispatch();
     const modalType = useSelector(({ui}) => ui.modal);
     const [optionsOpen, setOptionsOpen] = useState(false);
-    const [post, setPost] = useState({});
+    const [currPost, setCurrPost] = useState({});
 
     let FormModal;
     switch (modalType) {
@@ -40,6 +40,25 @@ const Posts = ({currentUser}) => {
         });
     }, [dispatch]);
 
+    // const editClickHandler = () => {
+    //     return (post) => {
+    //         setOptionsOpen(!optionsOpen)
+    //         setCurrPost({post})
+    //         dispatch(openModal("Update"))
+    //     };
+    // }
+
+    // const deleteClickHandler = () => {
+    //     // debugger
+    //     return (post) => {
+    //         setOptionsOpen(!optionsOpen); 
+    //         setCurrPost({post}); 
+    //         dispatch(deletePost(post.id));
+    //     };
+    // }
+
+    // onClick(clickHandler(post.id))
+
     if (!currentUser) return null;
 
     return (
@@ -50,7 +69,7 @@ const Posts = ({currentUser}) => {
                 <input 
                     className="create-post-input"
                         placeholder={`What's on your mind, ${currentUser.firstName}?`}
-                        onClick={() => dispatch(openModal("Create"))}/>
+                        onClick={() => {dispatch(openModal("Create")); setCurrPost("")}}/>
                     )}
             </div>
 
@@ -62,9 +81,11 @@ const Posts = ({currentUser}) => {
                             <button className="open-options-button" onClick={() => setOptionsOpen(!optionsOpen)}>...</button>
                                 {optionsOpen ? 
                                     <div className="options-menu">
-                                        <button className="edit-post-button" onClick={() => {setPost({post}); dispatch(openModal("Update"))}}>Edit post</button>
-                                        {/* <PostFormModal formType={"Edit"} postId={post?.id}/> */}
-                                        <button className="delete-post-button" onClick={() => {setPost({post}); dispatch(deletePost(post.id))}} >Move to trash</button>
+                                        {/* <button className="edit-post-button" onClick={editClickHandler(post)}>Edit post</button> */}
+                                        <button className="edit-post-button" onClick={() => {setOptionsOpen(!optionsOpen); {setCurrPost({post}); dispatch(openModal("Update"))}}}>Edit post</button>
+                                        {/* <PostFormModal formType={"Edit"} postId={post?.id}/> */} 
+                                        {/* <button className="delete-post-button" onClick={deleteClickHandler(post)}>Move to trash</button> */}
+                                        <button className="delete-post-button" onClick={() => {setOptionsOpen(!optionsOpen); {setCurrPost({post}); dispatch(deletePost(post.id))}}} >Move to trash</button>
                                     </div>
                                 : null }
                         </div>
@@ -90,35 +111,38 @@ const Posts = ({currentUser}) => {
                         {post.body}
                     </div>
                 </div>
-                <div className="post-photo-container">
-                    * post-photo-container
-                    <div className="post-photo-source">
-                        ** post-photo-source
+                {post?.photoSrc ? (
+                    <div className="post-photo-container">
+                        {/* * post-photo-container */}
+                        <div className="post-photo-source">
+                            <img src={post.photoSrc}/>
+                        </div>
                     </div>
-                </div>
-                <div className="posts-cmts-ctr-container">
-                    * posts-cmts-ctr-container
+                ) 
+                : null }
+                {/* <div className="posts-cmts-ctr-container">
+        
                     <div className="likes-count">
-                        ** like-count
+                
                     </div>
                     <div className="comments-count">
-                        ** comments-count
+                    
                     </div>
-                </div>
+                </div> */}
                 <div className="post-reaction-container">
-                    * post-reaction-container
-                    <div className="like-button"/>
-                        ** like-button
-                    <div className="comment-button"/>
-                        ** comment-button
+                    {/* * post-reaction-container */}
+                    <button className="like-button">Like</button>
+                        {/* ** like-button */}
+                    <button className="comment-button">Comment</button>
+                        {/* ** comment-button */}
                 </div>
                 <div className="comments-container">
-                    COMMENTS COMPONENT
+                    {/* COMMENTS COMPONENT */}
                 </div>
             </div>)}
                 {FormModal ? (
                     <div className="post-form-modal-bg">
-                        <FormModal post={post} currentUser={currentUser}/>
+                        <FormModal post={currPost} currentUser={currentUser}/>
                     </div>
                 ) : null }
         </>
