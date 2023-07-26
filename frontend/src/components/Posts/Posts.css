@@ -14,7 +14,7 @@
     width: 590px;
     height: 35px;
     border-radius: 50px;
-    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     color: rgb(237, 239, 243);
     border-color: transparent;
     background-color: rgb(237,	239, 243);
@@ -32,7 +32,7 @@
 }
 
 .post-container {
-    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     margin: 10px 10px 5px 10px;
     height: auto;
     width: 685px;
@@ -44,14 +44,82 @@
     flex-direction: column;
 }
 
+.options-button-container {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.open-options-button {
+    background-color: transparent;
+    border-color: transparent;
+    font-weight: bold;
+    -webkit-text-stroke-width: 5%;
+    font-size: 18px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 15px 15px 5px 0px;
+    color: rgb(112, 112, 112);
+    position: absolute;
+    z-index: 1;
+}
+
+.options-menu {
+    position: absolute;
+    width: 300px;
+    display: flex;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    border-radius: 8px;
+    background-color: white;
+    margin: 50px 30px 0 0;
+    height: auto;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 5px 0px 5px 0px;
+}
+
+.options-menu button {
+    padding-left: 15px;
+    width: 280px;
+    height: 33px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    background-color: transparent;
+    border-radius: 6px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.options-menu :nth-child(1) {
+    margin: 10px 10px 0px 10px;
+}
+
+.options-menu :nth-child(2) {
+    margin: 0px 10px 10px 10px;
+}
+
+.options-menu :hover {
+    background-color: rgb(232, 232, 232);
+}
+
+
 .post-header-container {
     width: 665px;
     margin: 10px;
-    height: auto;
-    background-color: pink;
+    height: 50px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     align-items: center;
+}
+
+.post-profile-icon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border-color: transparent;
+    margin: 20px 10px 20px 10px;
+    background-color: rgb(219, 219, 219);
 }
 
 .post-body-text {
@@ -61,22 +129,184 @@
 .post-details-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; 
+}
+
+.post-author {
+    font-size: 15px;
+    font-weight: 500;;
+    margin-bottom: 4px;
+}
+
+.post-date-time {
+    font-size: 12px;
+    font-weight: 300;
 }
 
 .post-form-modal-bg {
     position: fixed;
     height: 100vh;
-    width: 100%;
-    background-color: green;
+    width: 200vw;
+    background-color: rgba(255, 255, 255, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.posts-body-container {
-    position: fixed;
+.post-form-modal-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    width: 500px;
+    height: auto;
+    background-color: white;
+    border-radius: 8px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
 }
+
+.post-form {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.close-modal-button {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.close-modal-button button {
+    border-color: transparent;
+    color: rgb(112, 112, 112);
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin: 10px 15px 10px 15px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.form-header {
+    height: 55px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+    border-bottom: 1px rgb(219, 219, 219) solid;
+}
+
+.form-sub-header img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border-color: transparent;
+    margin: 20px 10px 20px 10px;
+    background-color: rgb(219, 219, 219);
+}
+
+.form-sub-header {
+    font-size: 15px;
+    font-weight: 500;
+    background-color: white;
+    height: 55px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.form-body {
+    /* background-color: blue; */
+    display: grid;
+    height: auto;
+    justify-content: center;
+}
+
+.form-body textarea {
+    width: 465px;
+    font-weight: 400;
+    margin: 0px 10px 0px 10px;
+    border: transparent;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    font-size: 15px;
+    resize: none;
+}
+
+
+.form-body textarea:focus {
+    outline: none;
+}
+
+.form-img-container {
+    display: flex;
+    width: 465px;
+    margin: 15px 15px 13.5px 15px;
+    justify-content: center;
+    border: 1px rgb(200, 200, 200) solid;
+    border-radius: 8px;
+}
+
+.form-img-container img {
+    width: 450px;
+    height: auto;
+    margin: 10px;
+}
+
+.form-icon-container {
+    display: flex;
+    height: 50px;
+    width:465px;
+    margin: 2.5px 15px 7.5px 15px;
+    border: 1px rgb(200, 200, 200) solid;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.icons-label {
+    margin-left: 20px;
+    font-size: 14.5px;;
+    font-weight: 500;
+}
+
+.form-submit button {
+    width: 465px;
+    height: 35px;
+    border-radius: 8px;
+    border-color: transparent;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    font-weight: 400;
+    color: white;
+    background-color: rgb(154, 137, 120);
+    font-size: 14.5px;
+    margin: 8.5px 15px 15px 15px;
+    cursor: pointer
+}
+
+.form-submit button:disabled {
+    background-color: rgb(233, 233, 233);
+    color: rgb(186, 186, 186)
+}
+
+.disabled-button {
+    cursor: no-drop;
+}
+
+
+
+
+
+
+
+
+
 
 
 

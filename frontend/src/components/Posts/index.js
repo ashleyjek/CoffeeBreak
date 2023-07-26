@@ -57,31 +57,30 @@ const Posts = ({currentUser}) => {
             {allPosts.map((post) => 
             <div key={post?.id} className="post-container">
                 {/* post container */}
+                    { currentUser.id === post.authorId ? (
+                        <div className="options-button-container">
+                            <button className="open-options-button" onClick={() => setOptionsOpen(!optionsOpen)}>...</button>
+                                {optionsOpen ? 
+                                    <div className="options-menu">
+                                        <button className="edit-post-button" onClick={() => {setPost({post}); dispatch(openModal("Update"))}}>Edit post</button>
+                                        {/* <PostFormModal formType={"Edit"} postId={post?.id}/> */}
+                                        <button className="delete-post-button" onClick={() => {setPost({post}); dispatch(deletePost(post.id))}} >Move to trash</button>
+                                    </div>
+                                : null }
+                        </div>
+                    ) : null }
                 <div className="post-header-container">
                     {/* * post-header-container */}
-                    <div className="post-profile-icon"> 
-                        icon
-                    </div>
+                    <img className="post-profile-icon"> 
+                        {/* icon */}
+                    </img>
                     <div className="post-details-container">
                         {/* ** post-details-container */}
-                        <div className="post-author">{allUsers[post.authorId].firstName}</div>
-                        <div className="post-date-time">date</div>
+                        <div className="post-author">{allUsers[post.authorId].firstName} {allUsers[post.authorId].lastName}</div>
+                        <div className="post-date-time">{post?.createdAt}</div>
                     </div>
                     {/* <div className="post-edit-button" onClick={() => setModalOpen(true)}>edit
                     </div> */}
-                    { currentUser.id === post.authorId ? (
-                        <>
-                        <button onClick={() => setOptionsOpen(!optionsOpen)}>settings</button>
-                            {optionsOpen ? 
-                            <>
-                                <div className="options-menu">
-                                    <button onClick={() => {setPost({post}); dispatch(openModal("Update"))}}>Edit</button>
-                                    {/* <PostFormModal formType={"Edit"} postId={post?.id}/> */}
-                                    <button onClick={() => {setPost({post}); dispatch(deletePost(post.id))}} >Delete</button>
-                                </div>
-                            </> : null }
-                        </>
-                    ) : null }
                     {/* <div className="post-close-button">close</div> */}
                 </div>
                 <div className="post-body-container">
@@ -119,7 +118,7 @@ const Posts = ({currentUser}) => {
             </div>)}
                 {FormModal ? (
                     <div className="post-form-modal-bg">
-                        <FormModal post={post}/>
+                        <FormModal post={post} currentUser={currentUser}/>
                     </div>
                 ) : null }
         </>
