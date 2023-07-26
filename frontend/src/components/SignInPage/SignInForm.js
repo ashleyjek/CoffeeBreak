@@ -1,10 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { login } from "../../store/session";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { openModal } from "../../store/ui";
 import { useEffect } from "react";
-import fetchUser from '../../store/users'
+// import fetchUser from '../../store/users'
+import { removeErrors } from "../../store/errors";
 
 const SignInForm = () => {
     const history = useHistory();
@@ -19,8 +20,9 @@ const SignInForm = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        dispatch(removeErrors());
         try {
-            await dispatch(login({email: email, password: password}))
+            await dispatch(login({email: email.toLowerCase(), password: password}))
             history.push("/");
         }
         catch (err) { 
@@ -32,7 +34,7 @@ const SignInForm = () => {
     
     
     const handleDemoUser = () => {
-        dispatch(login({email: "Demo@email.com", password: "password"}))
+        dispatch(login({email: "demo@email.com", password: "password"}))
         .then(() => history.push("/"))
     }
     

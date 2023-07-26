@@ -64,9 +64,18 @@
     align-items: center;
 }
 
-.posts-body-container {
+.post-form-modal-bg {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background-color: green;
     display: flex;
-    text-align: left;
+    justify-content: center;
+    align-items: center;
+}
+
+.posts-body-container {
+    position: fixed;
 }
 
 

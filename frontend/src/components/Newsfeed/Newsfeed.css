@@ -13,7 +13,7 @@
 .newsfeed-container {
     /* background-color: blue; */
     width: 2500px;
-    height: 1000px;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;

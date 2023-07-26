@@ -4,7 +4,8 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { logout } from "../../store/session";
 import './Navigation.css';
 
-const ProfileButton = ({currentUser}) => {
+const ProfileButton = () => {
+    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const history = useHistory();
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);

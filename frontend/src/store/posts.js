@@ -22,7 +22,9 @@ const removePost = (postId) => ({
 
 export const getPosts = (state) => {
     if (state.entities.posts) {
-        return Object.values(state.entities.posts);
+        return Object.values(state.entities.posts)
+        // unSorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        // return unSorted;
     } else {
         return [];
     }
@@ -64,7 +66,6 @@ export const updatePost = (post) => async (dispatch) => {
         })
     });
     const data = await res.json();
-    debugger
     if (res.ok) {
         dispatch(receivePost(data.post));
         return res;

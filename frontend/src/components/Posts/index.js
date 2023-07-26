@@ -1,25 +1,45 @@
 import { useDispatch, useSelector } from 'react-redux';
-import PostForm from './PostForm';
+import PostFormModal from './PostFormModal';
 import './Posts.css';
 import { getPosts } from '../../store/posts';
 import { useEffect } from 'react';
 import { fetchPosts } from '../../store/posts';
-import { fetchUsers, fetchUser } from '../../store/users';
+import { fetchUsers } from '../../store/users';
 import { deletePost } from '../../store/posts';
-import { getUsers } from '../../store/users';
+import { useState } from 'react';
+import { openModal } from '../../store/ui';
 
 const Posts = ({currentUser}) => {
-    const allPosts = useSelector(getPosts);
+    const posts = useSelector(getPosts);
+    const allPosts = Object.values(posts).reverse();
     const allUsers = useSelector(state => state.entities.users);
     const dispatch = useDispatch();
+    const modalType = useSelector(({ui}) => ui.modal);
+    const [optionsOpen, setOptionsOpen] = useState(false);
+    const [post, setPost] = useState({});
+
+    let FormModal;
+    switch (modalType) {
+        case "Create":
+            FormModal = PostFormModal;
+            break;
+        case "Update":
+            FormModal = PostFormModal;
+            break;
+        default:
+            FormModal = null;
+            break;
+    }
 
     useEffect(() => {
-        dispatch(fetchUsers());
-        dispatch(fetchPosts());
-    }, []);
-    console.log(allUsers)
+        dispatch(fetchUsers())
+        .then((resp) => {
+            if (resp.ok) {
+                (dispatch(fetchPosts()));
+            }
+        });
+    }, [dispatch]);
 
-    
     if (!currentUser) return null;
 
     return (
@@ -29,10 +49,11 @@ const Posts = ({currentUser}) => {
                 { currentUser && (
                 <input 
                     className="create-post-input"
-                        placeholder={`What's on your mind, ${currentUser.firstName}?`}/>
+                        placeholder={`What's on your mind, ${currentUser.firstName}?`}
+                        onClick={() => dispatch(openModal("Create"))}/>
                     )}
             </div>
-    <PostForm />
+
             {allPosts.map((post) => 
             <div key={post?.id} className="post-container">
                 {/* post container */}
@@ -43,14 +64,23 @@ const Posts = ({currentUser}) => {
                     </div>
                     <div className="post-details-container">
                         {/* ** post-details-container */}
-                        <div className="post-author">AUTHOR NAME</div>
+                        <div className="post-author">{allUsers[post.authorId].firstName}</div>
                         <div className="post-date-time">date</div>
                     </div>
-                    <div className="post-edit-button">edit
-        
-                    </div>
+                    {/* <div className="post-edit-button" onClick={() => setModalOpen(true)}>edit
+                    </div> */}
                     { currentUser.id === post.authorId ? (
-                        <button onClick={() => {dispatch(deletePost(post.id))}} >Delete</button>
+                        <>
+                        <button onClick={() => setOptionsOpen(!optionsOpen)}>settings</button>
+                            {optionsOpen ? 
+                            <>
+                                <div className="options-menu">
+                                    <button onClick={() => {setPost({post}); dispatch(openModal("Update"))}}>Edit</button>
+                                    {/* <PostFormModal formType={"Edit"} postId={post?.id}/> */}
+                                    <button onClick={() => {setPost({post}); dispatch(deletePost(post.id))}} >Delete</button>
+                                </div>
+                            </> : null }
+                        </>
                     ) : null }
                     {/* <div className="post-close-button">close</div> */}
                 </div>
@@ -87,6 +117,11 @@ const Posts = ({currentUser}) => {
                     COMMENTS COMPONENT
                 </div>
             </div>)}
+                {FormModal ? (
+                    <div className="post-form-modal-bg">
+                        <FormModal post={post}/>
+                    </div>
+                ) : null }
         </>
     )
 }

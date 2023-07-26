@@ -1,11 +1,10 @@
-import { useSelector } from 'react-redux';
 import Posts from '../Posts/index';
 
 import './Newsfeed.css'
 
 const Newsfeed = () => {
-    const currentUser = useSelector(state => state.session.currentUser);
-
+    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    
     return (
         <>
             <div className="left-side-bar-container"> 

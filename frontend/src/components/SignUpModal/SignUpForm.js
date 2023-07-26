@@ -35,10 +35,10 @@ const SignUpForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(signUp({
-            email: email, 
+            email: email.toLowerCase(), 
             password: password,
-            firstName: firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase(),
-            lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase(),
+            firstName: firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase().trim(),
+            lastName: lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase().trim(),
             birthday: new Date(`${year}-${month}-${day}`),
             gender: gender
         })).then((resp) => {
