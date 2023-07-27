@@ -69,6 +69,22 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.792.0)
+    aws-sdk-core (3.180.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.5)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.71.0)
+      aws-sdk-core (~> 3, >= 3.177.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.132.0)
+      aws-sdk-core (~> 3, >= 3.179.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.6)
+    aws-sigv4 (1.6.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.19)
     better_errors (2.10.1)
       erubi (>= 1.0.0)
@@ -92,6 +108,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.2)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -162,9 +179,12 @@ GEM
     rake (13.0.6)
     rouge (4.1.2)
     thor (1.2.2)
+    timeliness (0.4.5)
     timeout (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    validates_timeliness (5.0.1)
+      timeliness (>= 0.3.10, < 1)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -176,6 +196,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  aws-sdk-s3
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
@@ -186,6 +207,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.6)
   tzinfo-data
+  validates_timeliness
 
 RUBY VERSION
    ruby 3.1.1p18
