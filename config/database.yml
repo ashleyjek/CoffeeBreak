@@ -84,3 +84,4 @@ production:
   database: Coffeebook_production
   username: Coffeebook
   password: <%= ENV["COFFEEBOOK_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
