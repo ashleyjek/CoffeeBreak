@@ -37,14 +37,20 @@ const PostItem = ({post, allUsers}) => {
         <div key={post.id} className="post-container">
                     { currentUser.id === post.authorId ? (
                         <div className="options-button-container">
-                            <button className="open-options-button" onClick={() => setOptionsOpen(!optionsOpen)}>...</button>
+                            <button 
+                                className="open-options-button" 
+                                    onClick={() => setOptionsOpen(!optionsOpen)}>...</button>
                                 {optionsOpen ? 
                                     <div className="options-menu">
                                         {/* <button className="edit-post-button" onClick={editClickHandler(post)}>Edit post</button> */}
-                                        <button className="edit-post-button" onClick={editClickHandler}>Edit post</button>
+                                        <button 
+                                            className="edit-post-button" 
+                                                onClick={editClickHandler}>Edit post</button>
                                         {/* <PostFormModal formType={"Edit"} postId={post?.id}/> */} 
                                         {/* <button className="delete-post-button" onClick={deleteClickHandler(post)}>Move to trash</button> */}
-                                        <button className="delete-post-button" onClick={() => {setOptionsOpen(!optionsOpen); dispatch(deletePost(post.id))}} >Move to trash</button>
+                                        <button 
+                                            className="delete-post-button" 
+                                            onClick={() => {setOptionsOpen(!optionsOpen); dispatch(deletePost(post.id))}}> Move to trash</button>
                                     </div>
                                 : null }
                         </div>
