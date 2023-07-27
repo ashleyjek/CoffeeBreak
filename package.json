@@ -1,5 +1,5 @@
 {
-  "name": "coffeebreak",
+  "name": "coffeebook",
   "version": "1.0.0",
   "description": "",
   "directories": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ashleyjek/fb-clone.git"
+    "url": "git+https://github.com/ashleyjek/Coffeebook"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,7 @@
     "node": "16.20.0"
   },
   "bugs": {
-    "url": "https://github.com/ashleyjek/fb-clone/issues"
+    "url": "https://github.com/ashleyjek/Coffeebook/issues"
   },
-  "homepage": "https://github.com/ashleyjek/fb-clone#readme"
+  "homepage": "https://github.com/ashleyjek/Coffeebook#readme"
 }
