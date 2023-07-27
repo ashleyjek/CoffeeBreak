@@ -14,7 +14,7 @@ const SplashPage = () => {
     if (!currentUser) {
         history.push("/login");
     }
-
+    
     useEffect(() => {
         if (currentUser) {
             dispatch(fetchUser(currentUser));        
