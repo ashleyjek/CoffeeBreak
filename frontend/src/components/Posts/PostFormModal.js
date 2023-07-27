@@ -6,31 +6,34 @@ import { useSelector } from "react-redux";
 import TextareaAutoSize from 'react-textarea-autosize';
 
 
-const PostFormModal = ({post, currentUser}) => {
+const PostFormModal = ({post, currentUser, formType}) => {
     // debugger
     const dispatch = useDispatch();
     const [body, setBody] = useState("");
-    const formType = useSelector(({ui}) => ui.modal);
+    const [openForm, setOpenForm] = useState(formType)
+    // const formType = useSelector(({ui}) => ui.modal);
 
     useEffect(() => {
-        if (formType === 'Update') {
+        if (openForm === 'Update') {
             setBody(post.body)
         } 
-    }, [])
+        // else {
+        //     setOpenForm(null)
+        // }
+    }, [formType])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (formType === 'Create') {
-            dispatch(createPost({
-                body: body
-            }))
-            .then(dispatch(closeModal()));
-        } else {
+    const handleSubmit = () => {
+        if (openForm === 'Update') {
             dispatch(updatePost({
                 id: post.id,
                 body: body
             }))
-            .then(dispatch(closeModal()));
+            setOpenForm(null)
+    } else {
+        dispatch(createPost({
+            body: body
+        }))
+        setOpenForm(null)
         }
     }
 
@@ -39,7 +42,7 @@ const PostFormModal = ({post, currentUser}) => {
         <div className="post-form-modal-container">
             <form className="post-form">
                 <div className="close-modal-button">
-                    <button onClick={() => dispatch(closeModal())}>X</button>
+                    <button onClick={() => setOpenForm(null)}>X</button>
                 </div>
                 <div className="form-header">
                     {formType === "Update" ? (<label>Edit post</label>) : 

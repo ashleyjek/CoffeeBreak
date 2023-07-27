@@ -8,7 +8,6 @@ import PostItem from './PostItem';
 import './Posts.css';
 
 const Posts = ({currentUser}) => {
-    // debugger
     const dispatch = useDispatch();
     const posts = useSelector(getPosts);
     const allPosts = Object.values(posts).reverse();
@@ -35,16 +34,19 @@ const Posts = ({currentUser}) => {
                 <input 
                     className="create-post-input"
                     placeholder={`What's on your mind, ${currentUser.firstName}?`}
-                    onClick={() => {dispatch(openModal("Create"))}}/>
+                    onClick={() => dispatch(openModal("Create"))}/>
                     )}
             </div>
 
-            {allPosts.map((post) => 
-                <PostItem 
+            {allPosts.map((post) => {
+                // debugger
+                return (<PostItem 
                     key={post.id}
                     post={post} 
                     allUsers={allUsers} />
-                    )}
+                    )})
+
+            }
         </>
     )
 }

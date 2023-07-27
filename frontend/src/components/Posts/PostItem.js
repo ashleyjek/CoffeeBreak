@@ -7,18 +7,30 @@ import './Posts.css';
 
 
 const PostItem = ({post, allUsers}) => {
-    const [optionsOpen, setOptionsOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.currentUser)
     const modalType = useSelector(({ui}) => ui.modal);
+    const [openForm, setOpenForm] = useState("")
 
+    const openMenu = (e) => {
+        if (menuOpen) return;
+        e.stopPropagation();
+        setMenuOpen(true);
+    };
+
+    useEffect(() => {
+        if (!menuOpen) return;
+        const closeMenu = (e) => {
+            setMenuOpen(false);
+        };
+        document.addEventListener('click', closeMenu);
+        return () => document.removeEventListener('click', closeMenu);
+    }, [menuOpen])
 
     let FormModal;
     switch (modalType) {
         case "Create":
-            FormModal = PostFormModal;
-            break;
-        case "Update":
             FormModal = PostFormModal;
             break;
         default:
@@ -27,8 +39,9 @@ const PostItem = ({post, allUsers}) => {
     }
 
     const editClickHandler = () => {
-        setOptionsOpen(!optionsOpen); 
-        dispatch(openModal("Update"));
+        setMenuOpen(!menuOpen); 
+        setOpenForm("Update");
+        // dispatch(openModal("Update"));
     }
 
 
@@ -39,8 +52,8 @@ const PostItem = ({post, allUsers}) => {
                         <div className="options-button-container">
                             <button 
                                 className="open-options-button" 
-                                    onClick={() => setOptionsOpen(!optionsOpen)}>...</button>
-                                {optionsOpen ? 
+                                    onClick={openMenu}>...</button>
+                                {menuOpen ? 
                                     <div className="options-menu">
                                         {/* <button className="edit-post-button" onClick={editClickHandler(post)}>Edit post</button> */}
                                         <button 
@@ -50,7 +63,7 @@ const PostItem = ({post, allUsers}) => {
                                         {/* <button className="delete-post-button" onClick={deleteClickHandler(post)}>Move to trash</button> */}
                                         <button 
                                             className="delete-post-button" 
-                                            onClick={() => {setOptionsOpen(!optionsOpen); dispatch(deletePost(post.id))}}> Move to trash</button>
+                                            onClick={() => {setMenuOpen(!menuOpen); dispatch(deletePost(post.id))}}> Move to trash</button>
                                     </div>
                                 : null }
                         </div>
@@ -95,11 +108,22 @@ const PostItem = ({post, allUsers}) => {
                 </div>
             </div>
 
-            {FormModal ? (
+            {openForm === "Update" ? (
                 <div className="post-form-modal-bg">
-                    <FormModal 
+                    <PostFormModal 
                         key={post.id} 
                         post={post} 
+                        currentUser={currentUser}
+                        formType={openForm}/>
+                </div>
+            ) : null }
+
+            {modalType === "Create" ? (
+                <div className="post-form-modal-bg">
+                    <PostFormModal 
+                        key={post.id} 
+                        post={post} 
+                        formType={modalType}
                         currentUser={currentUser}/>
                 </div>
             ) : null }
