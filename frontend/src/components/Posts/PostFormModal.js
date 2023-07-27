@@ -5,17 +5,18 @@ import { closeModal } from "../../store/ui";
 import { useSelector } from "react-redux";
 import TextareaAutoSize from 'react-textarea-autosize';
 
+
 const PostFormModal = ({post, currentUser}) => {
+    // debugger
     const dispatch = useDispatch();
     const [body, setBody] = useState("");
     const formType = useSelector(({ui}) => ui.modal);
 
-
     useEffect(() => {
         if (formType === 'Update') {
-            setBody(post.post.body)
+            setBody(post.body)
         } 
-    }, [formType])
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,13 +24,12 @@ const PostFormModal = ({post, currentUser}) => {
             dispatch(createPost({
                 body: body
             }))
-            // .then(setBody(""))
             .then(dispatch(closeModal()));
         } else {
             dispatch(updatePost({
-                id: post.post.id,
+                id: post.id,
                 body: body
-            })).then(setBody(""))
+            }))
             .then(dispatch(closeModal()));
         }
     }
@@ -62,7 +62,7 @@ const PostFormModal = ({post, currentUser}) => {
                     {/* <div className="photo-modal-button">
                         <button onClick={}>X</button>
                     </div> */}
-                    {post.post?.photoSrc ? (<img src={post.post?.photoSrc}></img>) : null }
+                    {post?.photoSrc ? (<img src={post?.photoSrc}></img>) : null }
                 </div>
                 <div className="form-icon-container">
                     <div className="icons-label">

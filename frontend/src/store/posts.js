@@ -21,13 +21,8 @@ const removePost = (postId) => ({
 });
 
 export const getPosts = (state) => {
-    if (state.entities.posts) {
-        return Object.values(state.entities.posts)
-        // unSorted.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-        // return unSorted;
-    } else {
-        return [];
-    }
+    // debugger
+    return state.entities.posts
 };
 
 export const getPost = (postId) => (state) => {
