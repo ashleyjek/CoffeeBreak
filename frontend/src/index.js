@@ -11,6 +11,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { removeErrors } from './store/errors';
 import { fetchUsers } from './store/users';
 import { deletePost, fetchPost, fetchPosts, updatePost } from './store/posts';
+import * as commentActions from './store/comments'
 
 const store = configureStore();
 
@@ -28,6 +29,7 @@ if (process.env.NODE_ENV !== "production") {
   window.fetchPost = fetchPost;
   window.deletePost = deletePost;
   window.updatePost = updatePost;
+  window.commentActions = commentActions;
 };
 //
 

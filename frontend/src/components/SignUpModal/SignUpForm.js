@@ -29,7 +29,6 @@ const SignUpForm = () => {
     const errors = useSelector(state => state.errors);
 
     useEffect(() => {
-        console.log("re-rendering")
     }, [errors])
 
     const handleSubmit = (e) => {

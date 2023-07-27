@@ -13,10 +13,6 @@ const SignInForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
-
-    useEffect(() => {
-        console.log("re-rendering")
-    }, [])
     
     const handleSubmit = async (e) => {
         e.preventDefault();

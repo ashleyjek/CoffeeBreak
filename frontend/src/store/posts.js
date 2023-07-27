@@ -1,13 +1,14 @@
 import { csrfFetch } from "./csrf";
 import { receiveErrors } from "./errors";
 
-const RECEIVE_POST = 'posts/RECEIVE_POST';
-const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
+export const RECEIVE_POST = 'posts/RECEIVE_POST';
+export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
 const REMOVE_POST = 'posts/REMOVE_POST';
 
-const receivePosts = (posts) => ({
+const receivePosts = (posts, comments) => ({
     type: RECEIVE_POSTS,
-    posts
+    posts,
+    comments
 });
 
 const receivePost = (post) => ({
@@ -20,14 +21,9 @@ const removePost = (postId) => ({
     postId
 });
 
-export const getPosts = (state) => {
-    // debugger
-    return state.entities.posts
-};
-
 export const getPost = (postId) => (state) => {
-    if (state.posts && state.entities.posts[postId]) {
-        return state.posts[postId];
+    if (state.entities.posts && state.entities.posts[postId]) {
+        return state.entities.posts[postId];
     } else {
         return null;
     }
@@ -36,17 +32,17 @@ export const getPost = (postId) => (state) => {
 export const fetchPosts = () => async (dispatch) => {
     const res = await csrfFetch('/api/posts');
     if (res.ok) {
-        const posts = await res.json();
-        dispatch(receivePosts(posts));
+        const data = await res.json();
+        dispatch(receivePosts(data.posts, data.comments));
         return res;
     }
 };
 
-export const fetchPost = (postId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/posts/${postId}`);
+export const fetchPost = (post) => async (dispatch) => {
+    const res = await csrfFetch(`/api/posts/${post.id}`);
     if (res.ok) {
-        const post = await res.json();
-        dispatch(receivePost(post));
+        const data = await res.json();
+        dispatch(receivePost(data.post));
         return res;
     }
 };
@@ -100,25 +96,26 @@ export const deletePost = (postId) => async (dispatch) => {
     }
 };
 
-const postsReducer = ( initialState = {}, action ) => {
-    const nextState = {...initialState};
+const postsReducer = ( state = {}, action ) => {
+    Object.freeze(state);
+    const nextState = {...state};
     switch (action.type) {
         case RECEIVE_POST:
             return {
                 ...nextState,
                 [action.post.id]: action.post
-            }
+            };
         case RECEIVE_POSTS:
             return {
                 ...nextState,
                 ...action.posts
-            }
+            };
         case REMOVE_POST:
             delete nextState[action.postId];
             return nextState;
         default:
-            return initialState;
-    }
-}
+            return state;
+    };
+};
 
 export default postsReducer;

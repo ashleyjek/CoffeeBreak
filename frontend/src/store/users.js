@@ -41,6 +41,7 @@ export const fetchUsers = () => async (dispatch) => {
 }
 
 const usersReducer = ( state = {}, action ) => {
+    Object.freeze(state);
     const nextState = {...state};
     switch (action.type) {
         case RECEIVE_CURRENT_USER:

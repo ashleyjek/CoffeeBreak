@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deletePost } from '../../store/posts';
 import { useEffect, useState } from 'react';
 import { openModal } from '../../store/ui';
+import Comments from '../Comments';
 import PostFormModal from './PostFormModal';
 import './Posts.css';
 
@@ -103,13 +104,14 @@ const PostItem = ({post, allUsers}) => {
                     <button className="like-button">Like</button>
                     <button className="comment-button">Comment</button>
                 </div>
-                <div className="comments-container">
+                <div className="all-comments-container">
                     {/* COMMENTS COMPONENT */}
+                    <Comments post={post}/>
                 </div>
             </div>
 
             {openForm === "Update" ? (
-                <div className="post-form-modal-bg">
+                <div className="post-form-modal-bg-update">
                     <PostFormModal 
                         key={post.id} 
                         post={post} 
@@ -119,7 +121,7 @@ const PostItem = ({post, allUsers}) => {
             ) : null }
 
             {modalType === "Create" ? (
-                <div className="post-form-modal-bg">
+                <div className="post-form-modal-bg-create">
                     <PostFormModal 
                         key={post.id} 
                         post={post} 

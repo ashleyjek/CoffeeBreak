@@ -12,6 +12,7 @@ export const removeErrors = () => ({
 
 const initialState = {};
 const errorsReducer = (state = initialState, action) => {
+    Object.freeze(state);
     const nextState = {...state};
     switch (action.type) {
         case RECEIVE_ERRORS:

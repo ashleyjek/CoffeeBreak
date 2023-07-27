@@ -219,14 +219,23 @@
     background-color: rgb(239, 242, 245);
 }
 
-.post-form-modal-bg {
+.post-form-modal-bg-create,
+.post-form-modal-bg-update {
     position: fixed;
     height: 100vh;
     width: 200vw;
-    background-color: rgba(255, 255, 255, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.post-form-modal-bg-create {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.post-form-modal-bg-update {
+    background-color: rgba(255, 255, 255, 0.6);
+
 }
 
 .post-form-modal-container {
@@ -240,6 +249,12 @@
     align-items: flex-start;
     justify-content: center;
 }
+
+
+.post-form-modal-bg-create > .post-form-modal-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 2px 8px rgba(0, 0, 0, .1);
+}
+
 
 .post-form {
     display: flex;
