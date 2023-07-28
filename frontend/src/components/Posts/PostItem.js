@@ -5,6 +5,7 @@ import { openModal } from '../../store/ui';
 import Comments from '../Comments';
 import PostFormModal from './PostFormModal';
 import './Posts.css';
+import CommentsForm from '../Comments/CommentsForm';
 
 
 const PostItem = ({post, allUsers}) => {
@@ -12,7 +13,8 @@ const PostItem = ({post, allUsers}) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.currentUser)
     const modalType = useSelector(({ui}) => ui.modal);
-    const [openForm, setOpenForm] = useState("")
+    const [openForm, setOpenForm] = useState("");
+    const [commentForm, setCommentForm] = useState(false);
 
     const openMenu = (e) => {
         if (menuOpen) return;
@@ -102,11 +104,21 @@ const PostItem = ({post, allUsers}) => {
                 </div> */}
                 <div className="post-reaction-container">
                     <button className="like-button">Like</button>
-                    <button className="comment-button">Comment</button>
+                    <button className="create-comment-main-button" 
+                    onClick={() => setCommentForm(!commentForm)}>Comment</button>
                 </div>
                 <div className="all-comments-container">
                     {/* COMMENTS COMPONENT */}
                     <Comments post={post}/>
+                    { commentForm ? 
+                    <div className="create-comment-button">
+                        <CommentsForm post={post} formType={"Create"}/>
+                    </div>
+                    : <button 
+                        className="create-comment-placeholder"
+                        onClick={() => setCommentForm(!commentForm)}>
+                            Write a comment...
+                        </button> }
                 </div>
             </div>
 

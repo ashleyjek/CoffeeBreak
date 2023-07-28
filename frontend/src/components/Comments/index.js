@@ -19,11 +19,6 @@ const Comments = ({post}) => {
                         </div>
                     </div>
            )}
-            <div
-                className="comments-form-container">
-                <CommentsForm 
-                    post={post}/>
-                </div>
         </>
     )
 

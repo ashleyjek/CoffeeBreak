@@ -1,47 +1,63 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux";
-import { createComment, fetchComment } from "../../store/comments";
+import { createComment, updateComment } from "../../store/comments";
 
-const CommentsForm = ({post, comment}) => {
+const CommentsForm = ({post, comment, formType}) => {
     const dispatch = useDispatch();
     const [formField, setFormField] = useState(false);
-    const [body, setBody] = useState();
+    const [body, setBody] = useState("");
 
-    const handleSubmit = () => {
-        dispatch(createComment({
-            body: body,
-            postId: post.id
-        }))
-        setFormField(!formField);
-    }
+    useEffect(() => {
+        if (formType === "Edit") {
+            setBody(comment.body);
+            setFormField(true);
+        }
+    }, [formType])
 
+    const handleSubmit = (e) => {
+        // e.preventDefault();
+        if (formType === "Edit") {
+            dispatch(updateComment({
+                id: comment.id,
+                body: body,
+                postId: post.id
+            }));
+            setFormField(!formField);
+        } else {
+            dispatch(createComment({
+                body: body,
+                postId: post.id
+            }));
+            setFormField(!formField);
+         }}
+debugger
     return (
         <div className="comment-input-container">
             <img className="comments-favicon">
                 {/* profile img goes here */}
                 </img>
-            { !formField ?
-                <input 
-                    className="comment-input-field"
-                    type="textarea"
-                    placeholder="Write a comment..."
-                    onClick={() => setFormField(!formField)}>
-                </input>
-             : 
                 <form
                     className="comment-input-field">
                         <input 
                             className="comment-input-open"
                             type="textarea"
-                            placeholder="hello..."
+                            placeholder="Write a comment..."
+                            value={body}
                             onChange={(e) => setBody(e.target.value)}>
                         </input>
-                        <button 
-                            type="submit" 
-                            onClick={handleSubmit}>Submit
-                        </button>
+                        { body === "" ? (
+                            <button 
+                                type="button" 
+                                disabled>
+                                Submit
+                            </button>
+                        ) : (
+                            <button 
+                                type="submit" 
+                                onClick={handleSubmit}>Submit
+                            </button>
+                        )}
                 </form>
-            }
         </div>
     )
 }
