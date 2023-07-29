@@ -75,12 +75,14 @@
     background-color: white;
     margin: 50px 30px 0 0;
     height: auto;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     padding: 5px 0px 5px 0px;
 }
 
 .options-menu button {
+    display: flex;
+    align-items: center;
     padding-left: 15px;
     width: 280px;
     height: 33px;
@@ -92,14 +94,12 @@
     font-weight: 500;
     border-color: transparent;
     cursor: pointer;
+    margin: 5px 0 5px 0;
 }
 
-.options-menu :nth-child(1) {
-    margin: 10px 10px 0px 10px;
-}
 
-.options-menu :nth-child(2) {
-    margin: 0px 10px 10px 10px;
+.options-menu svg {
+    margin: 0 10px 0 0;
 }
 
 .options-menu :hover {

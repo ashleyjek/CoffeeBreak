@@ -7,7 +7,6 @@ import TextareaAutoSize from 'react-textarea-autosize';
 
 
 const PostFormModal = ({post, currentUser, formType}) => {
-    // debugger
     const dispatch = useDispatch();
     const [body, setBody] = useState("");
     const [openForm, setOpenForm] = useState(formType)

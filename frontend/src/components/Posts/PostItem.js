@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deletePost } from '../../store/posts';
 import { useEffect, useState } from 'react';
 import { openModal } from '../../store/ui';
+import { FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
 import Comments from '../Comments';
 import PostFormModal from './PostFormModal';
 import './Posts.css';
@@ -61,12 +62,14 @@ const PostItem = ({post, allUsers}) => {
                                         {/* <button className="edit-post-button" onClick={editClickHandler(post)}>Edit post</button> */}
                                         <button 
                                             className="edit-post-button" 
-                                                onClick={editClickHandler}>Edit post</button>
+                                                onClick={editClickHandler}>
+                                                    <FaPencilAlt />
+                                                    Edit post</button>
                                         {/* <PostFormModal formType={"Edit"} postId={post?.id}/> */} 
                                         {/* <button className="delete-post-button" onClick={deleteClickHandler(post)}>Move to trash</button> */}
                                         <button 
                                             className="delete-post-button" 
-                                            onClick={() => {setMenuOpen(!menuOpen); dispatch(deletePost(post.id))}}> Move to trash</button>
+                                            onClick={() => {setMenuOpen(!menuOpen); dispatch(deletePost(post.id))}}> <FaRegTrashAlt/> Move to trash</button>
                                     </div>
                                 : null }
                         </div>
@@ -107,18 +110,27 @@ const PostItem = ({post, allUsers}) => {
                     <button className="create-comment-main-button" 
                     onClick={() => setCommentForm(!commentForm)}>Comment</button>
                 </div>
-                <div className="all-comments-container">
+                <div className="entire-comments-container">
                     {/* COMMENTS COMPONENT */}
-                    <Comments post={post}/>
+                    <Comments post={post} allUsers={allUsers} />
                     { commentForm ? 
-                    <div className="create-comment-button">
+                    <div className="create-comment-container">
                         <CommentsForm post={post} formType={"Create"}/>
                     </div>
-                    : <button 
-                        className="create-comment-placeholder"
-                        onClick={() => setCommentForm(!commentForm)}>
-                            Write a comment...
-                        </button> }
+                    : <div className="create-comment-container">
+                        <div className="comment-input-placeholder">
+                            <img className="comments-favicon">
+                            {/* profile img goes here */}
+                            </img>
+                            <button 
+                                className="comment-input-container"
+                                onClick={() => setCommentForm(!commentForm)}>
+                                    Write a comment...
+                                </button> 
+                                </div>
+                        </div> 
+                    }
+                         
                 </div>
             </div>
 
