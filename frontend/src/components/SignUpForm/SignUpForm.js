@@ -65,12 +65,10 @@ const SignUpForm = () => {
                     <form className="signup-form">
                             {errors.first_name ? 
                             <p className="fname-error">
-                                First name {errors.first_name[0]}
-                            </p> : null}
+                                First name {errors.first_name[0]} </p> : null}
                             {errors.last_name ? 
                             <p className="lname-error"> 
-                                Last name {errors.last_name[0]}
-                            </p> : null}
+                                Last name {errors.last_name[0]} </p> : null}
                         <label className="signup-input-name">
                             <input 
                                 className="signup-input-f-name" 
@@ -83,7 +81,8 @@ const SignUpForm = () => {
                                 type="text" 
                                 name={lastName} 
                                 placeholder="Last Name" 
-                                onChange={(e) => setLastName(e.target.value)}/></label>
+                                onChange={(e) => setLastName(e.target.value)}/>
+                        </label>
                             {errors.email ? 
                             <p className="email-error">Email {errors.email[0]}</p> : null}
                             <input 
@@ -100,7 +99,7 @@ const SignUpForm = () => {
                                 name={password} 
                                 placeholder="New Password" 
                                 onChange={(e) => setPassword(e.target.value)}/>
-                        <label className="signup-label-bday">Birthday </label>
+                        <label className="signup-label-bday"> Birthday </label>
                         {errors.birthday ? 
                         <p className="birthday-error"> {errors.birthday[0]}</p> : null}
                         <div className="signup-input-bday">
@@ -123,10 +122,8 @@ const SignUpForm = () => {
                                 </select>
                         </div>
                         <label className="signup-label-gender">Gender 
-                        {errors.gender ? <p className="gender-error">Please choose a gender</p> : null}
-                        
+                            {errors.gender ? <p className="gender-error">Please choose a gender</p> : null}
                         </label>
-
                         <div className="signup-input-gender">
                                 <label>Female
                                     <input 

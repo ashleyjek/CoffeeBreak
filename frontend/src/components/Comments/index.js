@@ -1,9 +1,12 @@
 import { useSelector } from 'react-redux';
 import CommentItem from './CommentItem';
+import { useState } from 'react';
+import CommentsForm from './CommentsForm';
 
 const Comments = ({post, allUsers}) => {
     const comments = useSelector(state => state.entities.comments);
     const allComments = Object.values(comments).filter((comment) => comment.postId === post.id)
+    const [commentForm, setCommentForm] = useState(false);
 
     return (
         <>
@@ -19,6 +22,7 @@ const Comments = ({post, allUsers}) => {
                     </div>
                 </div>
            )}
+
         </>
     )
 

@@ -19,11 +19,7 @@
     width: 58%;
     background-color: rgb(236, 239, 242);
     border-width: 1px;
-    /* border-style: solid;
-    border-color: black;
-    margin-bottom: 150px; */
     margin-top: -200px;
-    /* padding-bottom: 50px; */
 }
 
 .signin-form-container {
@@ -33,14 +29,9 @@
     align-items: flex-start;
     justify-content: flex-end;
     margin-top: 100px;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: black; */
 }
 
 .signin-form-box {
-    /* height: 77%;
-    width: 80%; */
     height: auto;
     width: 380px;
     display: flex;
@@ -55,7 +46,7 @@
 }
 
 .signin-form {
-    padding-top: 15px;
+    padding: 15px 0 0 10px;
 }
 
 .logo-box {
@@ -63,23 +54,17 @@
     flex-direction: column;
     align-items:flex-start ;
     justify-content: flex-start;
-    /* border-width: 1px;
-    border-style: solid;
-    border-color: black; */
 }
 
 .logo-box h1 {
     font-family: Klavika;
     font-weight: bold;
     font-size: 62px;
-    /* color: rgb(165, 124, 55); */
     color: rgb(154, 137, 120);
     padding-bottom: 6px;
-    /* padding-left: 200px; */
 }
 
 .logo-box h2 {
-    /* padding-left: 200px; */
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     padding-bottom: 5px;
     font-size: 27px;
@@ -98,8 +83,7 @@
     width: 333px;
     height: 47px;
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
-    padding: 0px;
-    padding-left: 15px;
+    padding: 0 0 0 15px;
     margin: 5px;
     border-color: rgb(200, 199, 199);
     border-style: solid;
@@ -137,6 +121,7 @@
 }
 
 .divider {
-    margin-top: 0px;
-    color: rgb(203, 203, 203);
+    border: solid rgb(203, 203, 203) 1px;
+    width: 378px;
+    margin-top: 10px;
 }

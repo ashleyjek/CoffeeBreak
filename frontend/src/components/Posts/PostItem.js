@@ -129,7 +129,7 @@ const PostItem = ({post, allUsers}) => {
                                     </button> 
                                     </div>
                             </div> 
-                        }
+                        } 
                              
                     </div>
                 </div>

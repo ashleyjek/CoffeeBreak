@@ -1,9 +1,12 @@
 const OPEN_MODAL = 'ui/OPEN_MODAL';
 const CLOSE_MODAL = 'ui/CLOSE_MODAL';
 
-export const openModal = (modalType) => ({
+export const openModal = (modal, id) => ({
     type: OPEN_MODAL,
-    modalType
+    modal: {
+        modal: modal,
+        id: id
+    }
 });
 
 export const closeModal = () => ({
@@ -16,12 +19,13 @@ const initialState = {
 
 const uiReducer = (state = initialState, action) => {
     Object.freeze(state);
-
     switch(action.type) {
         case OPEN_MODAL:
-            return { modal: action.modalType };
+            return action.modal;
         case CLOSE_MODAL:
-            return { modal: null };
+            return {
+                modal: null
+            }
         default:
             return state;
     }

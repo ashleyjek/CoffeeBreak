@@ -48,9 +48,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const initializeApp = () => {
 
   root.render(
-    // <React.StrictMode>
+    <React.StrictMode>
         <Root />
-    // </React.StrictMode>
+    </React.StrictMode>
   );
 }
 if (sessionStorage.getItem("X-CSRF-Token") === null ||
