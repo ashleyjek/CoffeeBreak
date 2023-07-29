@@ -1,8 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { deleteComment } from '../../store/comments';
 import OutsideAlerter from '../util/OutsideAlerter';
-import { useState } from 'react';
-import CommentsForm from './CommentsForm';
 import { FaEllipsisH } from 'react-icons/fa'
 import './Comments.css'
 
@@ -24,8 +22,7 @@ const CommentMenu = ({comment, openForm, setOpenForm}) => {
                     <FaEllipsisH/>
                 </button> 
 
-            { menuClickedOutside ? null
-            :                                  
+        { menuClickedOutside ? null :                                  
             <div className="comment-menu-container">
                 <div className="comment-menu-contents">
                     <button
@@ -41,7 +38,7 @@ const CommentMenu = ({comment, openForm, setOpenForm}) => {
                         </button>
                 </div>
             </div>
-            }
+        }
             </div>
         </>
     )

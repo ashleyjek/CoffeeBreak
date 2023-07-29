@@ -16,9 +16,7 @@ const OutsideAlerter = () => {
         return () => document.removeEventListener('click', handleClickOutside);
     });
     
-    
     return { ref, handleClickInside, clickedOutside }
-
 }
 
 export default OutsideAlerter;

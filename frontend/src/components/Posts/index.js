@@ -10,10 +10,10 @@ import './Posts.css';
 const Posts = ({currentUser}) => {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.entities.posts);
-    const comments = useSelector(state => state.entities.comments);
+    // const comments = useSelector(state => state.entities.comments);
     const allPosts = Object.values(posts).reverse();
     const allUsers = useSelector(state => state.entities.users);
-    const allComments = Object.values(comments);
+    // const allComments = Object.values(comments);
 
     useEffect(() => {
         dispatch(fetchUsers())
@@ -44,7 +44,7 @@ const Posts = ({currentUser}) => {
                 return (<PostItem 
                     key={post.id}
                     post={post} 
-                    allComments={allComments}
+                    // allComments={allComments}
                     allUsers={allUsers} />
                     )})
 

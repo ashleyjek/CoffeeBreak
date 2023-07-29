@@ -1,17 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState, useRef } from 'react';
-import { deleteComment } from '../../store/comments';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import CommentsForm from './CommentsForm';
 import CommentMenu from './CommentMenu';
-import './Comments.css'
+import './Comments.css';
 
 const CommentItem = ({comment, post, allUsers}) => {
-    const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.currentUser);
-    // const [formType, setFormType] = useState("");
-    const [openForm, setOpenForm] = useState(false)
-    const firstName = allUsers[comment.authorId].firstName
-    const lastName = allUsers[comment.authorId].lastName 
+    const [openForm, setOpenForm] = useState(false);
+    const firstName = allUsers[comment.authorId].firstName;
+    const lastName = allUsers[comment.authorId].lastName;
 
     return (
         <>
@@ -21,6 +18,7 @@ const CommentItem = ({comment, post, allUsers}) => {
                     post={post} 
                     comment={comment} 
                     formType={"Edit"}
+                    openForm={openForm}
                     setOpenForm={setOpenForm}/>
             ) : (
                 <div className="comment-form-closed-container">
@@ -31,12 +29,13 @@ const CommentItem = ({comment, post, allUsers}) => {
                     </div>
                 </div>
             )}
-        { comment.authorId === currentUser.id ? (
-             <CommentMenu 
-                comment={comment} 
-                openForm={openForm} 
-                setOpenForm={setOpenForm}/>
-        ) : null }
+            { comment.authorId === currentUser.id ? (
+                <CommentMenu 
+                    comment={comment} 
+                    openForm={openForm} 
+                    setOpenForm={setOpenForm}
+                    />
+            ) : null }
         </div>
 
         </>

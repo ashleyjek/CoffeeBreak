@@ -227,6 +227,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    z-index: 4;
 }
 
 .post-form-modal-bg-create {
