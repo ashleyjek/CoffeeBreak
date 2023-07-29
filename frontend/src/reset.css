@@ -29,6 +29,10 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+html {
+	background-color: rgb(236, 239, 242);
+}
+
 body {
 	line-height: 1;
 }

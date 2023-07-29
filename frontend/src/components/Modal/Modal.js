@@ -1,7 +1,7 @@
 import SignUpForm from "../SignUpForm/SignUpForm";
 import PostFormModal from "../Posts/PostFormModal";
 
-const Modal = ({modal}) => {
+const Modal = ({modal, post}) => {
     if (!modal) {
         return null;
     }
@@ -12,10 +12,10 @@ const Modal = ({modal}) => {
             component = <SignUpForm/>
             break;
         case "create-post":
-            component = <PostFormModal/>
+            component = <PostFormModal modal={modal} post={post}/>
             break;
         case "edit-post":
-            component = <PostFormModal/>
+            component = <PostFormModal modal={modal} post={post}/>
             break;
         default:
             return null;

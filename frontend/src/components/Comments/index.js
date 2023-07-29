@@ -22,6 +22,25 @@ const Comments = ({post, allUsers}) => {
                     </div>
                 </div>
            )}
+            {/* { !commentForm ?  */}
+                    <div className="create-comment-container">
+                        <CommentsForm post={post} openForm={true} formType={"Create"} setOpenForm={()=>{}}/>
+                    </div>
+                    {/* :  */}
+                    {/* <div className="create-comment-container">
+                        <div className="comment-input-placeholder">
+                            <img className="comments-favicon">
+                            profile img goes here
+                            </img>
+                            <button 
+                                className="comment-input-container"
+                                onClick={() => setCommentForm(!commentForm)}>
+                                    Write a comment...
+                                </button> 
+                                </div>
+                        </div>  */}
+                    {/* }  */}
+                             
 
         </>
     )

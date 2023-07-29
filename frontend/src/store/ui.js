@@ -1,11 +1,11 @@
 const OPEN_MODAL = 'ui/OPEN_MODAL';
 const CLOSE_MODAL = 'ui/CLOSE_MODAL';
 
-export const openModal = (modal, id) => ({
+export const openModal = (modal, post) => ({
     type: OPEN_MODAL,
     modal: {
         modal: modal,
-        id: id
+        post: post
     }
 });
 
