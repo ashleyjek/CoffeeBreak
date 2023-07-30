@@ -1,13 +1,21 @@
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 import Comments from '../Comments';
 import PostItemHeader from './PostsIndexHeader';
+import { useRef } from 'react';
+
 import './Posts.css';
 
 const PostItem = ({post, allUsers}) => {
     const currentUser = useSelector(state => state.session.currentUser)
-    const [commentForm, setCommentForm] = useState(false);
+    const inputRef = useRef();
 
+    const handleRefClick = () => {
+        inputRef.current.focus();
+        inputRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }
     return (
             <>
             <div key={post.id} className="post-container">
@@ -49,13 +57,15 @@ const PostItem = ({post, allUsers}) => {
                                 Like</button>
                         <button 
                             className="create-comment-main-button" 
-                            onClick={() => setCommentForm(!commentForm)}>
+                            onClick={handleRefClick}>
                                 Comment</button>
                     </div>
                     <div className="entire-comments-container">
                         <Comments 
                             post={post} 
-                            allUsers={allUsers}/>
+                            allUsers={allUsers}
+                            inputRef={inputRef}
+                            handleRefClick={handleRefClick}/>
                     </div>
                 </div>
     

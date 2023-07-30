@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import CommentsForm from './CommentsForm';
+import EditCommentForm from './EditCommentForm';
 import CommentMenu from './CommentMenu';
 import './Comments.css';
 
@@ -14,7 +14,7 @@ const CommentItem = ({comment, post, allUsers}) => {
         <>
         <div className="each-comment-container">
             { openForm ? (
-                <CommentsForm 
+                <EditCommentForm 
                     post={post} 
                     comment={comment} 
                     formType={"Edit"}

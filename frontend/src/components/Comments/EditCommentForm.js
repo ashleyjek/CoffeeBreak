@@ -4,7 +4,7 @@ import { createComment, updateComment } from "../../store/comments";
 import { FaPaperPlane } from "react-icons/fa";
 import TextareaAutoSize from 'react-textarea-autosize';
 
-const CommentsForm = ({post, comment, formType, openForm, setOpenForm}) => {
+const EditCommentForm = ({post, comment, formType, openForm, setOpenForm}) => {
     const dispatch = useDispatch();
     const [body, setBody] = useState("");
 
@@ -86,4 +86,4 @@ const CommentsForm = ({post, comment, formType, openForm, setOpenForm}) => {
     );
 };
 
-export default CommentsForm;
+export default EditCommentForm;
