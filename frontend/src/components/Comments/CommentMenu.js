@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { deleteComment } from '../../store/comments';
+// import { deleteComment } from '../../store/comments';
+import { openModal } from '../../store/ui';
 import OutsideAlerter from '../util/OutsideAlerter';
 import { FaEllipsisH } from 'react-icons/fa'
 import './Comments.css'
@@ -33,7 +34,7 @@ const CommentMenu = ({comment, openForm, setOpenForm}) => {
                     <button 
                         className="comment-delete-button" 
                         onClick={() => {
-                            dispatch(deleteComment(comment.id))}}> 
+                            dispatch(openModal("delete-comment", null, comment))}}> 
                             Delete
                         </button>
                 </div>

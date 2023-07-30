@@ -1,5 +1,6 @@
 import SignUpForm from "../SignUpForm/SignUpForm";
 import PostFormModal from "../Posts/PostFormModal";
+import DeleteCommentModal from "../Comments/DeleteCommentModal";
 
 const Modal = ({modal, post}) => {
     if (!modal) {
@@ -12,10 +13,13 @@ const Modal = ({modal, post}) => {
             component = <SignUpForm/>
             break;
         case "create-post":
-            component = <PostFormModal modal={modal} post={post}/>
+            component = <PostFormModal modal={modal}/>
             break;
         case "edit-post":
             component = <PostFormModal modal={modal} post={post}/>
+            break;
+        case "delete-comment":
+            component = <DeleteCommentModal/>
             break;
         default:
             return null;

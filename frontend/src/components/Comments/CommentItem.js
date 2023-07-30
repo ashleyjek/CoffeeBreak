@@ -36,8 +36,7 @@ const CommentItem = ({comment, post, allUsers}) => {
                     setOpenForm={setOpenForm}
                     />
             ) : null }
-        </div>
-
+        </div>     
         </>
     )
 }
