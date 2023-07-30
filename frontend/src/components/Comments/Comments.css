@@ -1,3 +1,304 @@
-.hidden-options {
-    display: none;
+.options-button-container {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
 }
+
+.entire-comments-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-comment-textarea,
+.edit-comment-textarea {
+    margin: 10px;
+    vertical-align: top;
+    display: fixed;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 20px;
+    border-color: transparent;
+    padding-left: 15px;
+    color: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    font-size: 14px; 
+    position: relative;
+    resize: none;
+    width: 550px;
+    background-color: rgb(237, 239, 243);
+    padding: 10px 15px 10px 15px;
+    overflow: scroll;
+}
+
+.edit-comment-textarea {
+    margin-left: 10px;
+    vertical-align: bottom;
+    width: 530px;
+    padding-right: 21px;
+}
+
+
+
+.create-comment-container {
+    width: 640px;
+    height: auto;
+    display: contents;
+}
+
+.create-comment-input {
+    position: relative;
+}
+
+.create-comment-input button {
+    position: absolute;
+    border-radius: 20px;
+    border-color: transparent;
+    right: 15px;
+    bottom: 15px;
+    color: rgb(112, 112, 112);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.create-comment-favicon {
+    width: 37px;
+    height: 35px;
+    background-color: rgb(219, 219, 219);
+    border-radius: 50%;
+    margin: 12px 0 0 0;
+}
+
+.edit-comment-form button {
+    position: absolute;
+    border-radius: 20px;
+    border-color: transparent;
+    right: 12px;
+    bottom: 20px;
+    color: rgb(112, 112, 112);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.edit-comment-input-container {
+    align-items: center;  
+    height: auto;
+    width: 580px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    /* background-color: yellow; */
+}
+
+
+.comment-form-closed-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.all-comments-container {
+    /* background-color: green; */
+    width: 640px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.each-comment-container {
+    margin: 5px 0 2.5px 0px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+}
+
+.commenter-name {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 5px;
+}
+
+.comment-body {
+    font-size: 15px;
+    font-weight: 400;
+    margin: 5px;
+    overflow-wrap: anywhere;
+}
+
+.comment-open-options-button {
+    right: 3px;
+    padding-top: 5px;
+    background-color: transparent;
+    border-color: transparent;
+    position: absolute;
+    border-radius: 20px;
+    color: rgb(189, 192, 199);
+}
+
+.comment-details {
+    background-color: rgb(237, 239, 242);
+    margin: 10px 10px 10px 10px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.each-comment-favicon {
+    width: 38px;
+    height: 35px;
+    background-color: rgb(219, 219, 219);
+    border-radius: 50%;
+}
+
+.comment-open-options-button:hover {
+    background-color: rgb(237, 239, 242);
+}
+
+.button-and-menu-container {
+    position: relative;
+    width: 30px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    /* background-color: pink; */
+}
+
+.comment-menu-container {
+    background-color: white;
+    height: 90px;
+    width: 350px;
+    display: flex;
+    position: absolute;
+    top: 30px;
+    right: -63px;
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    border-radius: 10px;
+}
+
+.comment-menu-contents {
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    border-radius: 10px;
+}
+
+.comment-menu-contents button {
+    height: 40px; 
+    border-radius: 10px;
+    border-color: transparent;
+    text-align: left;
+    font-size: 14.5px;
+    font-weight: 400;
+    background-color: white;
+}
+
+.comment-menu-contents :first-child {
+    margin: 7px 10px 0px 10px;
+}
+.comment-menu-contents :last-child {
+    margin: 0px 10px 7px 10px;
+}
+
+.comment-menu-contents :hover {
+    background-color: rgb(237, 239, 242);
+}
+
+.delete-comment-bg {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-comment-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    width: 525px;
+    height: 185px;
+    background-color: white;
+    border-radius: 8px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+}
+
+.delete-comment-header {
+    height: 60px;
+    border-bottom: rgb(218, 218, 218) solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19.5px;
+    font-weight: bold;
+    position: relative;
+}
+
+.delete-close-button {
+    position: absolute;
+    right: 20px;
+    border-color: transparent;
+    font-size: 25px;
+    font-weight: 100;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+.delete-comment-body-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    width: 100%;
+}
+
+.delete-comment-body {
+    margin: 10px 0 0 15px;
+    font-size: 14px;
+}
+
+.delete-comment-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cancel-delete-button {
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 15px;
+    margin: 10px;
+    color: rgb(154, 137, 120);
+    font-weight: bold;
+}
+
+.delete-confirm-button {
+    background-color: rgb(154, 137, 120);
+    border-color: transparent;
+    border-radius: 8px;
+    height: 36px;
+    width: 130px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 0 15px 10px 0;
+}
+
+
+
+
+
+
+
+
+
+

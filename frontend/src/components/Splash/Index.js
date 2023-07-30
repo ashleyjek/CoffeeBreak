@@ -23,12 +23,10 @@ const SplashPage = () => {
     
 
     return (
-        <>
-            <div className="splash-index">
-                <Navigation/>
-                <Newsfeed />
-            </div>
-        </>
+        <div className="splash-index">
+            <Navigation/>
+            <Newsfeed />
+        </div>
     )
 }
 

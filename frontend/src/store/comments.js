@@ -62,7 +62,6 @@ export const fetchComment = (comment) => async (dispatch) => {
 
 export const updateComment = (comment) => async (dispatch) => {
     const { id, body, postId } = comment;
-    debugger
     const res = await csrfFetch(`/api/comments/${comment.id}`, {
         method: 'PATCH',
         body: JSON.stringify({
@@ -115,16 +114,16 @@ const commentsReducer = ( state = {}, action ) => {
     Object.freeze(state);
     const nextState = {...state};
     switch (action.type) {
-        case RECEIVE_POSTS:
-            return {
-                ...nextState,
-                ...action.comments
-            };
         case RECEIVE_COMMENT:
             return {
                 ...nextState,
                 [action.comment.id]: action.comment
             }
+        case RECEIVE_POSTS:
+            return {
+                ...nextState,
+                ...action.comments
+            };
         case RECEIVE_COMMENTS:
             return {
                 ...nextState,

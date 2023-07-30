@@ -1,5 +1,5 @@
 class Api::CommentsController < ApplicationController
-    wrap_parameters include: Comment.attribute_names + ['author_id']
+    wrap_parameters include: Comment.attribute_names + ['author_id', 'post_id']
 
     def index
         @comments = Comment.all
@@ -43,7 +43,7 @@ class Api::CommentsController < ApplicationController
     end
 
     def comment_params
-        params.require(:comment).permit(:body, :author_id, :post_id)
+        params.require(:comment).permit(:body, :author_id, :post_id, :id)
     end
 
 end

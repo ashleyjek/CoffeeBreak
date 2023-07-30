@@ -25,3 +25,11 @@
     width: 760px;
     height: 700px; 
 }
+
+.post-form-modal-bg {
+    position: fixed;
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+}

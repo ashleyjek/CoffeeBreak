@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { logout } from "../../store/session";
 import './Navigation.css';
 
-const ProfileButton = () => {
+const NavDropDown = () => {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const history = useHistory();
     const dispatch = useDispatch();
@@ -39,12 +39,12 @@ const ProfileButton = () => {
                 <ul className="profile-dropdown-container">
                     <li key="p-link" className="profile-links-container">
                         <div className="profile-name-container">
-                            {currentUser && (
-                                <div className="name-container">
-                                    <button className="profile-dropdown-icon"></button>
-                                    <span id="profile-name">{currentUser.firstName}</span>
-                                    <span id="profile-name">{currentUser.lastName}</span>
-                                </div>
+                        {currentUser && (
+                            <div className="name-container">
+                                <button className="profile-dropdown-icon"></button>
+                                <span id="profile-name">{currentUser.firstName}</span>
+                                <span id="profile-name">{currentUser.lastName}</span>
+                            </div>
                             )}
                             <div className="view-profile-text-container">
                                 <div className="view-profile-text">View your Profile</div>
@@ -63,4 +63,4 @@ const ProfileButton = () => {
     )
 }
 
-export default ProfileButton;
+export default NavDropDown;
