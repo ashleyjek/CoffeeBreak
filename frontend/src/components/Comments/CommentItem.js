@@ -13,7 +13,9 @@ const CommentItem = ({comment, post, allUsers}) => {
     return (
         <>
         <div className="each-comment-container">
-            { openForm ? (
+            <div className="comment-form-closed-container">
+                <img className="each-comment-favicon"></img>
+                { openForm ? (
                 <EditCommentForm 
                     post={post} 
                     comment={comment} 
@@ -21,14 +23,12 @@ const CommentItem = ({comment, post, allUsers}) => {
                     openForm={openForm}
                     setOpenForm={setOpenForm}/>
             ) : (
-                <div className="comment-form-closed-container">
-                    <img className="each-comment-favicon"></img>
                     <div className="comment-details">
                         <p className="commenter-name">{firstName} {lastName}</p>
                         <p className="comment-body">{comment.body}</p>
                     </div>
-                </div>
             )}
+            </div>
             { comment.authorId === currentUser.id ? (
                 <CommentMenu 
                     comment={comment} 

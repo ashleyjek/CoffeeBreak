@@ -14,7 +14,7 @@ const CommentMenu = ({comment, openForm, setOpenForm}) => {
 
     return (
         <>  
-            <div className="button-and-menu-container">
+        <div className="button-and-menu-container">
             <button 
                 ref={menuRef}
                 onClick={handleMenuClickInside}
@@ -22,24 +22,24 @@ const CommentMenu = ({comment, openForm, setOpenForm}) => {
                     <FaEllipsisH/>
                 </button> 
 
-        { menuClickedOutside ? null :                                  
+            { menuClickedOutside ? null :                                  
             <div className="comment-menu-container">
                 <div className="comment-menu-contents">
                     <button
                         onClick={() => setOpenForm(!openForm)}
                         className="comment-edit-button">
-                            Edit post
+                            Edit
                         </button>
                     <button 
                         className="comment-delete-button" 
                         onClick={() => {
                             dispatch(deleteComment(comment.id))}}> 
-                            Move to trash
+                            Delete
                         </button>
                 </div>
             </div>
         }
-            </div>
+        </div>
         </>
     )
 }

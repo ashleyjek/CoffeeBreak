@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react"
 import { useDispatch } from "react-redux";
-import { createComment, updateComment } from "../../store/comments";
+import { updateComment } from "../../store/comments";
 import { FaPaperPlane } from "react-icons/fa";
 import TextareaAutoSize from 'react-textarea-autosize';
 
@@ -25,7 +25,8 @@ const EditCommentForm = ({post, comment, formType, openForm, setOpenForm}) => {
     
     useEffect(() => {
         handleClickInside()
-    })
+    }, [])
+
     useEffect(() => {
         if (formType === "Edit") {
             setBody(comment.body);
@@ -33,51 +34,37 @@ const EditCommentForm = ({post, comment, formType, openForm, setOpenForm}) => {
     }, [formType]);
 
     const handleSubmit = () => {
-        if (formType === "Edit") {
-            dispatch(updateComment({
-                id: comment.id,
-                body: body,
-                postId: post.id
-            }));
-            setOpenForm(false);
-        } else {
-            dispatch(createComment({
-                body: body,
-                postId: post.id
-            }));
-            setOpenForm(false);
-        };
+        dispatch(updateComment({
+            id: comment.id,
+            body: body,
+            postId: post.id
+        }));
+        setOpenForm(false);
     };
 
     return (
-        <div
-            ref={ref}
+        <div ref={ref}
             onClick={handleClickInside}
-            className="comment-active-input-container">
-            <img className="comments-favicon">
-                {/* profile img goes here */}
-                </img>
+            className="edit-comment-input-container">
         { !openForm ? null : (
             <form
-                onSubmit={handleSubmit}
-                className="comment-form">
-                <input
-                    className="comment-input-open"
-                    type="textarea"
+                className="edit-comment-form"
+                onSubmit={handleSubmit}>
+                <TextareaAutoSize
+                    className="edit-comment-textarea"
                     placeholder="Write a comment..."
                     value={body}
                     onChange={(e) => setBody(e.target.value)}/>
                 { body === "" ? (
                     <button 
-                    type="button" 
-                    disabled>
-                        <FaPaperPlane/>
+                        type="button" 
+                        disabled>
+                            <FaPaperPlane/>
                     </button>
                 ) : (
                     <button 
-                    type="submit" 
-                    // onClick={handleSubmit}
-                    > Submit
+                        type="submit">
+                            <FaPaperPlane/>
                     </button>
                 )}
             </form>

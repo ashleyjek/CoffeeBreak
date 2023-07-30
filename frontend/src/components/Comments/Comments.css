@@ -11,7 +11,8 @@
     align-items: center;
 }
 
-.create-comment-textarea {
+.create-comment-textarea,
+.edit-comment-textarea {
     margin: 10px;
     vertical-align: top;
     display: fixed;
@@ -28,15 +29,22 @@
     width: 550px;
     background-color: rgb(237, 239, 243);
     padding: 10px 15px 10px 15px;
+    overflow: scroll;
 }
+
+.edit-comment-textarea {
+    margin-left: 10px;
+    vertical-align: bottom;
+    width: 530px;
+    padding-right: 21px;
+}
+
+
 
 .create-comment-container {
     width: 640px;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start; 
+    display: contents;
 }
 
 .create-comment-input {
@@ -48,73 +56,49 @@
     border-radius: 20px;
     border-color: transparent;
     right: 15px;
-    top: 20px;
+    bottom: 15px;
     color: rgb(112, 112, 112);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     font-size: 14px;
+    background-color: transparent;
 }
 
-.comment-input-container {
-    height: 35px;
-    width: 600px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.comment-active-input-container {
-    height: 36px;
-    width: 700px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-.comments-favicon {
-    width: 35px;
+.create-comment-favicon {
+    width: 37px;
     height: 35px;
     background-color: rgb(219, 219, 219);
     border-radius: 50%;
-    margin: 5px
+    margin: 12px 0 0 0;
 }
+
+.edit-comment-form button {
+    position: absolute;
+    border-radius: 20px;
+    border-color: transparent;
+    right: 12px;
+    bottom: 20px;
+    color: rgb(112, 112, 112);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.edit-comment-input-container {
+    align-items: center;  
+    height: auto;
+    width: 580px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    /* background-color: yellow; */
+}
+
 
 .comment-form-closed-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-
-}
-
-.comment-input-open {
-    display: fixed;
-    justify-content: flex-start;
-    align-items: center;
-    border-radius: 20px;
-    border-color: transparent;
-    padding-left: 15px;
-    color: black;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
-    font-size: 14px; 
-    position: relative;
-}
-
-.comment-form {
-    position: relative;
-}
-
-.comment-form input {
-    height: 29px;
-    width: 580px;
-    background-color: rgb(237, 239, 243);
-}
-
-.comment-form button {
-    position: absolute;
-    right: 15px; 
-    margin-top: 6px;
-    font-size: 15px;;
-    background-color: transparent;
-    border-color: transparent;
 }
 
 .all-comments-container {
@@ -126,15 +110,12 @@
 }
 
 .each-comment-container {
-    /* background-color: red; */
     margin: 5px 0 2.5px 0px;
     width: fit-content;
     height: fit-content;
     display: flex;
-    /* padding: 20px; */
     justify-content: flex-start;
     align-items: center;
-    /* flex-direction: column; */
     position: relative;
 }
 
@@ -148,11 +129,11 @@
     font-size: 15px;
     font-weight: 400;
     margin: 5px;
-    /* font-family:; */
+    overflow-wrap: anywhere;
 }
 
 .comment-open-options-button {
-    right: 10px;
+    right: 3px;
     padding-top: 5px;
     background-color: transparent;
     border-color: transparent;
@@ -175,7 +156,6 @@
     height: 35px;
     background-color: rgb(219, 219, 219);
     border-radius: 50%;
-
 }
 
 .comment-open-options-button:hover {
@@ -193,23 +173,50 @@
 
 .comment-menu-container {
     background-color: white;
-    height: 80px;
-    width: 300px;
+    height: 90px;
+    width: 350px;
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: center;
     position: absolute;
     top: 30px;
     right: -63px;
     z-index: 3;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-    border-radius: 10px;;
+    border-radius: 10px;
 }
 
-.create-comment-input > .each-comment-favicon {
-    margin-top: 13px;
+.comment-menu-contents {
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    border-radius: 10px;
 }
+
+.comment-menu-contents button {
+    height: 40px; 
+    border-radius: 10px;
+    border-color: transparent;
+    text-align: left;
+    font-size: 14.5px;
+    font-weight: 400;
+    background-color: white;
+}
+
+.comment-menu-contents :first-child {
+    margin: 7px 10px 0px 10px;
+}
+.comment-menu-contents :last-child {
+    margin: 0px 10px 7px 10px;
+}
+
+.comment-menu-contents :hover {
+    background-color: rgb(237, 239, 242);
+}
+
+
+
+
+
+
 
 
 

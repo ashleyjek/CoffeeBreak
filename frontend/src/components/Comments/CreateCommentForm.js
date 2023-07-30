@@ -24,9 +24,10 @@ const CreateCommentForm = ({post, inputRef, handleRefClick}) => {
 
 return (
 
-    <form className="create-comment-input"
-    onClick={handleRefClick}>
-        <img className="each-comment-favicon"></img>
+    <form 
+        className="create-comment-input"
+        onClick={handleRefClick}>
+        <img className="create-comment-favicon"></img>
         <TextareaAutoSize
             className="create-comment-textarea"
             maxRows="6" 
@@ -37,14 +38,14 @@ return (
             onChange={(e) => setBody(e.target.value)}
             onKeyDown={handleEnterKey}/>
         { body === "" ? 
-        <button type="button" disabled> 
-            <FaPaperPlane/> 
-            </button> :
-        <button 
-            onClick={handleSubmit}
-            type="button">
+            <button type="button" disabled> 
+                <FaPaperPlane/> 
+                </button> :
+            <button 
+                onClick={handleSubmit}
+                type="button">
                 <FaPaperPlane/>
-            </button>}
+                </button>}
     </form>
 )}
 
