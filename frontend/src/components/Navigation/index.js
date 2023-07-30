@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import NavDropDown from "./NavDropDown";
 import './Navigation.css';
+import { FaHome } from "react-icons/fa";
 
 const Navigation = () => {
     const currentUser = useSelector(state => state.session.currentUser);
@@ -21,7 +22,7 @@ const Navigation = () => {
                     className="center-nav-links">
                     {/* <button className="nav-friends-button">Friends</button> */}
                     <button 
-                        className="nav-home-button">Home</button>
+                        className="nav-home-button"><FaHome/></button>
                     {/* <button className="nav-groups-button">Groups</button> */}
                 </div>
                 <div className="right-nav-links">

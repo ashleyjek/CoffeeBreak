@@ -30,6 +30,7 @@
     background-color: rgb(237, 239, 243);
     padding: 10px 15px 10px 15px;
     overflow: scroll;
+    cursor: pointer;
 }
 
 .edit-comment-textarea {
@@ -61,6 +62,13 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     font-size: 14px;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.create-comment-input button:disabled {
+    background-color: rgb(233, 233, 233);
+    color: rgb(186, 186, 186);
+    cursor: no-drop;
 }
 
 .create-comment-favicon {
@@ -81,6 +89,13 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     font-size: 14px;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.edit-comment-form button:disabled {
+    background-color: rgb(233, 233, 233);
+    color: rgb(186, 186, 186);
+    cursor: no-drop;
 }
 
 .edit-comment-input-container {
@@ -133,13 +148,14 @@
 }
 
 .comment-open-options-button {
-    right: 3px;
+    right: 2px;
     padding-top: 5px;
     background-color: transparent;
     border-color: transparent;
     position: absolute;
     border-radius: 20px;
     color: rgb(189, 192, 199);
+    cursor: pointer;
 }
 
 .comment-details {
@@ -160,6 +176,7 @@
 
 .comment-open-options-button:hover {
     background-color: rgb(237, 239, 242);
+    cursor: pointer;
 }
 
 .button-and-menu-container {
@@ -168,6 +185,7 @@
     height: 40px;
     display: flex;
     align-items: center;
+    cursor: pointer;
     /* background-color: pink; */
 }
 

@@ -29,8 +29,7 @@ const PostItem = ({post, allUsers}) => {
                     </img>
                     <div className="post-details-container">
                         <div className="post-author">
-                            {allUsers[post.authorId].firstName} 
-                            {allUsers[post.authorId].lastName}
+                            {allUsers[post.authorId].firstName} {allUsers[post.authorId].lastName}
                             </div>
                         <div className="post-date-time">
                             {post.createdAt}</div>

@@ -216,6 +216,7 @@
 
 .post-reaction-container button:hover {
     background-color: rgb(239, 242, 245);
+    cursor: pointer;
 }
 
 /* .post-form-modal-bg-create,
@@ -385,7 +386,8 @@
 
 .form-submit button:disabled {
     background-color: rgb(233, 233, 233);
-    color: rgb(186, 186, 186)
+    color: rgb(186, 186, 186);
+    cursor: no-drop;
 }
 
 .disabled-button {

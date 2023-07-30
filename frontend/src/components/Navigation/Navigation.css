@@ -17,9 +17,17 @@
 
 .center-nav-links {
     width: 33%;
+    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px 5px 5px 5px;
+}
+
+.center-nav-links :hover,
+.center-nav-links :active {
+    background-color: rgb(237, 239, 242);
+    border-radius: 10px;
 }
 
 .nav-home-button {
@@ -28,13 +36,19 @@
     background-color: white;
     border: 0px;
     width:100px;
+    color: rgb(154, 137, 120);
+    font-size: 30px;
+    padding-top: 10px;
+    cursor: pointer;
 }
+
 
 .left-nav-links {
     width: 33%;
     display: flex;
     justify-content: left;
     align-items: center;
+    cursor: pointer;
 }
 
 .home-search-bar {
@@ -59,6 +73,7 @@
     width: 42px;
     border-color: transparent;
     margin: 0px 10px 0px 10px;
+    cursor: pointer;
 }
 
 .profile-dropdown-icon {
@@ -67,6 +82,7 @@
     width: 38px;
     margin: 4px;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .logout-icon {
@@ -75,6 +91,7 @@
     width: 38px;
     margin: 5px;
     border-color: transparent;
+    cursor: pointer;
 }
 
 .profile-dropdown-container {
@@ -124,17 +141,19 @@
     display: flex;
     border-bottom: solid 0.5px;
     border-color: rgb(211, 211, 211);
+    cursor: pointer;
 }
 
 
 .view-profile-text {
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     font-size: 15px;
-    font-weight: 300;
+    font-weight: 500;
     height: 40px;
-    color: rgb(0, 0, 0);
+    color: rgb(90, 71, 58);
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .view-profile-text-container :hover {
@@ -148,6 +167,7 @@
     width: 285px;
     margin-left: 10px;
     padding-left: 5px;
+    cursor: pointer;
 }
 
 .profile-name-container :hover {
@@ -172,6 +192,7 @@
     padding-left: 10px;
     padding-top: 1px;
     font-size: 14.5px;
+    cursor: pointer;
 }
 
 .logout-tab :hover {
