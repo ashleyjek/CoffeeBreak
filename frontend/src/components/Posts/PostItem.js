@@ -18,7 +18,7 @@ const PostItem = ({post, allUsers}) => {
     }
     return (
             <>
-            <div key={post.id} className="post-container">
+            <div key={post?.id} className="post-container">
                 <PostItemHeader 
                     currentUser={currentUser} 
                     post={post}/>
@@ -29,7 +29,7 @@ const PostItem = ({post, allUsers}) => {
                     </img>
                     <div className="post-details-container">
                         <div className="post-author">
-                            {allUsers[post.authorId].firstName} {allUsers[post.authorId].lastName}
+                            {allUsers[post?.authorId].firstName} {allUsers[post?.authorId].lastName}
                             </div>
                         <div className="post-date-time">
                             {post.createdAt}</div>
@@ -37,13 +37,13 @@ const PostItem = ({post, allUsers}) => {
                     </div>
                     <div className="post-body-container">
                         <div className="post-body-text">
-                            {post.body}
+                            {post?.body}
                         </div>
                     </div>
                     {post?.photoSrc ? (
                     <div className="post-photo-container">
                         <div className="post-photo-source">
-                            <img src={post.photoSrc}/>
+                            <img src={post?.photoSrc}/>
                         </div>
                     </div> ) : null }
                     {/* <div className="posts-cmts-ctr-container">

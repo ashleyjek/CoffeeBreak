@@ -4,7 +4,6 @@ import { fetchPosts } from '../../store/posts';
 import { fetchUsers } from '../../store/users';
 import { openModal } from '../../store/ui';
 import PostItem from './PostItem';
-import Modal from '../Modal/Modal'
 import './Posts.css';
 
 const Posts = ({currentUser}) => {
@@ -12,7 +11,6 @@ const Posts = ({currentUser}) => {
     const posts = useSelector(state => state.entities.posts);
     const allPosts = Object.values(posts).reverse();
     const allUsers = useSelector(state => state.entities.users);
-    const modal = useSelector(state => state.ui);
 
     useEffect(() => {
         dispatch(fetchUsers())
@@ -23,7 +21,6 @@ const Posts = ({currentUser}) => {
         });
     }, []);
 
-    
     return (
         <>
             <div className="create-post-container">
@@ -44,10 +41,6 @@ const Posts = ({currentUser}) => {
                     allUsers={allUsers} />
                     )})
                 }
-            { modal.modal ? 
-                <div className="post-form-modal-bg">
-                <Modal modal={modal.modal} post={modal.post} />
-                </div> : null }
         </>
     )
 }

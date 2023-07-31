@@ -1,0 +1,16 @@
+.user-profile-container {
+    padding-top: 55px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.post-form-modal-bg {
+    height: 100%;
+    width: 100%;
+}
+
+.modal-bg {
+    position: fixed;
+    position: unset;
+}

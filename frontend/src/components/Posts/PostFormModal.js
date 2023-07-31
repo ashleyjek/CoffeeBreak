@@ -28,12 +28,7 @@ const PostFormModal = ({modal, post}) => {
         e.preventDefault();
         const newPost = new FormData();
         newPost.append('post[body]', body);
-        if (photoFile) {
-            newPost.append('post[photo]', photoFile);
-        } 
-        if (!photoUrl) {
-            newPost.append('post[photoUpdatedFlag]', false)
-        }
+        newPost.append('post[photo]', photoFile);
         if (modal === "create-post") {
             dispatch(createPost(newPost));
         } else {

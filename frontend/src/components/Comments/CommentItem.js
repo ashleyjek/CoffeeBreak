@@ -9,6 +9,7 @@ const CommentItem = ({comment, post, allUsers}) => {
     const [openForm, setOpenForm] = useState(false);
     const firstName = allUsers[comment.authorId].firstName;
     const lastName = allUsers[comment.authorId].lastName;
+    // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
 
     return (
         <>
