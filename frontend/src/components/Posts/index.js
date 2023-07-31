@@ -22,6 +22,7 @@ const Posts = ({currentUser}) => {
             }
         });
     }, []);
+
     
     return (
         <>
@@ -38,14 +39,14 @@ const Posts = ({currentUser}) => {
             {allPosts.map((post) => {
                 return (
                     <PostItem 
-                        key={post.id}
-                        post={post} 
-                        allUsers={allUsers} />
+                    key={post.id}
+                    post={post} 
+                    allUsers={allUsers} />
                     )})
-            }
+                }
             { modal.modal ? 
                 <div className="post-form-modal-bg">
-                    <Modal modal={modal.modal} post={modal.post} />
+                <Modal modal={modal.modal} post={modal.post} />
                 </div> : null }
         </>
     )

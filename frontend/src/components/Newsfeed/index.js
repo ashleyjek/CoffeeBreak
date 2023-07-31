@@ -3,6 +3,7 @@ import './Newsfeed.css'
 
 const Newsfeed = () => {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    
     return (
         <>
             <div className="left-side-bar-container"></div>

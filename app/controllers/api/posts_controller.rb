@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-    wrap_parameters include: Post.attribute_names + ['author_id']
+    wrap_parameters include: Post.attribute_names + ['author_id'] + ['photo_updated_flag'] + [:photo]
 
     def index 
         @posts = Post.all
@@ -12,8 +12,11 @@ class Api::PostsController < ApplicationController
     end
 
     def update
-        @post = Post.find_by(id: params[:id])
+        @post = Post.find_by(id: params[:post][:id])
         @post.author_id = current_user.id
+        if params[:post][:photo_updated_flag] == "false" 
+            @post.photo.purge
+        end
         if @post.update(post_params)
             render :show
         else
@@ -42,7 +45,7 @@ class Api::PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:body, :author_id, :id)
+        params.require(:post).permit(:body, :author_id, :photo, :id, :photo_updated_flag)
     end
 
 end

@@ -1,6 +1,6 @@
 json.post do 
     json.extract! @post, :id, :author_id, :body
-    json.img_url @post.photo.url
+    json.photoSrc @post.photo.attached? ? @post.photo.url : nil
 end
 
 comments = @post.comments
