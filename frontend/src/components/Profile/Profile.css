@@ -1,7 +1,25 @@
-.user-profile-container {
+.user-profile-bg {
     padding-top: 55px;
     display: flex;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: rgb(236, 239, 243);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+}
+
+.profile-header-bg {
+    background-color: white;
+    display: flex;
+    height: 560px;
+    justify-content: center;
+    border-bottom: 1px solid rgb(215, 218, 222);
+}
+
+.profile-body-bg {
+    width: 100%;
+    display: flex;
     justify-content: center;
 }
 
@@ -14,3 +32,213 @@
     position: fixed;
     position: unset;
 }
+
+.user-profile-container {
+    width: 73%;
+}
+
+.profile-body-container {
+    height: auto;
+    width: 73%;
+    display: flex;
+    justify-content: center;
+}
+
+.cover-photo-container {
+    height: 460px;
+    width: auto;
+    opacity: 0.9;
+    /* background-color: pink; */
+    border-radius: 10px;;
+    background: rgb(187,187,187);
+    background: linear-gradient(360deg, rgb(236, 239, 243) 0%, rgba(226,226,226,1) 0%, rgb(75, 75, 75) 0%, rgb(236, 239, 243) 25%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+}
+
+.cover-photo-buttons-container {
+    width: 97%;
+    display: flex;
+    justify-content: right;
+    margin: 0 20px 10px 0;
+}
+
+.add-cover-photo {
+    font-weight: bold;
+    font-size: 16px;
+    height: 40px;
+    width: 185px;
+    border-radius: 8px;
+    margin: 10px;
+    color: white;
+}
+
+.cover-photo-buttons-container button {
+    background-color: rgba(0, 0, 0);
+    opacity: 0.4;
+    border: transparent;
+    cursor: pointer;  
+}
+
+.profile-header-container {
+    background-color: transparent;
+    height: 100px;
+    display: flex;
+    position: relative;
+}
+
+.profile-photo-container {
+    background-color: gray;
+    width: 180px; 
+    height: 180px;
+    border-radius: 50%;
+    border: 3px white solid;
+    position: absolute;
+    bottom: 0;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.profile-photo-container button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.profile-header-name-container {
+    /* background-color: aqua; */
+    margin-left: 210px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-name-header {
+    margin-left: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.profile-edit-button-container {
+    width: 250px;
+    height: 100px;
+    /* background-color: brown; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.profile-edit-button-container button {
+    border-color: transparent;
+    height: 38px;
+    width: 140px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+
+.profile-left-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-intro-container {
+    width: 90%;
+    height: auto;
+    margin: 20px;
+    border-radius: 8px;;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+}
+
+.profile-right-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-friends-list {
+    width: 90%;
+    height: 350px;
+    margin: 20px;
+    border-radius: 8px;;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+}
+
+.create-post-container {
+    margin-top: 20px;
+    position: unset;
+}
+
+.post-container {
+    margin: 10px 0 0 0px;
+}
+
+.posts-container {
+    width: 98%;
+    margin-right: 0px;
+    padding-left: 0px;
+}
+
+.intro-header,
+.details-header,
+.friends-header {
+    width: 440px;
+    background-color: transparent;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 1px solid rgb(215, 218, 222);
+}
+
+.about-me-details {
+    display: flex;
+    /* background-color: pink; */
+    align-items: center;
+}
+
+.details-container {
+    display: flex;
+}
+
+.user-labels {
+    font-size: 18px;
+    padding: 15px;
+    /* background-color: blue; */
+    width: 35px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    color: rgb(190, 193, 199);
+    font-size: 25px;;
+}
+
+.user-info {
+    padding: 15px;
+    font-size: 17px;
+    width: 360px;
+    height: 30px;
+    /* background-color: green; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+}
+

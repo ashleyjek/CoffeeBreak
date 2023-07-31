@@ -24,9 +24,10 @@ const Posts = ({currentUser}) => {
     return (
         <>
             <div className="create-post-container">
+            <a href={'/users/' + currentUser.id}>
                 <img 
-                    alt="profile-favicon" 
                     className="create-post-profile-icon"></img>
+            </a>
                 <input 
                     className="create-post-input"
                     placeholder={`What's on your mind, ${currentUser.firstName}?`}

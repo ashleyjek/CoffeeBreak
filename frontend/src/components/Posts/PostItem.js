@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Comments from '../Comments';
-import PostItemHeader from './PostsIndexHeader';
+import PostsIndexHeader from './PostsIndexHeader';
 import { useRef } from 'react';
 
 import './Posts.css';
@@ -19,14 +19,14 @@ const PostItem = ({post, allUsers}) => {
     return (
             <>
             <div key={post?.id} className="post-container">
-                <PostItemHeader 
+                <PostsIndexHeader 
                     currentUser={currentUser} 
                     post={post}/>
 
                 <div className="post-header-container">
-                    <img className="post-profile-icon"> 
-                        {/* icon */}
-                    </img>
+                    <a href={'/users/' + post.authorId}>
+                        <img className="post-profile-icon"></img>
+                    </a>
                     <div className="post-details-container">
                         <div className="post-author">
                             {allUsers[post?.authorId].firstName} {allUsers[post?.authorId].lastName}
@@ -41,9 +41,11 @@ const PostItem = ({post, allUsers}) => {
                         </div>
                     </div>
                     {post?.photoSrc ? (
-                    <div className="post-photo-container">
-                        <div className="post-photo-source">
-                            <img src={post?.photoSrc}/>
+                    <div className="post-photo-bg">
+                        <div className="post-photo-container">
+                            <div className="post-photo-source">
+                                <img src={post?.photoSrc}/>
+                            </div>
                         </div>
                     </div> ) : null }
                     {/* <div className="posts-cmts-ctr-container">

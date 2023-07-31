@@ -33,7 +33,7 @@ const NavDropDown = () => {
 
     return (
         
-        <>
+        <>  
             <button className="profile-icon" onClick={openMenu}></button>
             {showMenu && (
                 <ul className="profile-dropdown-container">
@@ -41,13 +41,17 @@ const NavDropDown = () => {
                         <div className="profile-name-container">
                         {currentUser && (
                             <div className="name-container">
-                                <button className="profile-dropdown-icon"></button>
-                                <span id="profile-name">{currentUser.firstName}</span>
-                                <span id="profile-name">{currentUser.lastName}</span>
+                                <a href={'/users/' + currentUser.id}>
+                                    <button className="profile-dropdown-icon"></button>
+                                    <span id="profile-name">{currentUser.firstName}</span>
+                                    <span id="profile-name">{currentUser.lastName}</span>
+                                </a>
                             </div>
                             )}
                             <div className="view-profile-text-container">
-                                <div className="view-profile-text">View your Profile</div>
+                                <a href={'/users/' + currentUser.id}>
+                                    <div className="view-profile-text">View your Profile</div>
+                                </a>
                             </div>
                         </div>
                     </li>

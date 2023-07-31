@@ -116,6 +116,11 @@
     height: 40px;
 }
 
+.name-container a,
+.view-profile-text-container a {
+    text-decoration: none;
+}
+
 .profile-links-container {
     height: auto;
     width: auto;

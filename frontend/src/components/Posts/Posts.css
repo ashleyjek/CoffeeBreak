@@ -157,21 +157,25 @@
     padding: 5px 10px 10px 10px;
 }
 
+.post-photo-bg {
+    display: flex;
+    justify-content: center;
+    /* background-color: rgb(175,177, 170); */
+}
+
 .post-photo-container {
-    /* background-color: yellow; */
     width: 450px;
     height: auto;
     padding: 5px 10px 10px 10px;
 }
 
 .post-photo-source img {
-    width: 450px;
+    max-width: 100%;
     height: auto;
 }
 
 .posts-cmts-ctr-container {
     display: flex;
-    /* background-color: yellow; */
     height: auto;
     align-items: center;
     justify-content: space-between;
