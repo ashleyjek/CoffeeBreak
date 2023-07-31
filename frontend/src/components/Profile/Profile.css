@@ -44,24 +44,40 @@
     justify-content: center;
 }
 
-.cover-photo-container {
+.cover-photo-gradient-container {
     height: 460px;
     width: auto;
-    opacity: 0.9;
-    /* background-color: pink; */
-    border-radius: 10px;;
+    border-radius: 8px;
     background: rgb(187,187,187);
     background: linear-gradient(360deg, rgb(236, 239, 243) 0%, rgba(226,226,226,1) 0%, rgb(75, 75, 75) 0%, rgb(236, 239, 243) 25%);
     display: flex;
     align-items: flex-end;
     justify-content: right;
+    background-size: cover;
+    /* z-index: 2; */
 }
+/* 
+.cover-photo-container {
+    position: relative;
+} */
+
+.cover-photo-container img {
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    background-size: 100%;
+    z-index: 1;
+
+} 
+
 
 .cover-photo-buttons-container {
     width: 97%;
     display: flex;
     justify-content: right;
     margin: 0 20px 10px 0;
+    position: absolute;
 }
 
 .add-cover-photo {
@@ -89,7 +105,7 @@
 }
 
 .profile-photo-container {
-    background-color: gray;
+    background-color: rgb(190, 193, 199);
     width: 180px; 
     height: 180px;
     border-radius: 50%;
@@ -100,15 +116,27 @@
     cursor: pointer;
 }
 
+.profile-photo-container img {
+    width: 180px; 
+    height: 180px;
+    border-radius: 50%;
+}
+
 .profile-photo-container button {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 10px;
+    bottom: 10px;
     border-radius: 50%;
-    height: 45px;
-    width: 45px;
+    height: 35px;
+    width: 35px;
     padding: 2px;
     cursor: pointer;
+    background-color: rbg(221, 224, 229);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: transparent;
 }
 
 .profile-header-name-container {
@@ -140,7 +168,7 @@
 .profile-edit-button-container button {
     border-color: transparent;
     height: 38px;
-    width: 140px;
+    width: 155px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: bold;

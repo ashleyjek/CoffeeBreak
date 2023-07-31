@@ -25,7 +25,9 @@ const PostItem = ({post, allUsers}) => {
 
                 <div className="post-header-container">
                     <a href={'/users/' + post.authorId}>
-                        <img className="post-profile-icon"></img>
+                        <img 
+                            src={allUsers[post?.authorId].avatarSrc} 
+                            className="post-profile-icon"></img>
                     </a>
                     <div className="post-details-container">
                         <div className="post-author">
@@ -63,6 +65,7 @@ const PostItem = ({post, allUsers}) => {
                     </div>
                     <div className="entire-comments-container">
                         <Comments 
+                            currentUser={currentUser}
                             post={post} 
                             allUsers={allUsers}
                             inputRef={inputRef}

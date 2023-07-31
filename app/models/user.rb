@@ -37,6 +37,9 @@ class User < ApplicationRecord
 
     before_validation :ensure_session_token
 
+    has_one_attached :avatar
+    has_one_attached :cover 
+
     def birthday_valid?        
         if 
             self.birthday > 13.years.ago.to_date

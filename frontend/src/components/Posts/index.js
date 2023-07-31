@@ -6,11 +6,12 @@ import { openModal } from '../../store/ui';
 import PostItem from './PostItem';
 import './Posts.css';
 
-const Posts = ({currentUser}) => {
+const Posts = () => {
     const dispatch = useDispatch();
     const posts = useSelector(state => state.entities.posts);
     const allPosts = Object.values(posts).reverse();
     const allUsers = useSelector(state => state.entities.users);
+    const currentUser = useSelector(state => state.session.currentUser);
 
     useEffect(() => {
         dispatch(fetchUsers())
@@ -26,6 +27,7 @@ const Posts = ({currentUser}) => {
             <div className="create-post-container">
             <a href={'/users/' + currentUser.id}>
                 <img 
+                    src={currentUser.avatarSrc}
                     className="create-post-profile-icon"></img>
             </a>
                 <input 

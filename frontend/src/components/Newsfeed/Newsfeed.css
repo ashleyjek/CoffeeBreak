@@ -18,6 +18,7 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
+    margin-top: 55px;
 }
 
 .right-side-bar-container {

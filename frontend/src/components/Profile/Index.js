@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import Posts from "../Posts/index";
 import Modal from "../Modal/Modal";
 import "../Profile/Profile.css"
-import { FaBirthdayCake, FaMailBulk } from "react-icons/fa";
+import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt } from "react-icons/fa";
 
 const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser)
@@ -32,19 +32,24 @@ const Profile = () => {
             <div className="user-profile-bg">
                 <div className="profile-header-bg">
                     <div className="user-profile-container">
-                        <div className="cover-photo-container">
-                            <div className="cover-photo-gradient-container">
-                                <div className="cover-photo-buttons-container">
-                                    <button className="add-cover-photo">
-                                        Add cover photo
-                                    </button>
-                                </div>
+                        <div className="cover-photo-gradient-container">
+                            <div className="cover-photo-container">
+                                <img src={user.coverSrc}></img>
+                            </div>
+                            <div className="cover-photo-buttons-container">
+                                <button className="add-cover-photo">
+                                <FaCamera/> Add cover photo
+                                </button>
                             </div>
                         </div>
                         <div className="profile-header-container">
                             <div className="profile-photo-container">
-                                <img className="profile-photo"></img>
-                                <button className="profile-photo-cam-button">cam</button>
+                                {user?.avatarSrc ? 
+                                    <img src={user.avatarSrc} className="profile-photo"></img>
+                                : null }
+                                <button className="profile-photo-cam-button">
+                                    <FaCamera/>
+                                </button>
                             </div>
                             <div className="profile-header-name-container">
                                 <p className="profile-name-header">
@@ -53,7 +58,7 @@ const Profile = () => {
                             </div>
                             <div className="profile-edit-button-container">
                                 <button className="profile-edit-button">
-                                    Edit profile
+                                   <FaPencilAlt/> Edit profile
                                 </button>
                             </div>
                         </div>

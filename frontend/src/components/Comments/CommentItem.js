@@ -16,7 +16,9 @@ const CommentItem = ({comment, post, allUsers}) => {
         <div className="each-comment-container">
             <div className="comment-form-closed-container">
             <a href={'/users/' + comment.authorId}>
-                    <img className="each-comment-favicon"></img>
+                    <img 
+                        src={allUsers[comment?.authorId].avatarSrc} 
+                        className="each-comment-avatar"></img>
             </a>
                 { openForm ? (
                 <EditCommentForm 

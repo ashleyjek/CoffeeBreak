@@ -4,7 +4,7 @@ import { createComment } from "../../store/comments";
 import { FaPaperPlane } from "react-icons/fa";
 import TextareaAutoSize from 'react-textarea-autosize';
 
-const CreateCommentForm = ({post, inputRef, handleRefClick}) => {
+const CreateCommentForm = ({post, inputRef, handleRefClick, currentUser}) => {
     const dispatch = useDispatch();
     const [body, setBody] = useState("");
 
@@ -27,7 +27,9 @@ return (
     <form 
         className="create-comment-input"
         onClick={handleRefClick}>
-        <img className="create-comment-favicon"></img>
+        <img
+            src={currentUser?.avatarSrc}
+            className="create-comment-avatar"></img>
         <TextareaAutoSize
             className="create-comment-textarea"
             maxRows="6" 

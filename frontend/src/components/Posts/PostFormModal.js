@@ -77,7 +77,9 @@ const PostFormModal = ({modal, post}) => {
                         (<label>Create post</label>)}
                 </div>
                 <div className="form-sub-header">
-                    <img className="profile-favicon"></img>
+                    <img 
+                        src={currentUser?.avatarSrc}
+                        className="profile-avatar"></img>
                     <p className="form-user-name">
                         {currentUser.firstName} {currentUser.lastName}
                     </p>

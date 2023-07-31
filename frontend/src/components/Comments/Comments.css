@@ -71,7 +71,7 @@
     cursor: no-drop;
 }
 
-.create-comment-favicon {
+.create-comment-avatar {
     width: 37px;
     height: 35px;
     background-color: rgb(219, 219, 219);
@@ -167,11 +167,17 @@
     border-radius: 20px;
 }
 
-.each-comment-favicon {
+.each-comment-avatar {
     width: 38px;
     height: 35px;
-    background-color: rgb(219, 219, 219);
+    /* background-color: rgb(219, 219, 219); */
     border-radius: 50%;
+}
+
+.each-comment-container img {
+    border-radius: 50%;
+    width: 38px;
+    height: 35px;
 }
 
 .comment-open-options-button:hover {
