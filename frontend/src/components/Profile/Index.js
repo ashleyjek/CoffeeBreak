@@ -5,8 +5,9 @@ import { fetchProfileUser } from '../../store/users'
 import { useEffect } from "react";
 import Posts from "../Posts/index";
 import Modal from "../Modal/Modal";
-import "../Profile/Profile.css"
+import { openModal } from "../../store/ui";
 import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt } from "react-icons/fa";
+import "../Profile/Profile.css"
 
 const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser)
@@ -14,7 +15,6 @@ const Profile = () => {
     const { userId } = useParams();
     const user = useSelector(state => state.entities.users[userId])
     const modal = useSelector(state => state.ui);
-
     useEffect(() => {
         dispatch(fetchProfileUser(userId))
     }, [])
@@ -25,7 +25,10 @@ const Profile = () => {
         <>
             { modal.modal ? 
                 <div className="post-form-modal-bg">
-                    <Modal modal={modal.modal} post={modal.post} />
+                    <Modal 
+                        modal={modal.modal} 
+                        post={modal.post} 
+                        user={modal.user} />
                 </div> 
             : null }
             <Navigation />
@@ -37,30 +40,38 @@ const Profile = () => {
                                 <img src={user.coverSrc}></img>
                             </div>
                             <div className="cover-photo-buttons-container">
-                                <button className="add-cover-photo">
+                                { currentUser.id == userId ? 
+                                <button 
+                                    onClick={() => dispatch(openModal("update-cover", null, null, currentUser))}
+                                    className="add-cover-photo">
                                 <FaCamera/> Add cover photo
-                                </button>
+                                </button> : null }
                             </div>
                         </div>
                         <div className="profile-header-container">
                             <div className="profile-photo-container">
                                 {user?.avatarSrc ? 
                                     <img src={user.avatarSrc} className="profile-photo"></img>
-                                : null }
-                                <button className="profile-photo-cam-button">
-                                    <FaCamera/>
-                                </button>
+                                    : null }
+                                { currentUser.id == userId ? 
+                                    <button
+                                        onClick={() => dispatch(openModal("update-avatar", null, null, currentUser))} 
+                                        className="profile-photo-cam-button">
+                                        <FaCamera/> 
+                                    </button> : null }
                             </div>
                             <div className="profile-header-name-container">
                                 <p className="profile-name-header">
                                     {user.firstName} {user.lastName}
                                 </p>
                             </div>
-                            <div className="profile-edit-button-container">
-                                <button className="profile-edit-button">
-                                   <FaPencilAlt/> Edit profile
-                                </button>
-                            </div>
+                            { currentUser.id == userId ? 
+                                <div className="profile-edit-button-container">
+                                    <button className="profile-edit-button">
+                                    <FaPencilAlt/> Edit profile
+                                    </button>
+                                </div>
+                            : null }
                         </div>
                     </div>
                 </div>

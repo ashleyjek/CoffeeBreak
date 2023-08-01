@@ -78,7 +78,7 @@ export const createPost = (post) => async (dispatch) => {
 };
 
 export const deletePost = (postId) => async (dispatch) => {
-    const res = await csrfFetch(`api/posts/${postId}`, {
+    const res = await csrfFetch(`/api/posts/${postId}`, {
         method: 'DELETE'
     });
     if (res.ok) {

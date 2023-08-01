@@ -1,6 +1,6 @@
 import { csrfFetch } from "./csrf";
 import { RECEIVE_CURRENT_USER } from "./session";
-
+import { receiveErrors } from "./errors";
 
 export const RECEIVE_USERS = 'users/RECEIVE_USERS';
 export const RECEIVE_PROFILE_USER = 'users/RECEIVE_PROFILE_USER'
@@ -25,6 +25,21 @@ export const getUsers = (state) => {
         return Object.values(state.entities);
     } else {
         return [];
+    }
+}
+
+export const updateUser = (user) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${user.id}`, {
+        method: 'PATCH',
+        body: user
+    });
+    const data = await res.json();
+    if (res.ok) {
+        dispatch(receiveProfileUser(data.user));
+        return res;
+    } else {
+        dispatch(receiveErrors(data.user));
+        return res;
     }
 }
 

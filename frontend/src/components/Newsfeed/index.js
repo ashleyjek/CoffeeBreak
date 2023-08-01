@@ -16,7 +16,7 @@ const Newsfeed = () => {
             <div className="right-side-bar-container"></div>
             { modal.modal ? 
                 <div className="post-form-modal-bg">
-                <Modal modal={modal.modal} post={modal.post} />
+                    <Modal modal={modal.modal} post={modal.post} />
                 </div> : null }
         </>
     )
