@@ -41,11 +41,13 @@ const Profile = () => {
                             </div>
                             <div className="cover-photo-buttons-container">
                                 { currentUser.id == userId ? 
+                                // <label className="add-cover-photo-label"> 
                                 <button 
                                     onClick={() => dispatch(openModal("update-cover", null, null, currentUser))}
                                     className="add-cover-photo">
-                                <FaCamera/> Add cover photo
-                                </button> : null }
+                                            <FaCamera/> Add cover photo
+                                    </button> : null }
+                                {/* </label>  */}
                             </div>
                         </div>
                         <div className="profile-header-container">

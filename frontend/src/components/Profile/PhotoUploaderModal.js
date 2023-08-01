@@ -14,10 +14,10 @@ const PhotoUploaderModal = ({modal, user}) => {
     useEffect(() => {
         if (modal === "update-cover") {
             setFormType("cover");
-            setPhotoUrl(currentUser.coverSrc);
+            setPhotoUrl(currentUser?.coverSrc);
             setPreviewClassName("cover")
         } else {
-            setPhotoUrl(currentUser.avatarSrc);
+            setPhotoUrl(currentUser?.avatarSrc);
         }
     }, [modal])
 
@@ -70,9 +70,9 @@ const PhotoUploaderModal = ({modal, user}) => {
             <div className="file-input-container">
                 <label id="file-input-label" for="file-input">
                         Upload photo
-                    <input
-                        onChange={handleFile} 
-                        type="file" id="file-input" name="file-input" />
+                <input
+                    onChange={handleFile} 
+                    type="file" id="file-input" name="file-input" />
                 </label>
             </div>
             { preview ? 

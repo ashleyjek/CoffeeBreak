@@ -26,7 +26,7 @@ const PostItem = ({post, allUsers}) => {
                 <div className="post-header-container">
                     <a href={'/users/' + post.authorId}>
                         <img 
-                            src={allUsers[post?.authorId].avatarSrc} 
+                            src={allUsers[post.authorId]?.avatarSrc} 
                             className="post-profile-icon"></img>
                     </a>
                     <div className="post-details-container">

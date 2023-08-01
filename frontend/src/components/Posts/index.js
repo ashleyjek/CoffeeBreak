@@ -27,7 +27,7 @@ const Posts = () => {
             <div className="create-post-container">
             <a href={'/users/' + currentUser.id}>
                 <img 
-                    src={allUsers[currentUser.id].avatarSrc}
+                    src={allUsers[currentUser.id]?.avatarSrc}
                     className="create-post-profile-icon"></img>
             </a>
                 <input 
