@@ -5,9 +5,10 @@ import { receiveErrors } from "./errors";
 export const RECEIVE_USERS = 'users/RECEIVE_USERS';
 export const RECEIVE_PROFILE_USER = 'users/RECEIVE_PROFILE_USER'
 
-const receiveUsers = (users) => ({
+const receiveUsers = (users, friendships) => ({
     type: RECEIVE_USERS,
-    users
+    users,
+    friendships
 })
 
 const receiveUser = (user) => ({
@@ -65,7 +66,8 @@ export const fetchUsers = () => async (dispatch) => {
     const res = await csrfFetch('/api/users');
     if (res.ok) {
         const data = await res.json();
-        dispatch(receiveUsers(data.users));
+        dispatch(receiveUsers(data.users, data.friendships));
+        
         return res;
     }
 }

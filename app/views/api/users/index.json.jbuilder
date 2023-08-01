@@ -6,4 +6,13 @@
             json.coverSrc user.cover.attached? ? user.cover.url : nil
         end
     end
+
+    friendships = user.friendships
+    json.friendships do 
+        friendships.each do |friendship|
+            json.set! friendship.id do 
+                json.extract! friendship, :id, :user_id, :friend_id
+            end
+        end
+    end
 end

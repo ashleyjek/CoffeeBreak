@@ -233,7 +233,8 @@
 .intro-header,
 .details-header,
 .friends-header {
-    width: 440px;
+    /* width: 440px; */
+    width: 94%;
     background-color: transparent;
     padding: 15px;
     font-size: 20px;

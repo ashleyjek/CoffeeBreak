@@ -92,6 +92,7 @@ const postsReducer = ( state = {}, action ) => {
     const nextState = {...state};
     switch (action.type) {
         case RECEIVE_POST:
+            debugger
             return {
                 ...nextState,
                 [action.post.id]: action.post
