@@ -6,10 +6,11 @@ export const RECEIVE_POST = 'posts/RECEIVE_POST';
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
 const REMOVE_POST = 'posts/REMOVE_POST';
 
-const receivePosts = (posts, comments) => ({
+const receivePosts = (posts, comments, likes) => ({
     type: RECEIVE_POSTS,
     posts,
-    comments
+    comments,
+    likes
 });
 
 const receivePost = (post) => ({
@@ -34,7 +35,7 @@ export const fetchPosts = () => async (dispatch) => {
     const res = await csrfFetch('/api/posts');
     if (res.ok) {
         const data = await res.json();
-        dispatch(receivePosts(data.posts, data.comments));
+        dispatch(receivePosts(data.posts, data.comments, data.likes));
         return res;
     }
 };

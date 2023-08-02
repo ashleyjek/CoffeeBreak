@@ -171,7 +171,7 @@ const Profile = () => {
                         </div>
                         <div className="profile-right-container">
                             <div className="posts-container">
-                                { friendStatus ? 
+                                { friendStatus || currentUser.id === user.id ? 
                                 <div className="create-post-container">
                                     <a href={'/users/' + currentUser.id}>
                                         <img 

@@ -9,14 +9,14 @@ import { fetchUser } from './store/users';
 
 function App() {
   // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.currentUser)
   // useEffect(() => {
   //   if(currentUser) {
   //     dispatch(fetchUser(currentUser));        
   //     //REMOVE IF LOGIN PAGE BREAKS
   //   }
-  // }, [currentUser])
+  // }, [])
 
   { currentUser ? <Redirect to="/"/> : <Redirect to="/login"/> }
 
@@ -24,7 +24,7 @@ function App() {
     <>
       <Switch>
         <Route exact path="/login">
-          <SignInPage/>
+          <SignInPage currentUser={currentUser}/>
         </Route>
         <Route exact path="/">
             <SplashPage /> 

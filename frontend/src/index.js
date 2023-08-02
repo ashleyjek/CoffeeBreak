@@ -13,6 +13,7 @@ import { fetchUser, fetchUsers } from './store/users';
 import { deletePost, fetchPost, fetchPosts, updatePost } from './store/posts';
 import * as commentActions from './store/comments'
 import { createFriend, removeFriend } from './store/friendships';
+import * as likeActions from './store/likes'
 
 const store = configureStore();
 
@@ -34,6 +35,8 @@ if (process.env.NODE_ENV !== "production") {
   window.commentActions = commentActions;
   window.createFriend = createFriend;
   window.removeFriend = removeFriend;
+  window.likeActions = likeActions;
+  
 };
 //
 

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :create, :show, :update, :destroy]
     resources :comments, only: [:index, :create, :show, :update, :destroy]
     resources :friendships, only: [:index, :create, :destroy, :show]
+    resources :likes, only: [:create, :destroy, :index]
   end
   
   get '*path', to: "static_pages#frontend_index"

@@ -1,11 +1,16 @@
 import SignInForm from "./SignInForm"
 import Modal from "../Modal/Modal";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import './SignInPage.css';
 import '../SignUpForm/SignUpModal.css';
 
-const SignInPage = () => {
+const SignInPage = ({currentUser}) => {
+    const history = useHistory();
     const modal = useSelector(state => state.ui.modal);
+    if (currentUser) {
+        history.push("/")
+    }
 
     return (
     <>
