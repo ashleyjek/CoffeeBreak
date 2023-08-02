@@ -23,7 +23,6 @@ const Profile = () => {
     const friendIds = Object.keys(useSelector(state => state.entities.friendships));
     const posts = useSelector(state => state.entities.posts)
     const allPosts = Object.values(posts).reverse();
-
     const allFriends = useSelector(state => state.entities.users)
 
     useEffect(() => {
@@ -37,7 +36,7 @@ const Profile = () => {
         } else {
             setFriendStatus(false)
         } 
-    }, [users, setFriendStatus])
+    }, [users, friendStatus])
 
     const removeFriendHandler = () => {
         dispatch(removeFriend(friendship.id));
