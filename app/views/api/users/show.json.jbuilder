@@ -5,9 +5,9 @@ json.user do
 end
 
 friendships = @user.friendships
-json.friends do 
+json.friendships do 
     friendships.each do |friendship|
-        json.set! friendship.id do 
+        json.set! friendship.friend_id do 
             json.extract! friendship, :id, :user_id, :friend_id
         end
     end

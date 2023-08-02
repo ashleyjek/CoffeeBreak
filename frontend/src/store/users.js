@@ -16,9 +16,10 @@ const receiveUser = (user) => ({
     user
 })
 
-const receiveProfileUser = (user) => ({
+const receiveProfileUser = (user, friendships) => ({
     type: RECEIVE_PROFILE_USER,
-    user
+    user,
+    friendships
 })
 
 export const getUsers = (state) => {
@@ -57,7 +58,7 @@ export const fetchProfileUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`);
     if (res.ok) {
         const data = await res.json();
-        dispatch(receiveProfileUser(data.user));
+        dispatch(receiveProfileUser(data.user, data.friendships));
         return res;
     }
 }

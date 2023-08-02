@@ -178,6 +178,30 @@
     cursor: pointer;
 }
 
+.friend-button {
+    /* background-color: yellow; */
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.friend-button button {
+    /* background-color: blue; */
+    border-color: transparent;
+    height: 45px;
+    width: 150px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: white;
+    background-color: rgb(137, 119, 102)
+}
+
+.friend-button button:hover {
+    background-color: rgb(187, 170, 153);
+}
 
 .profile-left-container {
     width: 50%;
@@ -206,13 +230,48 @@
 
 .profile-friends-list {
     width: 90%;
-    height: 350px;
+    height: auto;
     margin: 20px;
     border-radius: 8px;;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     position: sticky;
     top: 310px;
+}
+
+.friends-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 467px; */
+    width: auto;
+    height: auto;
+    /* background-color: yellow; */
+}
+
+.each-friend-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 210px;
+    width: 150px;
+    align-items: center;
+    flex-grow: 0;
+    width: 33%;
+    /* background-color: pink; */
+}
+
+.each-friend-container h1 {
+    /* background-color: yellow; */
+    height: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0px 0 15px 0;
+}
+
+.each-friend-container img {
+    height: 140px;
+    width: 140px;
+    border-radius: 8px;
 }
 
 .create-post-container {

@@ -1,24 +1,58 @@
+import Modal from "../Modal/Modal";
+import Navigation from '../Navigation/index';
+import Posts from "../Posts/index";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import Navigation from '../Navigation/index';
 import { fetchProfileUser } from '../../store/users'
-import { useEffect } from "react";
-import Posts from "../Posts/index";
-import Modal from "../Modal/Modal";
+import { useEffect, useState } from "react";
 import { openModal } from "../../store/ui";
-import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt } from "react-icons/fa";
+import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt, FaPersonBooth, FaUser } from "react-icons/fa";
+import { removeFriend, createFriend } from "../../store/friendships";
 import "../Profile/Profile.css"
 
 const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser)
     const dispatch = useDispatch();
     const { userId } = useParams();
-    const user = useSelector(state => state.entities.users[userId])
     const modal = useSelector(state => state.ui);
+    const user = useSelector(state => state.entities.users[userId])
+    const friendship = useSelector(state => state.entities.friendships[currentUser.id]);
+    const users = useSelector(state => state.entities.users);
+    const [friendStatus, setFriendStatus] = useState("");
+    const friendIds = Object.keys(useSelector(state => state.entities.friendships));
+
     useEffect(() => {
-        dispatch(fetchProfileUser(userId))
+        dispatch(fetchProfileUser(userId));
+         //fetch user friends method?
     }, [])
+
+    useEffect(() => {
+        if (friendship && friendship.id) {
+            setFriendStatus(true)
+        } else {
+            setFriendStatus(false)
+        } 
+    }, [users, dispatch])
+
+    const removeFriendHandler = () => {
+        dispatch(removeFriend(friendship.id));
+        setFriendStatus(false);
+    }
     
+    const addFriendHandler = () => {
+        dispatch(createFriend({
+            friend_id: userId
+        }));
+        setFriendStatus(true);
+    }
+ 
+    // else {
+        //check if request not yet accepted
+    // }
+    
+
+
+
     return (
         <>
         { user ?
@@ -26,7 +60,7 @@ const Profile = () => {
             { modal.modal ? 
                 <div className="post-form-modal-bg">
                     <Modal 
-                        modal={modal.modal} 
+                        modal={modal.modal}
                         post={modal.post} 
                         user={modal.user} />
                 </div> 
@@ -67,13 +101,26 @@ const Profile = () => {
                                     {user.firstName} {user.lastName}
                                 </p>
                             </div>
-                            { currentUser.id == userId ? 
-                                <div className="profile-edit-button-container">
-                                    <button className="profile-edit-button">
-                                    <FaPencilAlt/> Edit profile
-                                    </button>
-                                </div>
-                            : null }
+                            <div className="profile-buttons">
+                                { currentUser.id == userId ? 
+                                    <div className="profile-edit-button-container">
+                                        <button className="profile-edit-button">
+                                        <FaPencilAlt/> Edit profile
+                                        </button>
+                                    </div>
+                                :   <div className="friend-button">
+                                        {friendStatus ? 
+                                        <button 
+                                        onClick={removeFriendHandler}
+                                        className="remove-friend"> Remove Friend </button>
+                                        :
+                                        <button 
+                                            onClick={addFriendHandler}
+                                            className="add-friend"> <FaUser/> Add Friend </button>
+                                        }
+                                    </div>                   
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -102,6 +149,18 @@ const Profile = () => {
                             <div className="profile-friends-list">
                                 <div className='friends-header'>
                                     Friends
+                                </div>
+                                <div className="friends-list-links">
+                                    <ul className="friends-list">
+                                     { friendIds.map((friendId) => {
+                                        return (
+                                            <li className="each-friend-container">
+                                                <a href={'/users/' + friendId}><img src={users[friendId]?.avatarSrc}/></a>
+                                                <h1>{users[friendId]?.firstName} {users[friendId]?.lastName}</h1>
+                                            </li>
+                                        )
+                                     })}
+                                    </ul>
                                 </div>
                             </div>
                         </div>

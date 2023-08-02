@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 import { RECEIVE_USERS } from "./users";
+import { RECEIVE_PROFILE_USER } from "./users";
 
 export const ADD_FRIEND = 'friendships/RECEIVE_FRIEND';
 export const REMOVE_FRIEND = 'frienships/REMOVE_FRIEND';
@@ -23,7 +24,6 @@ export const createFriend = (friendId) => async (dispatch) => {
 });
     if (res.ok) {
         const data = await res.json();
-        debugger
         dispatch(addFriendship(data.friendship, data.inverseFriendship));
         return res;
     }
@@ -34,8 +34,7 @@ export const removeFriend = (friendshipId) => async (dispatch) => {
         method: 'DELETE',
         body: JSON.stringify(friendshipId)
     });
-        const data = await res.json();
-        debugger
+        const data = await res.json();  
         dispatch(removeFriendship(data.friendship, data.inverseFriendship));
         return res;
 }
@@ -45,21 +44,28 @@ const friendshipsReducer = ( initialState = {}, action) => {
     const nextState = {...initialState};
     switch (action.type) {
         case ADD_FRIEND:
-            debugger
             return {
                 ...nextState,
-                [action.friendship.id]: action.friendship,
-                [action.inverseFriendship.id]: action.inverseFriendship
+                [action.friendship.userId]: {
+                    id: action.friendship.id,
+                }
+                // [action.inverseFriendship.userId]: {
+                //     id: action.friendship.id
+                // }
             };
         case RECEIVE_USERS:
             return {
                 ...nextState,
                 ...action.friendships
             }
-        case REMOVE_FRIEND:
-            debugger
-            delete nextState[action.friendship.id];
-            delete nextState[action.inverseFriendship.id];
+        case RECEIVE_PROFILE_USER:
+            return {
+                ...nextState,
+                ...action.friendships
+            }
+        case REMOVE_FRIEND: 
+            delete nextState[action.friendship.friendId];
+            delete nextState[action.inverseFriendship.friendId];
             return nextState;
         default:
             return initialState;
