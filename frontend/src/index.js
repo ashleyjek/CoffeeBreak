@@ -9,9 +9,10 @@ import configureStore from './store/index'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { removeErrors } from './store/errors';
-import { fetchUsers } from './store/users';
+import { fetchUser, fetchUsers } from './store/users';
 import { deletePost, fetchPost, fetchPosts, updatePost } from './store/posts';
 import * as commentActions from './store/comments'
+import { createFriend, removeFriend } from './store/friendships';
 
 const store = configureStore();
 
@@ -24,12 +25,15 @@ if (process.env.NODE_ENV !== "production") {
   window.logout = logout;
   window.restoreSession = restoreSession;
   window.removeErrors = removeErrors;
+  window.fetchUser = fetchUser;
   window.fetchUsers = fetchUsers;
   window.fetchPosts = fetchPosts;
   window.fetchPost = fetchPost;
   window.deletePost = deletePost;
   window.updatePost = updatePost;
   window.commentActions = commentActions;
+  window.createFriend = createFriend;
+  window.removeFriend = removeFriend;
 };
 //
 

@@ -1,10 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react"
 import { createComment } from "../../store/comments";
 import { FaPaperPlane } from "react-icons/fa";
 import TextareaAutoSize from 'react-textarea-autosize';
 
-const CreateCommentForm = ({post, inputRef, handleRefClick}) => {
+const CreateCommentForm = ({post, inputRef, handleRefClick, currentUser}) => {
+    const user = useSelector(state => state.entities.users[currentUser.id])
     const dispatch = useDispatch();
     const [body, setBody] = useState("");
 
@@ -27,7 +28,9 @@ return (
     <form 
         className="create-comment-input"
         onClick={handleRefClick}>
-        <img className="create-comment-favicon"></img>
+        <img
+            src={user?.avatarSrc}
+            className="create-comment-avatar"></img>
         <TextareaAutoSize
             className="create-comment-textarea"
             maxRows="6" 

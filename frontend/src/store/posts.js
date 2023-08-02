@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 import { receiveErrors } from "./errors";
+import { RECEIVE_PROFILE_USER } from "./users";
 
 export const RECEIVE_POST = 'posts/RECEIVE_POST';
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
@@ -48,13 +49,9 @@ export const fetchPost = (post) => async (dispatch) => {
 };
 
 export const updatePost = (post) => async (dispatch) => {
-    const { id, body } = post;
     const res = await csrfFetch(`/api/posts/${post.id}`, {
         method: 'PATCH',
-        body: JSON.stringify({
-            id,
-            body
-        })
+        body: post
     });
     const data = await res.json();
     if (res.ok) {
@@ -67,14 +64,9 @@ export const updatePost = (post) => async (dispatch) => {
 }
 
 export const createPost = (post) => async (dispatch) => {
-    const { body } = post;
-    const res = await csrfFetch(`/api/posts`, {
+    const res = await csrfFetch('/api/posts', {
         method: 'POST',
-        body: JSON.stringify({
-            post: {
-                body
-            }
-        })
+        body: post
     });
     const data = await res.json();
     if (res.ok) {
@@ -87,7 +79,7 @@ export const createPost = (post) => async (dispatch) => {
 };
 
 export const deletePost = (postId) => async (dispatch) => {
-    const res = await csrfFetch(`api/posts/${postId}`, {
+    const res = await csrfFetch(`/api/posts/${postId}`, {
         method: 'DELETE'
     });
     if (res.ok) {
@@ -100,6 +92,11 @@ const postsReducer = ( state = {}, action ) => {
     Object.freeze(state);
     const nextState = {...state};
     switch (action.type) {
+        case RECEIVE_PROFILE_USER:
+            return {
+                ...nextState,
+                ...action.posts
+            }
         case RECEIVE_POST:
             return {
                 ...nextState,

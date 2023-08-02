@@ -4,23 +4,16 @@ import Navigation from "../Navigation/index";
 import Newsfeed from "../Newsfeed";
 import { useEffect } from "react";
 import { fetchUser } from "../../store/users";
+import { useSelector } from "react-redux";
 import './Splash.css';
 
 const SplashPage = () => {
-    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    const dispatch = useDispatch();
+    const currentUser = useSelector(state => state.session.currentUser)
     const history = useHistory();
     
     if (!currentUser) {
         history.push("/login");
     }
-    
-    useEffect(() => {
-        if (currentUser) {
-            dispatch(fetchUser(currentUser));        
-        }
-    }, [currentUser])
-    
 
     return (
         <div className="splash-index">

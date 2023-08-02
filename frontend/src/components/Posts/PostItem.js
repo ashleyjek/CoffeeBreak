@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Comments from '../Comments';
-import PostItemHeader from './PostsIndexHeader';
+import PostsIndexHeader from './PostsIndexHeader';
 import { useRef } from 'react';
 
 import './Posts.css';
@@ -18,19 +18,20 @@ const PostItem = ({post, allUsers}) => {
     }
     return (
             <>
-            <div key={post.id} className="post-container">
-                <PostItemHeader 
+            <div key={post?.id} className="post-container">
+                <PostsIndexHeader 
                     currentUser={currentUser} 
                     post={post}/>
 
                 <div className="post-header-container">
-                    <img className="post-profile-icon"> 
-                        {/* icon */}
-                    </img>
+                    <a href={'/users/' + post.authorId}>
+                        <img 
+                            src={allUsers[post.authorId]?.avatarSrc} 
+                            className="post-profile-icon"></img>
+                    </a>
                     <div className="post-details-container">
                         <div className="post-author">
-                            {allUsers[post.authorId].firstName} 
-                            {allUsers[post.authorId].lastName}
+                            {allUsers[post?.authorId].firstName} {allUsers[post?.authorId].lastName}
                             </div>
                         <div className="post-date-time">
                             {post.createdAt}</div>
@@ -38,13 +39,15 @@ const PostItem = ({post, allUsers}) => {
                     </div>
                     <div className="post-body-container">
                         <div className="post-body-text">
-                            {post.body}
+                            {post?.body}
                         </div>
                     </div>
                     {post?.photoSrc ? (
-                    <div className="post-photo-container">
-                        <div className="post-photo-source">
-                            <img src={post.photoSrc}/>
+                    <div className="post-photo-bg">
+                        <div className="post-photo-container">
+                            <div className="post-photo-source">
+                                <img src={post?.photoSrc}/>
+                            </div>
                         </div>
                     </div> ) : null }
                     {/* <div className="posts-cmts-ctr-container">
@@ -62,6 +65,7 @@ const PostItem = ({post, allUsers}) => {
                     </div>
                     <div className="entire-comments-container">
                         <Comments 
+                            currentUser={currentUser}
                             post={post} 
                             allUsers={allUsers}
                             inputRef={inputRef}

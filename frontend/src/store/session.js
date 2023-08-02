@@ -76,7 +76,7 @@ export const signUp = (user) => async (dispatch) => {
 
 
 const initialState = {
-    user: JSON.parse(sessionStorage.getItem('currentUser'))
+    currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
 }
 const sessionReducer = (state = initialState, action) => {
     Object.freeze(state);

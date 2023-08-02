@@ -4,7 +4,7 @@ import { deletePost } from '../../store/posts';
 import { FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
 import OutsideAlerter from '../util/OutsideAlerter';
 
-const PostItemHeader = ({currentUser, post}) => {
+const PostsIndexHeader = ({currentUser, post}) => {
     const dispatch = useDispatch();
     const { ref, handleClickInside, clickedOutside } = OutsideAlerter();
 
@@ -43,6 +43,6 @@ const PostItemHeader = ({currentUser, post}) => {
     )
 }
 
-export default PostItemHeader;
+export default PostsIndexHeader;
 
 

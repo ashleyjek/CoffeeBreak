@@ -2,7 +2,7 @@
         json.posts do 
             json.set! post.id do
                 json.extract! post, :id, :author_id, :body, :created_at
-                json.photo_src post.photo.url
+                json.photoSrc post.photo.attached? ? post.photo.url : nil
             end
         end
 

@@ -2,13 +2,21 @@ import { Route } from 'react-router-dom';
 import SignInPage from './components/SignInPage/Index';
 import SplashPage from './components/Splash/Index';
 import { Redirect, Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import Profile from './components/Profile/Index.js';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from './store/users';
-import { recieveCurrentUser } from './store/session';
 
 function App() {
-  const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+  // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.currentUser)
+  // useEffect(() => {
+  //   if(currentUser) {
+  //     dispatch(fetchUser(currentUser));        
+  //     //REMOVE IF LOGIN PAGE BREAKS
+  //   }
+  // }, [currentUser])
 
   { currentUser ? <Redirect to="/"/> : <Redirect to="/login"/> }
 
@@ -18,8 +26,11 @@ function App() {
         <Route exact path="/login">
           <SignInPage/>
         </Route>
-        <Route path="/">
+        <Route exact path="/">
             <SplashPage /> 
+        </Route>
+        <Route exact path="/users/:userId">
+            <Profile/>
         </Route>
       </Switch>
     </>

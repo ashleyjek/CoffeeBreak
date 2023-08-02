@@ -9,12 +9,17 @@ const CommentItem = ({comment, post, allUsers}) => {
     const [openForm, setOpenForm] = useState(false);
     const firstName = allUsers[comment.authorId].firstName;
     const lastName = allUsers[comment.authorId].lastName;
+    // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
 
     return (
         <>
         <div className="each-comment-container">
             <div className="comment-form-closed-container">
-                <img className="each-comment-favicon"></img>
+            <a href={'/users/' + comment.authorId}>
+                    <img 
+                        src={allUsers[comment.authorId]?.avatarSrc} 
+                        className="each-comment-avatar"></img>
+            </a>
                 { openForm ? (
                 <EditCommentForm 
                     post={post} 

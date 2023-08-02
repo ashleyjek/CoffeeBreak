@@ -1,0 +1,463 @@
+.user-profile-bg {
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    background-color: rgb(236, 239, 243);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+}
+
+.profile-header-bg {
+    background-color: white;
+    display: flex;
+    height: 560px;
+    justify-content: center;
+    border-bottom: 1px solid rgb(215, 218, 222);
+}
+
+.profile-body-bg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.post-form-modal-bg {
+    height: 100%;
+    width: 100%;
+}
+
+.modal-bg {
+    position: fixed;
+    position: unset;
+}
+
+.user-profile-container {
+    width: 73%;
+}
+
+.profile-body-container {
+    height: auto;
+    width: 73%;
+    display: flex;
+    justify-content: center;
+}
+
+.cover-photo-gradient-container {
+    height: 460px;
+    width: auto;
+    border-radius: 8px;
+    background: rgb(236, 239, 243);
+    /* background: linear-gradient(360deg, rgb(236, 239, 243) 0%, rgba(226,226,226,1) 0%, rgb(75, 75, 75) 0%, rgb(236, 239, 243) 25%); */
+    display: flex;
+    align-items: flex-end;
+    justify-content: right;
+    background-size: cover;
+}
+/* 
+.cover-photo-container {
+    position: relative;
+} */
+
+.cover-photo-container img {
+    height: 600px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    background-size: 100%;
+    z-index: -1;
+} 
+
+
+.cover-photo-buttons-container {
+    position: absolute;
+    height: 120px;
+    width: 73%;
+    display: flex;
+    border-radius: 0 0 8px 8px;
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.015) 0%, rgba(226, 226, 226, 0) 0%, rgb(0, 0, 0) 0%, rgba(236, 239, 243, 0) 90%);
+    justify-content: flex-end;
+    align-items: flex-end;
+    opacity: 0.7;
+}
+
+.add-cover-photo {
+    font-weight: bold;
+    font-size: 16px;
+    height: 40px;
+    width: 185px;
+    border-radius: 8px;
+    margin: 10px;
+    color: white;
+}
+
+.cover-photo-buttons-container button {
+    background-color: rgba(0, 0, 0);
+    /* opacity: 0.4; */
+    border: transparent;
+    cursor: pointer;  
+    margin: 20px;
+}
+
+.profile-header-container {
+    background-color: transparent;
+    height: 100px;
+    display: flex;
+    position: relative;
+}
+
+.profile-photo-container {
+    background-color: rgb(190, 193, 199);
+    width: 180px; 
+    height: 180px;
+    border-radius: 50%;
+    border: 3px white solid;
+    position: absolute;
+    bottom: 0;
+    margin-left: 30px;
+}
+
+.profile-photo-container img {
+    width: 180px; 
+    height: 180px;
+    border-radius: 50%;
+}
+
+.profile-photo-container button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    padding: 2px;
+    cursor: pointer;
+    background-color: rbg(221, 224, 229);
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: transparent;
+}
+
+.profile-header-name-container {
+    /* background-color: aqua; */
+    margin-left: 210px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-name-header {
+    margin-left: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.profile-edit-button-container {
+    width: 250px;
+    height: 100px;
+    /* background-color: brown; */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.profile-edit-button-container button {
+    border-color: transparent;
+    height: 38px;
+    width: 155px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.friend-button {
+    /* background-color: yellow; */
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.friend-button button {
+    /* background-color: blue; */
+    border-color: transparent;
+    height: 45px;
+    width: 150px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 20px;
+    color: white;
+    background-color: rgb(137, 119, 102)
+}
+
+.friend-button button:hover {
+    background-color: rgb(187, 170, 153);
+}
+
+.profile-left-container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-intro-container {
+    width: 90%;
+    height: auto;
+    margin: 20px;
+    border-radius: 8px;;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    position: sticky;
+    top: 65px;
+}
+
+.profile-right-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.profile-friends-list {
+    width: 90%;
+    height: auto;
+    margin: 20px;
+    border-radius: 8px;;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    position: sticky;
+    top: 310px;
+}
+
+.friends-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 467px; */
+    width: auto;
+    height: auto;
+    /* background-color: yellow; */
+}
+
+.each-friend-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 210px;
+    width: 150px;
+    align-items: center;
+    flex-grow: 0;
+    width: 33%;
+    /* background-color: pink; */
+}
+
+.each-friend-container h1 {
+    /* background-color: yellow; */
+    height: 10px;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0px 0 15px 0;
+}
+
+.each-friend-container img {
+    height: 140px;
+    width: 140px;
+    border-radius: 8px;
+}
+
+.create-post-container {
+    margin-top: 20px;
+    position: unset;
+}
+
+.post-container {
+    margin: 10px 0 0 0px;
+}
+
+.posts-container {
+    width: 98%;
+    margin-right: 0px;
+    padding-left: 0px;
+}
+
+.intro-header,
+.details-header,
+.friends-header {
+    /* width: 440px; */
+    width: 94%;
+    background-color: transparent;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    border-bottom: 1px solid rgb(215, 218, 222);
+}
+
+.about-me-details {
+    display: flex;
+    /* background-color: pink; */
+    align-items: center;
+}
+
+.details-container {
+    display: flex;
+}
+
+.user-labels {
+    font-size: 18px;
+    padding: 15px;
+    /* background-color: blue; */
+    width: 35px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    color: rgb(190, 193, 199);
+    font-size: 25px;;
+}
+
+.user-info {
+    padding: 15px;
+    font-size: 17px;
+    width: 360px;
+    height: 30px;
+    /* background-color: green; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.cover-photo-selector-bg {
+    display: block;
+    position: absolute;
+    background-color: red;
+    z-index: 1;
+}
+
+.profile-photo-selector-bg {
+    display: flex;
+    width: 350px;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    position: relative;
+}
+
+.pp-modal-header {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    border-bottom: 1px solid rgb(215, 218, 222);
+
+}
+
+.file-input-container {
+    height: 50px;
+    background-color: rgb(154, 137, 120);
+    border-radius: 8px;
+    width: 300px;
+    position: relative;
+    margin: 15px 0 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pp-photo-save {
+    height: 45px;
+    border: transparent;
+    background-color: rgb(118, 103, 88);
+    border-radius: 8px;
+    width: 300px;
+    position: relative;
+    margin: 5px 0 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0 0 15px 0;
+}
+
+#file-input {
+    display: none;
+    height: 40px;
+    width: 300px;
+    background-color: yellow;
+    position: absolute;
+    left: 0;
+    top: -20px;
+    margin: 15px 0 15px 0;
+}
+#file-input-label {
+    cursor: pointer;
+}
+
+
+.close-pp-modal-button {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.close-pp-modal-button button {
+    border-color: transparent;
+    color: rgb(112, 112, 112);
+    font-size: 20px;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin: 23px 15px 10px 15px;
+    position: absolute;
+    top: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pp-preview-container {
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover {
+    width: auto;
+    height: 230px;
+}
+
+.avatar {
+    width: 250px;
+    height: 250px;
+}
+

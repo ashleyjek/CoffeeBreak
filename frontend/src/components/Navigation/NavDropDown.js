@@ -1,11 +1,13 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState} from "react"; 
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { logout } from "../../store/session";
 import './Navigation.css';
+import { FaDoorOpen } from "react-icons/fa";
 
 const NavDropDown = () => {
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    const user = useSelector(state => state.entities.users[currentUser.id])
     const history = useHistory();
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
@@ -33,27 +35,31 @@ const NavDropDown = () => {
 
     return (
         
-        <>
-            <button className="profile-icon" onClick={openMenu}></button>
+        <>  
+            <img src={user?.avatarSrc} className="profile-icon" onClick={openMenu}></img>
             {showMenu && (
                 <ul className="profile-dropdown-container">
                     <li key="p-link" className="profile-links-container">
                         <div className="profile-name-container">
                         {currentUser && (
                             <div className="name-container">
-                                <button className="profile-dropdown-icon"></button>
-                                <span id="profile-name">{currentUser.firstName}</span>
-                                <span id="profile-name">{currentUser.lastName}</span>
+                                <a href={'/users/' + currentUser.id}>
+                                    <img src={user?.avatarSrc} className="profile-dropdown-icon"></img>
+                                    <span id="profile-name">{currentUser.firstName}</span>
+                                    <span id="profile-name">{currentUser.lastName}</span>
+                                </a>
                             </div>
                             )}
                             <div className="view-profile-text-container">
-                                <div className="view-profile-text">View your Profile</div>
+                                <a href={'/users/' + currentUser.id}>
+                                    <div className="view-profile-text">View your Profile</div>
+                                </a>
                             </div>
                         </div>
                     </li>
                     <li key="logout-button" className="logout-tab">
                         <div className="logout-button-container">
-                            <button className="logout-icon"></button>
+                            <button className="logout-icon"><FaDoorOpen/></button>
                             <button className="logout-button" onClick={handleLogout}>Log Out</button>
                         </div>
                     </li>

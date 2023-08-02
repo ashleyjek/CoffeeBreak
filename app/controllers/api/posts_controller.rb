@@ -1,5 +1,5 @@
 class Api::PostsController < ApplicationController
-    wrap_parameters include: Post.attribute_names + ['author_id']
+    wrap_parameters include: Post.attribute_names + ['author_id'] + [:photo]
 
     def index 
         @posts = Post.all
@@ -12,8 +12,12 @@ class Api::PostsController < ApplicationController
     end
 
     def update
-        @post = Post.find_by(id: params[:id])
+        @post = Post.find_by(id: params[:post][:id])
         @post.author_id = current_user.id
+        if params[:post][:photo] == "null" 
+            @post.photo.purge
+            params[:post].delete :photo
+        end
         if @post.update(post_params)
             render :show
         else
@@ -22,6 +26,9 @@ class Api::PostsController < ApplicationController
     end
 
     def create
+        if params[:post][:photo] == "null" 
+            params[:post].delete :photo
+        end
         @post = Post.new(post_params)
         @post.author_id = current_user.id
         if @post.save
@@ -42,7 +49,7 @@ class Api::PostsController < ApplicationController
     end
 
     def post_params
-        params.require(:post).permit(:body, :author_id, :id)
+        params.require(:post).permit(:body, :author_id, :photo, :id)
     end
 
 end
