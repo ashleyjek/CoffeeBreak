@@ -9,6 +9,7 @@ import { openModal } from "../../store/ui";
 import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt, FaPersonBooth, FaUser } from "react-icons/fa";
 import { removeFriend, createFriend } from "../../store/friendships";
 import "../Profile/Profile.css"
+import PostItem from "../Posts/PostItem";
 
 const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser)
@@ -20,6 +21,10 @@ const Profile = () => {
     const users = useSelector(state => state.entities.users);
     const [friendStatus, setFriendStatus] = useState("");
     const friendIds = Object.keys(useSelector(state => state.entities.friendships));
+    const posts = useSelector(state => state.entities.posts)
+    const allPosts = Object.values(posts).reverse();
+
+    const allFriends = useSelector(state => state.entities.users)
 
     useEffect(() => {
         dispatch(fetchProfileUser(userId));
@@ -32,7 +37,7 @@ const Profile = () => {
         } else {
             setFriendStatus(false)
         } 
-    }, [users, dispatch])
+    }, [users, setFriendStatus])
 
     const removeFriendHandler = () => {
         dispatch(removeFriend(friendship.id));
@@ -160,14 +165,32 @@ const Profile = () => {
                                             </li>
                                         )
                                      })}
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div className="profile-right-container">
                             <div className="posts-container">
-                                <Posts
-                                    currentUser={currentUser}/>
+                                { friendStatus ? 
+                                <div className="create-post-container">
+                                    <a href={'/users/' + currentUser.id}>
+                                        <img 
+                                            src={currentUser?.avatarSrc}
+                                            className="create-post-profile-icon"></img>
+                                    </a>
+                                        <input 
+                                            className="create-post-input"
+                                            placeholder={`What's on your mind?`}
+                                            onClick={() => dispatch(openModal("create-post"))}/>
+                                </div>
+                                : null }
+                                { allPosts.map((post) => {
+                                    return (<PostItem
+                                                post={post}
+                                                allUsers={allFriends}
+                                                />)
+                                })}
                             </div>
                         </div>
                     </div>

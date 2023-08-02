@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 import { receiveErrors } from "./errors";
+import { RECEIVE_PROFILE_USER } from "./users";
 
 export const RECEIVE_POST = 'posts/RECEIVE_POST';
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
@@ -91,8 +92,12 @@ const postsReducer = ( state = {}, action ) => {
     Object.freeze(state);
     const nextState = {...state};
     switch (action.type) {
+        case RECEIVE_PROFILE_USER:
+            return {
+                ...nextState,
+                ...action.posts
+            }
         case RECEIVE_POST:
-            debugger
             return {
                 ...nextState,
                 [action.post.id]: action.post

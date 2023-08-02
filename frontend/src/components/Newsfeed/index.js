@@ -11,7 +11,8 @@ const Newsfeed = () => {
         <>
             <div className="left-side-bar-container"></div>
             <div className="newsfeed-container">
-                <Posts currentUser={currentUser}/>
+                <Posts
+                    currentUser={currentUser}/>
             </div>
             <div className="right-side-bar-container"></div>
             { modal.modal ? 

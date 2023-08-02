@@ -41,6 +41,10 @@ class User < ApplicationRecord
     through: :friendships,
     source: :friend
 
+    has_many :friends_posts,
+    through: :friends, 
+    source: :posts
+
     has_secure_password
 
     before_validation :ensure_session_token
