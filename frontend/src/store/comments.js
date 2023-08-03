@@ -135,7 +135,6 @@ const commentsReducer = ( state = {}, action ) => {
             delete nextState[action.commentId];
             return nextState;
         case RECEIVE_LIKE:
-            debugger
             if (action.like.likeableType === "Comment") {
                 const likes = state[action.like.likeableId].likes || []
                 return {

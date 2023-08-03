@@ -18,7 +18,6 @@ const CommentItem = ({comment, post, allUsers}) => {
 
     useEffect(() => {
         comment.likes?.forEach((likeId) => {
-            debugger
             if (allLikes[likeId]?.likerId === currentUser.id) {
                 setLikeId(likeId)
                 setLiked(true);
@@ -36,7 +35,6 @@ const CommentItem = ({comment, post, allUsers}) => {
     const handleLike = (e) => {
         e.preventDefault();
         if (!liked) {
-            debugger
             dispatch(createLike({
                 likeableType: "Comment",
                 likeableId: comment.id
