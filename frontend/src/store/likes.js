@@ -36,8 +36,9 @@ export const createLike = (like) => async (dispatch) => {
     const res = await csrfFetch(`/api/likes/${like.id}`, {
         method: 'DELETE'
     });
+    const data = await res.json();
     if (res.ok) {
-        dispatch(removeLike(like));
+        dispatch(removeLike(data.like));
         return res;
     }
 };
@@ -48,10 +49,11 @@ const likesReducer = (initialState = {}, action) => {
     switch (action.type) {
         case RECEIVE_LIKE:
             return {
-                [action.like.likerId]: action.like
+                ...nextState,
+                [action.like.id]: action.like
             }
         case REMOVE_LIKE:
-            delete nextState[action.like.id];
+            delete nextState[action.likeId];
             return nextState;
         case RECEIVE_POSTS:
             return {

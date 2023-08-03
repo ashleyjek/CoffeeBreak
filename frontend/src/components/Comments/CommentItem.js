@@ -1,24 +1,34 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import EditCommentForm from './EditCommentForm';
 import CommentMenu from './CommentMenu';
 import './Comments.css';
+import { createLike } from '../../store/likes';
 
 const CommentItem = ({comment, post, allUsers}) => {
+    const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.currentUser);
     const [openForm, setOpenForm] = useState(false);
     const firstName = allUsers[comment.authorId].firstName;
     const lastName = allUsers[comment.authorId].lastName;
-    // const allLikes = useSelector(state => state.entities.likes);
+    const allLikes = useSelector(state => state.entities.likes);
+    const [liked, setLiked] = useState("");
+
+    // debugger
     // const commentLikes = 
     // const [liked, setLiked] = useState("");
 
     // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     // const buttonColor = 
-    // const handleCommentLike = (e) => {
-    //     e.preventDefault();
-
-    // }
+    const handleCommentLike = (e) => {
+        e.preventDefault();
+        dispatch(createLike({
+            likeableType: "Comment",
+            likeableId: comment.id
+        })).then((resp) => { if (resp.ok) {
+            setLiked(true);
+        }});
+    }
     return (
         <>
         <div className="each-comment-container">
@@ -43,7 +53,7 @@ const CommentItem = ({comment, post, allUsers}) => {
             )}
                 <button 
                     // id={buttonColor}
-                    // onClick={handleCommentLike}
+                    onClick={handleCommentLike}
                     className="comment-like-button">Like</button>
             </div>
             { comment.authorId === currentUser.id ? (

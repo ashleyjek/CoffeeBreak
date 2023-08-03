@@ -13,9 +13,22 @@ const PostItem = ({post, allUsers}) => {
     const inputRef = useRef();
     // const [likeButtonClass, setLikeButtonClass] = useState("");
     const allLikes = useSelector(state => state.entities.likes);
+    // debugger
     const postLikes = post?.likes?.length;
+    const [likeId, setLikeId] = useState(null);
     const [numLikes, setNumLikes] = useState(postLikes);
     const [liked, setLiked] = useState("");
+
+    useEffect(() => {
+        post.likes?.forEach((likeId) => {
+            if (allLikes[likeId]?.likerId === currentUser.id) {
+                setLikeId(likeId)
+                setLiked(true);
+            } else {
+                setLiked(false);
+            }
+        });
+    }, [postLikes]);
 
     const handleRefClick = () => {
         inputRef.current.focus();
@@ -25,33 +38,53 @@ const PostItem = ({post, allUsers}) => {
         });
     }
 
-    useEffect(() => {
-        if (post?.likes?.includes(currentUser.id)) {
-            setLiked(true);
-        } else {
-            setLiked(false);
-        }
-    }, [allLikes, numLikes]) 
+    // useEffect(() => {
+    //     if (post?.likes?.includes(currentUser.id)) {
+    //         setLiked(true);
+    //     } else {
+    //         setLiked(false);
+    //     }
+    // }, [allLikes, numLikes]) 
 
     const handleLike = (e) => {
         e.preventDefault();
-        if (post?.likes?.includes(currentUser.id)) {
-            dispatch(deleteLike(allLikes[currentUser.id]))
-            .then((resp) => { if (resp.ok) {
-                setLiked(false);
-                setNumLikes(numLikes - 1);
-            }})
-        } else {
+        if (!liked) {
             dispatch(createLike({
-                likerId: currentUser.id,
                 likeableType: "Post",
                 likeableId: post.id
             })).then((resp) => { if (resp.ok) {
                 setLiked(true);
                 setNumLikes(numLikes + 1);
+
             }})
-        };
-    };
+        } else {
+            dispatch(deleteLike(allLikes[likeId]))
+            .then((resp) => { if (resp.ok) {
+                setLiked(false);
+                setNumLikes(numLikes - 1);
+                console.log(numLikes)
+            }})
+        }
+    }
+
+    // const handleLike = (e) => {
+    //     e.preventDefault();
+    //     if (post?.likes?.includes(currentUser.id)) {
+    //         dispatch(deleteLike(allLikes[currentUser.id]))
+    //         .then((resp) => { if (resp.ok) {
+    //             setLiked(false);
+    //             setNumLikes(numLikes - 1);
+    //         }})
+    //     } else {
+    //         dispatch(createLike({
+    //             likeableType: "Post",
+    //             likeableId: post.id
+    //         })).then((resp) => { if (resp.ok) {
+    //             setLiked(true);
+    //             setNumLikes(numLikes + 1);
+    //         }})
+    //     };
+    // };
 
     
     return (
