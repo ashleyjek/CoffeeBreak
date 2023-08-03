@@ -9,9 +9,9 @@ const receiveLike = (like) => ({
     like
 });
 
-const removeLike = (likeId) => ({
+const removeLike = (like) => ({
     type: REMOVE_LIKE, 
-    likeId
+    like
 });
 
 export const createLike = (like) => async (dispatch) => {
@@ -33,12 +33,12 @@ export const createLike = (like) => async (dispatch) => {
     }
 };
 
- export const deleteLike = (likeId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/likes/${likeId}`, {
+ export const deleteLike = (like) => async (dispatch) => {
+    const res = await csrfFetch(`/api/likes/${like.id}`, {
         method: 'DELETE'
     });
     if (res.ok) {
-        dispatch(removeLike(likeId));
+        dispatch(removeLike(like));
         return res;
     }
 };
@@ -52,7 +52,7 @@ const likesReducer = (initialState = {}, action) => {
                 [action.like.likerId]: action.like
             }
         case REMOVE_LIKE:
-            delete nextState[action.likeId];
+            delete nextState[action.like.id];
             return nextState;
         case RECEIVE_POSTS:
             return {

@@ -35,7 +35,7 @@ const PostItem = ({post, allUsers}) => {
     const handleLike = (e) => {
         e.preventDefault();
         if (liked === true) {
-            dispatch(deleteLike(allLikes[currentUser.id].id))
+            dispatch(deleteLike(allLikes[currentUser.id]))
             setNumLikes(numLikes - 1);
         } else {
             dispatch(createLike({

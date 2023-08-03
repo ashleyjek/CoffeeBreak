@@ -1,6 +1,7 @@
 import { csrfFetch } from "./csrf";
 import { receiveErrors } from "./errors";
 import { RECEIVE_PROFILE_USER } from "./users";
+import { RECEIVE_LIKE, REMOVE_LIKE } from "./likes";
 
 export const RECEIVE_POST = 'posts/RECEIVE_POST';
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
@@ -111,6 +112,29 @@ const postsReducer = ( state = {}, action ) => {
         case REMOVE_POST:
             delete nextState[action.postId];
             return nextState;
+        case RECEIVE_LIKE:
+            return {
+                ...nextState,
+                [action.like.likeableId]: {
+                    ...state[action.like.likeableId],
+                    likes: [
+                        ...state[action.like.likeableId].likes,
+                        action.like.likerId
+                    ]
+                },  
+            };
+        case REMOVE_LIKE:
+            return {
+                ...nextState,
+                [action.like.likeableId]: {
+                    ...nextState[action.like.likeableId],
+                    likes: [
+                        ...nextState[action.like.likeableId].likes.filter((id) => {
+                            return (action.like.likerId !== id)
+                        })
+                    ]
+                },  
+            }
         default:
             return state;
     };

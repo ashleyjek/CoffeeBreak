@@ -22,6 +22,8 @@ const Posts = () => {
         });
     }, []);
 
+    if (!currentUser) return null; 
+    
     return (
         <>
             <div className="create-post-container">
