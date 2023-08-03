@@ -328,9 +328,16 @@
     background-color: transparent;
     border-color: transparent;
     cursor: pointer;
-    color: rgb(124, 124, 124);
 }
 
+.comment-liked {
+    color: rgb(33, 106, 231);
+    font-weight: bold;
+}
+
+.comment-not-liked {
+    color: rgb(124, 124, 124);
+}
 
 
 

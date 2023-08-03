@@ -135,7 +135,7 @@ const commentsReducer = ( state = {}, action ) => {
             delete nextState[action.commentId];
             return nextState;
         case RECEIVE_LIKE:
-            // debugger
+            debugger
             if (action.like.likeableType === "Comment") {
                 const likes = state[action.like.likeableId].likes || []
                 return {
@@ -144,7 +144,7 @@ const commentsReducer = ( state = {}, action ) => {
                         ...state[action.like.likeableId],
                         likes: [
                             ...likes,
-                            action.like.likerId
+                            action.like.id
                         ]
                     },  
                 }
@@ -157,7 +157,7 @@ const commentsReducer = ( state = {}, action ) => {
                         ...nextState[action.like.likeableId],
                         likes: [
                             ...nextState[action.like.likeableId].likes.filter((id) => {
-                                return (action.like.likerId !== id)
+                                return (action.like.id !== id)
                             })
                         ]
                     },  
