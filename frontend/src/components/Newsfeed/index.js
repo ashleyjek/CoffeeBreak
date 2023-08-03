@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 import './Newsfeed.css'
 
 const Newsfeed = () => {
-    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    const currentUser = useSelector(state => state.session.currentUser);
     const modal = useSelector(state => state.ui);
 
     return (

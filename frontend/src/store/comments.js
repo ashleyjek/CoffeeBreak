@@ -1,14 +1,16 @@
 import { csrfFetch } from "./csrf"
 import { receiveErrors } from "./errors"
 import { RECEIVE_POSTS } from "./posts";
+import { RECEIVE_LIKE, REMOVE_LIKE } from "./likes";
 
 const RECEIVE_COMMENTS = 'comments/RECEIVE_COMMENTS';
 const RECEIVE_COMMENT = 'comments/RECEIVE_COMMENT';
 const REMOVE_COMMENT = 'comments/REMOVE_COMMENT';
 
-const receiveComments = (comments) => ({
+const receiveComments = (comments, likes) => ({
     type: RECEIVE_COMMENTS,
-    comments
+    comments,
+    likes
 });
 
 const receiveComment = (comment) => ({
@@ -132,6 +134,35 @@ const commentsReducer = ( state = {}, action ) => {
         case REMOVE_COMMENT:
             delete nextState[action.commentId];
             return nextState;
+        case RECEIVE_LIKE:
+            debugger
+            if (action.like.likeableType === "Comment") {
+                const likes = state[action.like.likeableId].likes || []
+                return {
+                    ...nextState,
+                    [action.like.likeableId]: {
+                        ...state[action.like.likeableId],
+                        likes: [
+                            ...likes,
+                            action.like.id
+                        ]
+                    },  
+                }
+            };
+        case REMOVE_LIKE:
+            if (action.like.likeableType === "Comment") {
+                return {
+                    ...nextState,
+                    [action.like.likeableId]: {
+                        ...nextState[action.like.likeableId],
+                        likes: [
+                            ...nextState[action.like.likeableId].likes.filter((id) => {
+                                return (action.like.id !== id)
+                            })
+                        ]
+                    },  
+                };
+            };
         default: 
             return state;
     };

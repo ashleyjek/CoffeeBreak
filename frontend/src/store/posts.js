@@ -1,15 +1,17 @@
 import { csrfFetch } from "./csrf";
 import { receiveErrors } from "./errors";
 import { RECEIVE_PROFILE_USER } from "./users";
+import { RECEIVE_LIKE, REMOVE_LIKE } from "./likes"; 
 
 export const RECEIVE_POST = 'posts/RECEIVE_POST';
 export const RECEIVE_POSTS = 'posts/RECEIVE_POSTS';
 const REMOVE_POST = 'posts/REMOVE_POST';
 
-const receivePosts = (posts, comments) => ({
+const receivePosts = (posts, comments, likes) => ({
     type: RECEIVE_POSTS,
     posts,
-    comments
+    comments,
+    likes
 });
 
 const receivePost = (post) => ({
@@ -34,7 +36,8 @@ export const fetchPosts = () => async (dispatch) => {
     const res = await csrfFetch('/api/posts');
     if (res.ok) {
         const data = await res.json();
-        dispatch(receivePosts(data.posts, data.comments));
+        dispatch(receivePosts(data.posts, data.comments, data.likes));
+        // dispatch(receiveComments(data.comments, data.likes))
         return res;
     }
 };
@@ -110,6 +113,35 @@ const postsReducer = ( state = {}, action ) => {
         case REMOVE_POST:
             delete nextState[action.postId];
             return nextState;
+        case RECEIVE_LIKE:
+            if (action.like.likeableType === "Post") {
+                const likes = state[action.like.likeableId].likes || []
+                return {
+                    ...nextState,
+                    [action.like.likeableId]: {
+                        ...state[action.like.likeableId],
+                        likes: [
+                            ...likes,
+                            action.like.id
+                        ]
+                    },  
+                }
+            };
+        case REMOVE_LIKE:
+            // debugger
+            if (action.like.likeableType === "Post") {
+                return {
+                    ...nextState,
+                    [action.like.likeableId]: {
+                        ...nextState[action.like.likeableId],
+                        likes: [
+                            ...nextState[action.like.likeableId].likes.filter((id) => {
+                                return (action.like.id !== id)
+                            })
+                        ]
+                    },  
+                };
+            };
         default:
             return state;
     };

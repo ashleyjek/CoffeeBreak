@@ -13,8 +13,8 @@ const SplashPage = () => {
     
     if (!currentUser) {
         history.push("/login");
-    }
-
+    } 
+    
     return (
         <div className="splash-index">
             <Navigation/>

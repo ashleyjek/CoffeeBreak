@@ -114,6 +114,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    position: relative;
 }
 
 .all-comments-container {
@@ -315,6 +316,27 @@
     font-size: 15px;
     font-weight: bold;
     margin: 0 15px 10px 0;
+}
+
+.comment-like-button {
+    position: absolute;
+    bottom: -10px;
+    left: 50px;
+}
+
+.comment-form-closed-container button {
+    background-color: transparent;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.comment-liked {
+    color: rgb(33, 106, 231);
+    font-weight: bold;
+}
+
+.comment-not-liked {
+    color: rgb(124, 124, 124);
 }
 
 
