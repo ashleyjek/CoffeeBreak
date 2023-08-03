@@ -9,8 +9,16 @@ const CommentItem = ({comment, post, allUsers}) => {
     const [openForm, setOpenForm] = useState(false);
     const firstName = allUsers[comment.authorId].firstName;
     const lastName = allUsers[comment.authorId].lastName;
-    // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    // const allLikes = useSelector(state => state.entities.likes);
+    // const commentLikes = 
+    // const [liked, setLiked] = useState("");
 
+    // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    // const buttonColor = 
+    // const handleCommentLike = (e) => {
+    //     e.preventDefault();
+
+    // }
     return (
         <>
         <div className="each-comment-container">
@@ -33,6 +41,10 @@ const CommentItem = ({comment, post, allUsers}) => {
                         <p className="comment-body">{comment.body}</p>
                     </div>
             )}
+                <button 
+                    // id={buttonColor}
+                    // onClick={handleCommentLike}
+                    className="comment-like-button">Like</button>
             </div>
             { comment.authorId === currentUser.id ? (
                 <CommentMenu 

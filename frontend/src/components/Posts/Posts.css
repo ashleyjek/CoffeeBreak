@@ -178,7 +178,7 @@
     height: auto;
 }
 
-.posts-cmts-ctr-container {
+.posts-counts-container {
     display: flex;
     height: auto;
     align-items: center;
@@ -188,7 +188,11 @@
 
 .likes-count, .comments-count {
     width: 300px;
+    padding: 10px;
     height: auto;
+    font-size: 14px;
+    /* color: rgb(33, 106, 231); */
+    color: rgb(147, 147, 147);
     /* background-color: blue; */
 }
 
@@ -223,7 +227,11 @@
 }
 
 .liked-button {
-    color: blueviolet;
+    color: rgb(33, 106, 231);
+}
+
+.not-liked-button {
+    color: rgb(147, 147, 147);
 }
 
 .post-reaction-container button:hover {

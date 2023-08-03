@@ -113,12 +113,13 @@ const postsReducer = ( state = {}, action ) => {
             delete nextState[action.postId];
             return nextState;
         case RECEIVE_LIKE:
+            const likes = state[action.like.likeableId].likes || []
             return {
                 ...nextState,
                 [action.like.likeableId]: {
                     ...state[action.like.likeableId],
                     likes: [
-                        ...state[action.like.likeableId].likes,
+                        ...likes,
                         action.like.likerId
                     ]
                 },  

@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteLike, createLike } from '../../store/likes';
 import './Posts.css';
+import { FaThumbsUp } from 'react-icons/fa';
 
 const PostItem = ({post, allUsers}) => {
     const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const PostItem = ({post, allUsers}) => {
     const inputRef = useRef();
     // const [likeButtonClass, setLikeButtonClass] = useState("");
     const allLikes = useSelector(state => state.entities.likes);
-    const postLikes = post.likes.length;
+    const postLikes = post?.likes?.length;
     const [numLikes, setNumLikes] = useState(postLikes);
     const [liked, setLiked] = useState("");
 
@@ -25,7 +26,7 @@ const PostItem = ({post, allUsers}) => {
     }
 
     useEffect(() => {
-        if (post.likes.includes(currentUser.id)) {
+        if (post?.likes?.includes(currentUser.id)) {
             setLiked(true);
         } else {
             setLiked(false);
@@ -34,16 +35,21 @@ const PostItem = ({post, allUsers}) => {
 
     const handleLike = (e) => {
         e.preventDefault();
-        if (liked === true) {
+        if (post?.likes?.includes(currentUser.id)) {
             dispatch(deleteLike(allLikes[currentUser.id]))
-            setNumLikes(numLikes - 1);
+            .then((resp) => { if (resp.ok) {
+                setLiked(false);
+                setNumLikes(numLikes - 1);
+            }})
         } else {
             dispatch(createLike({
                 likerId: currentUser.id,
                 likeableType: "Post",
                 likeableId: post.id
-            }));
-            setNumLikes(numLikes + 1)
+            })).then((resp) => { if (resp.ok) {
+                setLiked(true);
+                setNumLikes(numLikes + 1);
+            }})
         };
     };
 
@@ -82,21 +88,27 @@ const PostItem = ({post, allUsers}) => {
                             </div>
                         </div>
                     </div> ) : null }
-                    {/* <div className="posts-cmts-ctr-container">
-                        <div className="likes-count"></div>
+                    <div className="posts-counts-container">
+                        <div className="likes-count">
+                            { postLikes ?
+                            <>
+                                <FaThumbsUp/> &nbsp; {postLikes}
+                            </>
+                            : null }
+                        </div>
                         <div className="comments-count"></div>
-                    </div> */}
+                    </div>
                     <div className="post-reaction-container">
                     { liked ? <button 
                             // className={likeButtonClass}
                             onClick={handleLike}
                             className="liked-button">
-                                Like</button>
+                                <FaThumbsUp/> &nbsp; Like</button>
                        : <button 
                             // className={likeButtonClass}
                             onClick={handleLike}
                             className="not-liked-button">
-                                Like</button>
+                                <FaThumbsUp/> &nbsp; Like</button>
                                }
                         <button 
                             className="create-comment-main-button" 

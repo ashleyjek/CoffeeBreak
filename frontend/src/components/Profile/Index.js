@@ -10,6 +10,7 @@ import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt, FaPersonBooth, FaUse
 import { removeFriend, createFriend } from "../../store/friendships";
 import "../Profile/Profile.css"
 import PostItem from "../Posts/PostItem";
+import { fetchPosts } from "../../store/posts";
 
 const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser)
@@ -184,12 +185,13 @@ const Profile = () => {
                                             onClick={() => dispatch(openModal("create-post"))}/>
                                 </div>
                                 : null }
-                                { allPosts.map((post) => {
+                                <Posts />
+                                {/* { allPosts.map((post) => {
                                     return (<PostItem
                                                 post={post}
                                                 allUsers={allFriends}
                                                 />)
-                                })}
+                                })} */}
                             </div>
                         </div>
                     </div>

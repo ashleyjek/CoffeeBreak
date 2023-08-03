@@ -5,9 +5,11 @@ import { fetchUsers } from '../../store/users';
 import { openModal } from '../../store/ui';
 import PostItem from './PostItem';
 import './Posts.css';
+import { useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Posts = () => {
     const dispatch = useDispatch();
+    const userId = useParams().userId;
     const posts = useSelector(state => state.entities.posts);
     const allPosts = Object.values(posts).reverse();
     const allUsers = useSelector(state => state.entities.users);
@@ -22,11 +24,14 @@ const Posts = () => {
         });
     }, []);
 
+    const location = useLocation().pathname;
     if (!currentUser) return null; 
-    
     return (
         <>
-            <div className="create-post-container">
+        { location !== `/users/${userId}` ? 
+            <div 
+                id="newsfeed-create-post-container"
+                className="create-post-container">
             <a href={'/users/' + currentUser.id}>
                 <img 
                     src={allUsers[currentUser.id]?.avatarSrc}
@@ -37,6 +42,7 @@ const Posts = () => {
                     placeholder={`What's on your mind, ${currentUser.firstName}?`}
                     onClick={() => dispatch(openModal("create-post"))}/>
             </div>
+        : null }
 
             {allPosts.map((post) => {
                 return (
