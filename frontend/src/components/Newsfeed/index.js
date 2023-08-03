@@ -18,16 +18,16 @@ const Newsfeed = () => {
                     <h1 className="newsfeed-links-header">&nbsp; <FaCoffee/> &nbsp; Links</h1>
                     <a href="https://github.com/ashleyjek">
                         <div className="git-hub-link">
-                        &nbsp; <FaGithub/> &nbsp; GitHub
+                        &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-github fa-2xl"></i> &nbsp; GitHub
                         </div>
                     </a>
                     <a><div className="linked-in-link">
-                        &nbsp; <FaLinkedin/> &nbsp; LinkedIn
+                        &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-linkedin fa-2xl"></i> &nbsp; LinkedIn
 
                         </div></a>
                     <a href="https://ashleyjek.github.io/WhaleWatch/">
                         <div className="whale-watch-link">
-                        &nbsp;  <img id="whale" src="https://live.staticflickr.com/65535/53091026922_3fc0d23eda_m.jpg"/>WhaleWatch
+                        &nbsp;<img src="https://coffeebook-dev.s3.amazonaws.com/whale+icon.png"></img>WhaleWatch
                         </div>
                     </a>
                 </div>

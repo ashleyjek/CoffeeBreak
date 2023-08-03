@@ -12,6 +12,11 @@
     height: auto;
 }
 
+.whale-watch-link img {
+    height: 30px;
+    width: auto;
+}
+
 .newsfeed-links-container {
     margin-top: 75px;
     width: 380px;
