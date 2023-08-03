@@ -1,13 +1,16 @@
 @users.each do |user|
+    user_friends = user.friends.pluck(:id)
     json.users do
         json.set! user.id do
             json.extract! user, :id, :email, :first_name, :last_name, :birthday, :gender
             json.avatarSrc user.avatar.attached? ? user.avatar.url : nil
             json.coverSrc user.cover.attached? ? user.cover.url : nil
+            json.friends do 
+                json.array! user_friends
+            end
         end
     end
 
-    # friendships = user.friendships
     # json.friendships do 
     #     friendships.each do |friendship|
     #         json.set! friendship.id do 
