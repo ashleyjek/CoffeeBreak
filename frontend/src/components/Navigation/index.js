@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import NavDropDown from "./NavDropDown";
 import './Navigation.css';
 import { FaHome } from "react-icons/fa";
+import SearchBar from "./SearchBar";
 
 const Navigation = () => {
     const currentUser = useSelector(state => state.session.currentUser);
@@ -16,9 +17,7 @@ const Navigation = () => {
                             src="https://live.staticflickr.com/65535/53069030957_d9041f159e_b.jpg" 
                             className="home-page-icon"/> 
                     </a>
-                    <input 
-                        className="home-search-bar" 
-                        placeholder="Search Coffeebook"/>
+                    <SearchBar/>
                 </div>
                 <div 
                     className="center-nav-links">

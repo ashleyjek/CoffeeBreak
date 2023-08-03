@@ -2,8 +2,11 @@ import SignUpForm from "../SignUpForm/SignUpForm";
 import PostFormModal from "../Posts/PostFormModal";
 import DeleteCommentModal from "../Comments/DeleteCommentModal";
 import PhotoUploaderModal from "../Profile/PhotoUploaderModal";
+import ProfileEditModal from "../Profile/ProfileEditModal";
+import { useSelector } from "react-redux";
 
 const Modal = ({modal, post, user}) => {
+    const currentUser = useSelector(state => state.session.currentUser)
     if (!modal) {
         return null;
     }
@@ -27,6 +30,9 @@ const Modal = ({modal, post, user}) => {
             break;
         case "update-avatar":
             component = <PhotoUploaderModal modal={modal} user={user}/>
+            break;
+        case "edit-profile":
+            component = <ProfileEditModal currentUser={currentUser}/>
             break;
         default:
             return null;

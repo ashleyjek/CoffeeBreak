@@ -54,10 +54,7 @@ const Profile = () => {
     // else {
         //check if request not yet accepted
     // }
-    
-
-
-
+  
     return (
         <>
         { user ?
@@ -109,8 +106,10 @@ const Profile = () => {
                             <div className="profile-buttons">
                                 { currentUser.id == userId ? 
                                     <div className="profile-edit-button-container">
-                                        <button className="profile-edit-button">
-                                        <FaPencilAlt/> Edit profile
+                                        <button 
+                                            onClick={()=> dispatch(openModal("edit-profile"))}
+                                            className="profile-edit-button">
+                                        <FaPencilAlt/> Edit profile bio
                                         </button>
                                     </div>
                                 :   <div className="friend-button">
@@ -160,7 +159,7 @@ const Profile = () => {
                                      { friendIds.map((friendId) => {
                                         return (
                                             <li className="each-friend-container">
-                                                <a href={'/users/' + friendId}><img src={users[friendId]?.avatarSrc}/></a>
+                                                <a id="friend-links-nf" href={'/users/' + friendId}><img src={users[friendId]?.avatarSrc}/></a>
                                                 <h1>{users[friendId]?.firstName} {users[friendId]?.lastName}</h1>
                                             </li>
                                         )
