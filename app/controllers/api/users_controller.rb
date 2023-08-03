@@ -27,6 +27,14 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def search
+        query = params[:query]
+
+        @users = User.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{query}%", "%#{query}%")
+
+        render :search
+    end
+
     def update
         @user = User.find_by(id: params[:user][:id])
         if @user.update(user_params)
@@ -39,7 +47,7 @@ class Api::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:id, :email, :first_name, :last_name, :birthday, :gender, :password, :avatar, :cover)
+        params.require(:user).permit(:id, :email, :first_name, :last_name, :birthday, :gender, :password, :avatar, :cover, :bio)
     end
 
 end

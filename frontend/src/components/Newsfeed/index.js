@@ -40,7 +40,7 @@ const Newsfeed = () => {
                 <div className="newsfeed-friends-list">
                     <h1 className="my-friends">
                         <FaUserFriends/>&nbsp; My Friends</h1>
-                    <ul className="friends-list">
+                    <ul className="my-friends-list">
                         { friendIds?.map((friendId) => {
                             return (
                                 <a href={'/users/' + friendId}>
