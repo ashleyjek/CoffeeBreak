@@ -435,6 +435,7 @@
     display: flex;
     justify-content: center;
     height: 250px;
+    align-items: center;
 }
 
 .photo-preview-container img {
@@ -442,8 +443,22 @@
     height: 230px;
 }
 
+.fa-arrow-up-from-bracket {
+    font-size: 80px;
+    color: rgb(147, 147, 147);
+}
+
+.photo-uploader-container :hover {
+    background-color: rgb(213, 213, 213, 0.2);
+    border-radius: 8px;
+}
+
 .remove-photo-button {
     position: absolute;
+    background-color: transparent;
+    border-color: transparent;
+    margin: 20px 10px 10px 10px;
+    color: rgb(147, 147, 147);
 }
 
 .photo-uploader {
@@ -456,7 +471,6 @@
     height: 250px;
     background-color: transparent;
 }
-
 
 
 

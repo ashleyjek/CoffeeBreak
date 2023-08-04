@@ -18,16 +18,21 @@ const Profile = () => {
     const { userId } = useParams();
     const modal = useSelector(state => state.ui);
     const user = useSelector(state => state.entities.users[userId])
-    const friendship = useSelector(state => state.entities.friendships[currentUser.id]);
+    const friendship = useSelector(state => state.entities.friendships[currentUser?.id]);
     const users = useSelector(state => state.entities.users);
     const [friendStatus, setFriendStatus] = useState("");
     const friendIds = Object.keys(useSelector(state => state.entities.friendships));
     const posts = useSelector(state => state.entities.posts)
     const allPosts = Object.values(posts).reverse();
     const allFriends = useSelector(state => state.entities.users)
-
+    // const [avatarSrc, setAvatarSrc] = useState(user?.avatarSrc)
     useEffect(() => {
         dispatch(fetchProfileUser(userId));
+        // if (!user.avatarSrc) {
+        //     setAvatarSrc("https://coffeebook-dev.s3.amazonaws.com/default+photo.png")
+        // } else (
+        //     setAvatarSrc(user.avatarSrc)
+        // )
          //fetch user friends method?
     }, [])
 
@@ -37,7 +42,7 @@ const Profile = () => {
         } else {
             setFriendStatus(false)
         } 
-    }, [users, friendStatus])
+    }, [users])
 
     const removeFriendHandler = () => {
         dispatch(removeFriend(friendship.id));
@@ -54,6 +59,7 @@ const Profile = () => {
     // else {
         //check if request not yet accepted
     // }
+
   
     return (
         <>
@@ -89,7 +95,7 @@ const Profile = () => {
                         <div className="profile-header-container">
                             <div className="profile-photo-container">
                                 {user?.avatarSrc ? 
-                                    <img src={user.avatarSrc} className="profile-photo"></img>
+                                    <img src={user?.avatarSrc} className="profile-photo"></img>
                                     : null }
                                 { currentUser.id == userId ? 
                                     <button
@@ -132,9 +138,11 @@ const Profile = () => {
                     <div className="profile-body-container">
                         <div className="profile-left-container">
                             <div className="profile-intro-container">
-                                    <div className="intro-header">Intro </div>
+                                    <div className="intro-header">
+                                    Intro 
+                                    </div>
                                     <div className="bio-section">
-                                        {/* BIO OR BUTTON TO ADD BIO */}
+                                    {user?.bio}
                                     </div>
                                     <div className="details-header">
                                             Details
