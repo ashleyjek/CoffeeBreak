@@ -5,9 +5,10 @@ import { receiveErrors } from "./errors";
 export const RECEIVE_USERS = 'users/RECEIVE_USERS';
 export const RECEIVE_PROFILE_USER = 'users/RECEIVE_PROFILE_USER'
 
-const receiveUsers = (users) => ({
+const receiveUsers = (users, friendships) => ({
     type: RECEIVE_USERS,
-    users
+    users,
+    friendships
 })
 
 const receiveUser = (user) => ({
@@ -33,10 +34,26 @@ export const getUsers = (state) => {
 export const updateUser = (user) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
-        body: JSON.stringify(user)
+        body: user
     });
     const data = await res.json();
     debugger
+    if (res.ok) {
+        dispatch(receiveProfileUser(data.user));
+        return res;
+    } else {
+        dispatch(receiveErrors(data.user));
+        return res;
+    }
+}
+
+export const updateUserBio = (user) => async (dispatch) => {
+    const res = await csrfFetch(`/api/users/${user.id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(user)
+    });
+    const data = await res.json();
+    // debugger
     if (res.ok) {
         dispatch(receiveProfileUser(data.user));
         return res;
@@ -59,16 +76,17 @@ export const fetchProfileUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`);
     if (res.ok) {
         const data = await res.json();
+        debugger
         dispatch(receiveProfileUser(data.user, data.friendships, data.posts));
-        dispatch(receiveUsers(data.users))
+        dispatch(receiveUsers(data.users, data.friendships))
         return res;
     }
 }
 
 export const fetchUsers = () => async (dispatch) => {
     const res = await csrfFetch('/api/users');
+    const data = await res.json();
     if (res.ok) {
-        const data = await res.json();
         dispatch(receiveUsers(data.users, data.friendships));
         
         return res;

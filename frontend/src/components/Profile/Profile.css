@@ -221,8 +221,8 @@
     border-radius: 8px;;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-    position: sticky;
-    top: 65px;
+    /* position: sticky; */
+    /* top: 65px; */
 }
 
 .profile-right-container {
@@ -240,7 +240,7 @@
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     position: sticky;
-    top: 310px;
+    top: 70px;
 }
 
 .friends-list {

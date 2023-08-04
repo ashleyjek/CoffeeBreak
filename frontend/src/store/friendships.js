@@ -3,7 +3,7 @@ import { RECEIVE_USERS } from "./users";
 import { RECEIVE_PROFILE_USER } from "./users";
 
 export const ADD_FRIEND = 'friendships/RECEIVE_FRIEND';
-export const REMOVE_FRIEND = 'frienships/REMOVE_FRIEND';
+export const REMOVE_FRIEND = 'friendships/REMOVE_FRIEND';
 
 const addFriendship = (friendship, inverseFriendship) => ({
     type: ADD_FRIEND,
@@ -54,6 +54,7 @@ const friendshipsReducer = ( initialState = {}, action) => {
                 // }
             };
         case RECEIVE_USERS:
+            debugger
             return {
                 ...nextState,
                 ...action.friendships

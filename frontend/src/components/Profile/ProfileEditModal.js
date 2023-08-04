@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { updateUser } from '../../store/users';
+import { updateUserBio } from '../../store/users';
 import { closeModal } from '../../store/ui';
 import TextareaAutoSize from 'react-textarea-autosize';
 
@@ -17,7 +17,7 @@ const ProfileEditModal = ({currentUser}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(updateUser({
+        dispatch(updateUserBio({
             id: currentUser.id,
             bio: bio
         })).then((resp) => {
