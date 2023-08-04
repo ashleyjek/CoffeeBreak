@@ -82,7 +82,7 @@ const Profile = () => {
                                 <img src={user.coverSrc}></img>
                             </div>
                             <div className="cover-photo-buttons-container">
-                                { currentUser.id == userId ? 
+                                { currentUser?.id == userId ? 
                                 // <label className="add-cover-photo-label"> 
                                 <button 
                                     onClick={() => dispatch(openModal("update-cover", null, null, currentUser))}
