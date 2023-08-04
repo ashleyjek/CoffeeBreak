@@ -9,7 +9,7 @@ import configureStore from './store/index'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { removeErrors } from './store/errors';
-import { fetchUser, fetchUsers } from './store/users';
+import { fetchUser, fetchUsers, updateUser } from './store/users';
 import { deletePost, fetchPost, fetchPosts, updatePost } from './store/posts';
 import * as commentActions from './store/comments'
 import { createFriend, removeFriend } from './store/friendships';
@@ -36,6 +36,7 @@ if (process.env.NODE_ENV !== "production") {
   window.createFriend = createFriend;
   window.removeFriend = removeFriend;
   window.likeActions = likeActions;
+  window.updateUser = updateUser;
   
 };
 //

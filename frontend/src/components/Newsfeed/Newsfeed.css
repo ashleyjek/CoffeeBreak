@@ -62,7 +62,7 @@
 }
 
 .newsfeed-links-container div:hover,
-.friends-list li:hover {
+.my-friends-list li:hover {
     background-color: rgba(161, 137, 117, 0.5);
 }
 

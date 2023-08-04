@@ -9,7 +9,7 @@ friends = @user.friends
 json.users do 
     friends.each do |friend|
         json.set! friend.id do 
-            json.extract! friend, :id, :email, :first_name, :last_name, :birthday, :gender
+            json.extract! friend, :id, :email, :first_name, :last_name, :birthday, :gender, :bio
             json.avatarSrc friend.avatar.attached? ? friend.avatar.url : nil
             json.coverSrc friend.cover.attached? ? friend.cover.url : nil
         end

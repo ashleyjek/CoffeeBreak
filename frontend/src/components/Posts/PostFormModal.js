@@ -112,7 +112,9 @@ const PostFormModal = ({modal, post}) => {
                     { photoUploader ? 
                     <form className="photo-uploader-container">
                         <div className="photo-preview-container">
-                            {preview}
+                            { preview ? preview : 
+                            <i class="fa-solid fa-arrow-up-from-bracket fa-2xl"></i>
+                            }
                         </div>
                             <input 
                                 ref={originalRef}
@@ -123,7 +125,7 @@ const PostFormModal = ({modal, post}) => {
                         <button 
                             className="remove-photo-button"
                             onClick={handleRemovePhoto}>
-                                close</button>
+                                <i class="fa-solid fa-circle-xmark fa-2xl"/></button>
                     </form>
                     : null }
                 </div>

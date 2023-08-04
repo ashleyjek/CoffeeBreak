@@ -33,9 +33,10 @@ export const getUsers = (state) => {
 export const updateUser = (user) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${user.id}`, {
         method: 'PATCH',
-        body: user
+        body: JSON.stringify(user)
     });
     const data = await res.json();
+    debugger
     if (res.ok) {
         dispatch(receiveProfileUser(data.user));
         return res;
