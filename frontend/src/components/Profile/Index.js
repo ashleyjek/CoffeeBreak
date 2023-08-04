@@ -60,7 +60,8 @@ const Profile = () => {
         //check if request not yet accepted
     // }
 
-  
+    if (!currentUser) return null;
+    
     return (
         <>
         { user ?
