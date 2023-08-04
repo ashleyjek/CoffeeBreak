@@ -42,7 +42,7 @@ const Profile = () => {
         } else {
             setFriendStatus(false)
         } 
-    }, [users, friendStatus])
+    }, [users])
 
     const removeFriendHandler = () => {
         dispatch(removeFriend(friendship.id));
