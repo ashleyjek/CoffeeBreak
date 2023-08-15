@@ -5,10 +5,9 @@ import { receiveErrors } from "./errors";
 export const RECEIVE_USERS = 'users/RECEIVE_USERS';
 export const RECEIVE_PROFILE_USER = 'users/RECEIVE_PROFILE_USER'
 
-const receiveUsers = (users, friendships) => ({
+const receiveUsers = (users) => ({
     type: RECEIVE_USERS,
-    users,
-    friendships
+    users
 })
 
 const receiveUser = (user) => ({
@@ -37,7 +36,6 @@ export const updateUser = (user) => async (dispatch) => {
         body: user
     });
     const data = await res.json();
-    debugger
     if (res.ok) {
         dispatch(receiveProfileUser(data.user));
         return res;
@@ -76,9 +74,8 @@ export const fetchProfileUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`);
     if (res.ok) {
         const data = await res.json();
-        debugger
         dispatch(receiveProfileUser(data.user, data.friendships, data.posts));
-        dispatch(receiveUsers(data.users, data.friendships))
+        dispatch(receiveUsers(data.users))
         return res;
     }
 }

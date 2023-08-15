@@ -46,7 +46,6 @@ const SignUpForm = () => {
                 dispatch(removeErrors());
                 history.push("/");
             }
-
         })
     };
 

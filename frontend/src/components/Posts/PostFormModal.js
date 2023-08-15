@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import TextareaAutoSize from 'react-textarea-autosize';
 
 const PostFormModal = ({modal, post}) => {
+    const allUsers = useSelector(state => state.entities.users);
     const currentUser = useSelector(state => state.session.currentUser);
     const dispatch = useDispatch();
     const [body, setBody] = useState("");
@@ -82,7 +83,7 @@ const PostFormModal = ({modal, post}) => {
                 </div>
                 <div className="form-sub-header">
                     <img 
-                        src={currentUser?.avatarSrc}
+                        src={allUsers[currentUser.id]?.avatarSrc}
                         className="profile-avatar"></img>
                     <p className="form-user-name">
                         {currentUser.firstName} {currentUser.lastName}

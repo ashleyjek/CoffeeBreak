@@ -7,7 +7,7 @@ import { FaDoorOpen } from "react-icons/fa";
 
 const NavDropDown = () => {
     // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    // const user = useSelector(state => state.entities.users[currentUser.id])
+    const allUsers = useSelector(state => state.entities.users);
     const currentUser = useSelector(state => state.session.currentUser);
     const history = useHistory();
     const dispatch = useDispatch();
@@ -43,7 +43,7 @@ const NavDropDown = () => {
     return (
         
         <>  
-            <img src={currentUser.avatarSrc} className="profile-icon" onClick={openMenu}></img>
+            <img src={allUsers[currentUser.id]?.avatarSrc} className="profile-icon" onClick={openMenu}></img>
             {showMenu && (
                 <ul className="profile-dropdown-container">
                     <li key="p-link" className="profile-links-container">
@@ -51,7 +51,7 @@ const NavDropDown = () => {
                         {currentUser && (
                             <div className="name-container">
                                 <a href={'/users/' + currentUser.id}>
-                                    <img src={currentUser.avatarSrc} className="profile-dropdown-icon"></img>
+                                    <img src={allUsers[currentUser.id]?.avatarSrc} className="profile-dropdown-icon"></img>
                                     <span id="profile-name">{currentUser.firstName}</span>
                                     <span id="profile-name">{currentUser.lastName}</span>
                                 </a>

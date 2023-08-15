@@ -8,8 +8,8 @@ const Newsfeed = () => {
     // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const currentUser = useSelector(state => state.session.currentUser);
     const modal = useSelector(state => state.ui);
-    const friendIds = useSelector(state => state.entities.users[currentUser?.id]?.friends);
     const allUsers = useSelector(state => state.entities.users);
+    const friendIds = useSelector(state => state.entities.users[currentUser?.id]?.friends);
 
     return (
         <>
