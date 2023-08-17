@@ -55,7 +55,7 @@ const SignUpForm = () => {
                 <div className="signup-form-header">
                     <h1 className="signup-header">Sign Up</h1>
                     <p className="signup-form-close-button">
-                        <button onClick={() => dispatch(closeModal())} >
+                        <button onClick={() => {dispatch(closeModal()); dispatch(removeErrors());}} >
                             <i class="fa-solid fa-circle-xmark"></i></button>
                     </p>
                 </div>
