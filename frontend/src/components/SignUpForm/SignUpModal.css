@@ -27,6 +27,7 @@
 
 .signup-form {
     text-align: center;
+    width: 100%
 }
 
 .signup-form-header {
@@ -66,7 +67,8 @@
     font-size: 25px;
     color: rgb(117, 117, 117);
     border-width: 0.5px;
-    margin-right: 5px;
+    margin: 10px 10px 0 0;
+    cursor: pointer;
 }
 
 .signup-input-name input {
@@ -219,6 +221,7 @@
     border-color: transparent;
     margin-top: 20px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 
@@ -227,13 +230,11 @@
     height: 15px;
 }
 
-.signup-errors, .fname-error, 
-.lname-error, .email-error, 
+.signup-errors, .email-error, 
 .password-error, .gender-error, 
 .birthday-error {
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
     font-size: 12px;
-    color: rgb(108, 108, 108);
     padding: 0px;
     margin: 0px;
     width: 300px;
@@ -241,8 +242,26 @@
     color: rgb(191, 44, 44);
 }
 
+.fname-error,
+.lname-error {
+    font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: rgb(191, 44, 44);
+}
+
+.signup-name-error {
+    width:93%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+}
+
 .password-error {
-    margin-left: 50px;
+    width: 100%;
+    margin-left: 20px;
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: flex-start;
 }
 
 .email-error {
@@ -250,30 +269,12 @@
     text-align: left;
 }
 
-.password-error {
-    margin-left: -65px;
-}
-
 .gender-error {
-    margin-left: -80px;
-}
-
-.fname-error {
-    margin-top: -10px;
-    text-align: left;
-    position: block;
-    margin-left: 20px;
-}
-
-.lname-error {
-    text-align: right;
-    position: absolute;
-    margin-left: 125px;
-    margin-top: -14px;
+    margin-left: -75px;
 }
 
 .birthday-error {
-    margin-left: 0px;
+    margin-left: 10px;
     position: absolute;
     margin-top: -10px;
 }

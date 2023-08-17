@@ -55,23 +55,26 @@ const SignUpForm = () => {
                 <div className="signup-form-header">
                     <h1 className="signup-header">Sign Up</h1>
                     <p className="signup-form-close-button">
-                        <button onClick={() => dispatch(closeModal())} >x</button>
+                        <button onClick={() => dispatch(closeModal())} >
+                            <i class="fa-solid fa-circle-xmark"></i></button>
                     </p>
                 </div>
                 <div className="signup-form-sub-header">
                     <h2 className="signup-desc">It's quick and easy.</h2>
                 </div>
                     <form className="signup-form">
+                        <div className="signup-name-error">
                             {errors.first_name && 
                             <p className="fname-error">
-                                First name {errors.first_name[0]} 
+                                First name {errors.first_name[0]} &nbsp;
                                 <i class="fa-solid fa-circle-exclamation"></i>
                                 </p> }
                             {errors.last_name && 
                             <p className="lname-error"> 
-                                Last name {errors.last_name[0]} 
+                                Last name {errors.last_name[0]} &nbsp;
                                 <i class="fa-solid fa-circle-exclamation"></i>
                                 </p> }
+                        </div>
                         <label className="signup-input-name">
                             <input 
                                 className="signup-input-f-name" 
@@ -88,8 +91,8 @@ const SignUpForm = () => {
                         </label>
                             {errors.email && 
                             <p className="email-error">
+                                Email {errors.email[0]} &nbsp;
                                 <i class="fa-solid fa-circle-exclamation"></i>
-                                Email {errors.email[0]}
                                 </p>}
                             <input 
                                 className="signup-input-email" 
@@ -99,8 +102,7 @@ const SignUpForm = () => {
                                 onChange={(e) => setEmail(e.target.value)}/>
                             {errors.password && 
                             <p className="password-error">
-                                <i class="fa-solid fa-circle-exclamation"></i>
-                                Password {errors.password[0]}
+                                Password {errors.password[0]} &nbsp;
                                 <i class="fa-solid fa-circle-exclamation"></i>
                                 </p>}
                             <input 
@@ -112,7 +114,7 @@ const SignUpForm = () => {
                         <label className="signup-label-bday"> Birthday </label>
                         {errors.birthday &&
                         <p className="birthday-error"> 
-                            {errors.birthday[0]}
+                            {errors.birthday[0]} &nbsp;
                             <i class="fa-solid fa-circle-exclamation"></i>
                             </p>}
                         <div className="signup-input-bday">
@@ -136,7 +138,7 @@ const SignUpForm = () => {
                         </div>
                         <label className="signup-label-gender">Gender 
                             {errors.gender && <p className="gender-error">
-                                Please choose a gender
+                                Please choose a gender&nbsp;
                                 <i class="fa-solid fa-circle-exclamation"></i>
                                 </p>}
                         </label>

@@ -71,9 +71,11 @@ const PostFormModal = ({modal, post}) => {
     }
 
     return (
+        <>
         <div
             onClick={() => dispatch(closeModal())} 
             className="post-modal-bg">
+                </div>
             <div className="post-form-modal-container">
                 <form className="post-form">
                     <div className="close-modal-button">
@@ -157,7 +159,7 @@ const PostFormModal = ({modal, post}) => {
                     </div>
                 </form>
             </div>
-        </div>
+        </>
     )
 }
 
