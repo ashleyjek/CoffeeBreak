@@ -13,7 +13,6 @@ const SignInForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [inputClass, setInputClass] = useState("");
-    debugger
     console.log(inputClass)
     useEffect(() => {
         if (errors[0]) {
@@ -44,6 +43,7 @@ const SignInForm = () => {
             email: "demo@email.com", 
             password: "password"
         })).then(() => history.push("/"));
+        dispatch(removeErrors());
     };
     
     return (

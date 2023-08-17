@@ -241,6 +241,10 @@
     color: rgb(191, 44, 44);
 }
 
+.password-error {
+    margin-left: 50px;
+}
+
 .email-error {
     margin-left: 20px;
     text-align: left;

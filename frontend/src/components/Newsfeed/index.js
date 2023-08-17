@@ -21,7 +21,7 @@ const Newsfeed = () => {
                         &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-github fa-2xl"></i> &nbsp; GitHub
                         </div>
                     </a>
-                    <a><div className="linked-in-link">
+                    <a href="https://www.linkedin.com/in/ashleyjek/"><div className="linked-in-link">
                         &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-linkedin fa-2xl"></i> &nbsp; LinkedIn
 
                         </div></a>

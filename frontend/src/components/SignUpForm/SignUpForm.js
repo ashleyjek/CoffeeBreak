@@ -62,12 +62,16 @@ const SignUpForm = () => {
                     <h2 className="signup-desc">It's quick and easy.</h2>
                 </div>
                     <form className="signup-form">
-                            {errors.first_name ? 
+                            {errors.first_name && 
                             <p className="fname-error">
-                                First name {errors.first_name[0]} </p> : null}
-                            {errors.last_name ? 
+                                First name {errors.first_name[0]} 
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                </p> }
+                            {errors.last_name && 
                             <p className="lname-error"> 
-                                Last name {errors.last_name[0]} </p> : null}
+                                Last name {errors.last_name[0]} 
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                </p> }
                         <label className="signup-input-name">
                             <input 
                                 className="signup-input-f-name" 
@@ -82,16 +86,23 @@ const SignUpForm = () => {
                                 placeholder="Last Name" 
                                 onChange={(e) => setLastName(e.target.value)}/>
                         </label>
-                            {errors.email ? 
-                            <p className="email-error">Email {errors.email[0]}</p> : null}
+                            {errors.email && 
+                            <p className="email-error">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                Email {errors.email[0]}
+                                </p>}
                             <input 
                                 className="signup-input-email" 
                                 type="text" 
                                 name={email} 
                                 placeholder="Email" 
                                 onChange={(e) => setEmail(e.target.value)}/>
-                            {errors.password ? 
-                            <p className="password-error">Password {errors.password[0]}</p> : null}
+                            {errors.password && 
+                            <p className="password-error">
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                Password {errors.password[0]}
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                </p>}
                             <input 
                                 className="signup-input-password" 
                                 type="password" 
@@ -99,8 +110,11 @@ const SignUpForm = () => {
                                 placeholder="New Password" 
                                 onChange={(e) => setPassword(e.target.value)}/>
                         <label className="signup-label-bday"> Birthday </label>
-                        {errors.birthday ? 
-                        <p className="birthday-error"> {errors.birthday[0]}</p> : null}
+                        {errors.birthday &&
+                        <p className="birthday-error"> 
+                            {errors.birthday[0]}
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            </p>}
                         <div className="signup-input-bday">
                                 <select 
                                     name="month" 
@@ -121,7 +135,10 @@ const SignUpForm = () => {
                                 </select>
                         </div>
                         <label className="signup-label-gender">Gender 
-                            {errors.gender ? <p className="gender-error">Please choose a gender</p> : null}
+                            {errors.gender && <p className="gender-error">
+                                Please choose a gender
+                                <i class="fa-solid fa-circle-exclamation"></i>
+                                </p>}
                         </label>
                         <div className="signup-input-gender">
                                 <label>Female

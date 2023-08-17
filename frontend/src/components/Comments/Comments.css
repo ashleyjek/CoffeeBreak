@@ -339,6 +339,42 @@
     color: rgb(124, 124, 124);
 }
 
+.comment-likes-count i {
+    color: white;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(33, 106, 231);
+    font-size: 13px;
+    border-radius: 50%;
+    padding: 3px 4px 7px 4px;
+    
+}
+
+.comment-likes-count {
+    position: absolute;
+    bottom: 5px;
+    right: -10px;
+    width: 35px;
+    height: 20px;
+    border-radius: 20px;
+    padding: 2px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+}
+
+.comment-likes {
+    display: flex;
+    width: 35px;
+    height: 20px; 
+    color:rgb(112, 112, 112);
+    font-size: 14px;
+}
+
+.comment-likes p {
+    display: flex;
+    align-items: center;
+}
+
 
 
 
