@@ -33,6 +33,7 @@ const SignUpForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(removeErrors());
         dispatch(signUp({
             email: email.toLowerCase(), 
             password: password,
