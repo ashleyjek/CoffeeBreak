@@ -148,7 +148,7 @@
 
 .name-container span {
     font-family: SFProDisplay-Regular, Helvetica, Arial, sans-serif;
-    margin: 27px 3px 0px 3px;
+    padding-top: 20px;
     height: 40px;
 }
 

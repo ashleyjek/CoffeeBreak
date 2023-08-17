@@ -52,7 +52,7 @@ const NavDropDown = () => {
                             <div className="name-container">
                                 <a href={'/users/' + currentUser.id}>
                                     <img src={allUsers[currentUser.id]?.avatarSrc} className="profile-dropdown-icon"></img>
-                                    <span id="profile-name">{currentUser.firstName}</span>
+                                    <span id="profile-name">{currentUser.firstName}</span>&nbsp;
                                     <span id="profile-name">{currentUser.lastName}</span>
                                 </a>
                             </div>

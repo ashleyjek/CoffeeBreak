@@ -22,12 +22,13 @@ const Profile = () => {
     const users = useSelector(state => state.entities.users);
     const [friendStatus, setFriendStatus] = useState("");
     const friendIds = Object.keys(useSelector(state => state.entities.friendships));
-    const posts = useSelector(state => state.entities.posts)
-    const allPosts = Object.values(posts).reverse();
+    const posts = useSelector(state => state.entities.posts);
+    const userPosts = Object.values(posts).filter(post => post.authorId === user.id)
     const allFriends = useSelector(state => state.entities.users)
     // const [avatarSrc, setAvatarSrc] = useState(user?.avatarSrc)
     useEffect(() => {
         dispatch(fetchProfileUser(userId));
+        dispatch(fetchPosts());
         // if (!user.avatarSrc) {
         //     setAvatarSrc("https://coffeebook-dev.s3.amazonaws.com/default+photo.png")
         // } else (
@@ -193,13 +194,12 @@ const Profile = () => {
                                             onClick={() => dispatch(openModal("create-post"))}/>
                                 </div>
                                 : null }
-                                <Posts />
-                                {/* { allPosts.map((post) => {
+                                { userPosts.reverse().map((post) => {
                                     return (<PostItem
                                                 post={post}
                                                 allUsers={allFriends}
                                                 />)
-                                })} */}
+                                })}
                             </div>
                         </div>
                     </div>
