@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { login } from "../../store/session";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
@@ -7,31 +7,34 @@ import { useEffect } from "react";
 import { removeErrors } from "../../store/errors";
 
 const SignInForm = () => {
-    const history = useHistory();
+    const errors = useSelector(state => state.errors);
     const dispatch = useDispatch();
+    const history = useHistory();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
-
+    const [inputClass, setInputClass] = useState("");
+    console.log(inputClass)
     useEffect(() => {
-        removeErrors();
-    }, [dispatch])
-    
+        if (errors[0]) {
+            setInputClass("errors-input-container");
+        } else {
+            setInputClass("signin-input-container")
+        }
+    }, [errors[0]])
     const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(removeErrors());
-        try {
-            await dispatch(login({
+        dispatch(login({
                 email: email.toLowerCase(), 
                 password: password
-            }));
-            history.push("/");
-        }
-        catch (err) { 
-                setErrors(err.errors);
-                setEmail("");
-                setPassword("");
-            };
+            })).then((resp) => {
+                if (resp.ok) {
+                    setEmail("");
+                    setPassword("");
+                    setInputClass("");
+                    dispatch(removeErrors());
+                    history.push("/");
+                }
+        })
     };
     
     
@@ -40,6 +43,7 @@ const SignInForm = () => {
             email: "demo@email.com", 
             password: "password"
         })).then(() => history.push("/"));
+        dispatch(removeErrors());
     };
     
     return (
@@ -47,19 +51,22 @@ const SignInForm = () => {
             <div className="signin-form-container">
                 <div className="signin-form-box">
                     <form className="signin-form">
-                        <p className="login-error">{errors[0]}</p>
+                        <p className={inputClass}>{errors[0]}
                             <input 
-                                className="signin-email-input" 
+                                className="signin-input"
                                 type="text" 
                                 name={email} 
                                 placeholder="Email" 
-                                onChange={(e) => setEmail(e.target.value)}/>
+                                onChange={(e) => setEmail(e.target.value)}/>                              
+                                {errors[0] && <i class="fa-solid fa-triangle-exclamation"></i>}
                             <input 
-                                className="signin-password-input" 
+                                className="signin-input"
                                 type="password" 
                                 name={password} 
                                 placeholder="Password" 
                                 onChange={(e) => setPassword(e.target.value)}/>
+                                {errors[0] && <i class="fa-solid fa-triangle-exclamation"></i>}
+                        </p>
                     </form>
                     <button 
                         className="login-button" 

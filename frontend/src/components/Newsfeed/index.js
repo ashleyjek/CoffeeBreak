@@ -8,8 +8,8 @@ const Newsfeed = () => {
     // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
     const currentUser = useSelector(state => state.session.currentUser);
     const modal = useSelector(state => state.ui);
-    const friendIds = useSelector(state => state.entities.users[currentUser?.id]?.friends);
     const allUsers = useSelector(state => state.entities.users);
+    const friendIds = useSelector(state => state.entities.users[currentUser?.id]?.friends);
 
     return (
         <>
@@ -21,7 +21,7 @@ const Newsfeed = () => {
                         &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-github fa-2xl"></i> &nbsp; GitHub
                         </div>
                     </a>
-                    <a><div className="linked-in-link">
+                    <a href="https://www.linkedin.com/in/ashleyjek/"><div className="linked-in-link">
                         &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-linkedin fa-2xl"></i> &nbsp; LinkedIn
 
                         </div></a>

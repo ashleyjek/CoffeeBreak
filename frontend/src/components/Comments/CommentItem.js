@@ -8,30 +8,28 @@ import { createLike, deleteLike } from '../../store/likes';
 const CommentItem = ({comment, post, allUsers}) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.currentUser);
-    const [openForm, setOpenForm] = useState(false);
     const firstName = allUsers[comment.authorId].firstName;
     const lastName = allUsers[comment.authorId].lastName;
     const allLikes = useSelector(state => state.entities.likes);
-    const commentLikes = comment?.likes?.length;
+    const commentLikes = comment.likes.length;
+    const [openForm, setOpenForm] = useState(false);
     const [liked, setLiked] = useState("");
     const [likeId, setLikeId] = useState(null);
 
+    let commentLike;
     useEffect(() => {
-        comment.likes?.forEach((likeId) => {
-            if (allLikes[likeId]?.likerId === currentUser.id) {
-                setLikeId(likeId)
+        for (let i = 0; i < comment.likes.length; i++) {
+            commentLike = comment.likes[i];
+            if (allLikes[commentLike].likerId === currentUser.id) {
+                setLikeId(commentLike);
                 setLiked(true);
+                break;
             } else {
                 setLiked(false);
             }
-        });
-    }, [commentLikes]);
-    // debugger
-    // const commentLikes = 
-    // const [liked, setLiked] = useState("");
+        };
+    }, []);
 
-    // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-    // const buttonColor = 
     const handleLike = (e) => {
         e.preventDefault();
         if (!liked) {
@@ -70,6 +68,14 @@ const CommentItem = ({comment, post, allUsers}) => {
                         <p className="comment-body">{comment.body}</p>
                     </div>
             )} 
+                    { comment.likes.length > 0 && 
+                    <div className="comment-likes-count">
+                        <div className="comment-likes">
+                            <i class="fa-solid fa-thumbs-up"/> &nbsp;
+                            <p>{comment.likes.length}</p>
+                        </div>
+                    </div>
+                    }
                 <div className="comment-like-button">
                     { liked ? 
                         <button 

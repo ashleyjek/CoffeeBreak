@@ -60,7 +60,8 @@ const Profile = () => {
         //check if request not yet accepted
     // }
 
-  
+    if (!currentUser) return null;
+    
     return (
         <>
         { user ?
@@ -183,7 +184,7 @@ const Profile = () => {
                                 <div className="create-post-container">
                                     <a href={'/users/' + currentUser.id}>
                                         <img 
-                                            src={currentUser?.avatarSrc}
+                                            src={users[currentUser.id]?.avatarSrc}
                                             className="create-post-profile-icon"></img>
                                     </a>
                                         <input 

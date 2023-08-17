@@ -54,7 +54,6 @@ const friendshipsReducer = ( initialState = {}, action) => {
                 // }
             };
         case RECEIVE_USERS:
-            debugger
             return {
                 ...nextState,
                 ...action.friendships

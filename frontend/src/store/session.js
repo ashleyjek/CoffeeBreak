@@ -22,20 +22,18 @@ const storeCurrentUser = (user) => {
 };
 
 export const login = (user) => async (dispatch) => {
-    try {
-        const res = await csrfFetch('/api/session', {
-            method: 'POST',
-            body: JSON.stringify(user)
-        });
-        if (res.ok) {
-            const data = await res.json();
-            if (data.errors) throw data;
-            storeCurrentUser(data.user);
-            dispatch(recieveCurrentUser(data.user));
-            return res;
-        } 
-    } catch (error) {
-        throw error;
+    const res = await csrfFetch('/api/session', {
+        method: 'POST',
+        body: JSON.stringify(user)
+    });
+    const data = await res.json();
+    if (res.ok) {
+        storeCurrentUser(data.user);
+        dispatch(recieveCurrentUser(data.user));
+        return res;
+    } else {
+        dispatch(receiveErrors(data.errors))
+        return res;
     }
 };
 
