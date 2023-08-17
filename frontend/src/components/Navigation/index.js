@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
-import NavDropDown from "./NavDropDown";
-import './Navigation.css';
 import { FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import NavDropDown from "./NavDropDown";
 import SearchBar from "./SearchBar";
+import './Navigation.css';
 
 const Navigation = () => {
     const currentUser = useSelector(state => state.session.currentUser);
@@ -11,12 +12,12 @@ const Navigation = () => {
         <>
             <div className="top-nav-bar">
                 <div className="left-nav-links">
-                    <a href="https://coffeebook.onrender.com/">
+                    <Link to="/">
                         <img 
                             alt="logo-icon" 
                             src="https://live.staticflickr.com/65535/53069030957_d9041f159e_b.jpg" 
                             className="home-page-icon"/> 
-                    </a>
+                    </Link>
                     <SearchBar/>
                 </div>
                 <div 

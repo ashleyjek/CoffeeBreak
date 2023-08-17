@@ -33,7 +33,8 @@ const EditCommentForm = ({post, comment, formType, openForm, setOpenForm}) => {
         }
     }, [formType]);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         dispatch(updateComment({
             id: comment.id,
             body: body,
@@ -50,7 +51,9 @@ const EditCommentForm = ({post, comment, formType, openForm, setOpenForm}) => {
             <form
                 className="edit-comment-form"
                 onSubmit={handleSubmit}>
-                <TextareaAutoSize
+                <input
+                    type="text"
+                    maxlength="150"
                     className="edit-comment-textarea"
                     placeholder="Write a comment..."
                     value={body}

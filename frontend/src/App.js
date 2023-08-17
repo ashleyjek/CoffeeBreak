@@ -8,15 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from './store/users';
 
 function App() {
-  // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
-  // const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.currentUser)
-  // useEffect(() => {
-  //   if(currentUser) {
-  //     dispatch(fetchUser(currentUser));        
-  //     //REMOVE IF LOGIN PAGE BREAKS
-  //   }
-  // }, [])
 
   { currentUser ? <Redirect to="/"/> : <Redirect to="/login"/> }
 

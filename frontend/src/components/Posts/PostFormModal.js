@@ -71,88 +71,92 @@ const PostFormModal = ({modal, post}) => {
     }
 
     return (
-        <div className="post-form-modal-container">
-            <form className="post-form">
-                <div className="close-modal-button">
-                    <button onClick={() => dispatch(closeModal())}>X</button>
-                </div>
-                <div className="form-header">
-                    {modal === "edit-post" ? 
-                        (<label>Edit post</label>) : 
-                        (<label>Create post</label>)}
-                </div>
-                <div className="form-sub-header">
-                    <img 
-                        src={allUsers[currentUser.id]?.avatarSrc}
-                        className="profile-avatar"></img>
-                    <p className="form-user-name">
-                        {currentUser.firstName} {currentUser.lastName}
-                    </p>
-                </div>
-                { body === "" ? (
-                    <div className="form-body">
-                        <TextareaAutoSize 
-                            className="form-textarea"
-                            minRows="1"
-                            maxRows="6" 
-                            name="body" 
-                            placeholder={`What's on your mind, ${currentUser.firstName}?`} 
-                            value={body} 
-                            onChange={(e) => setBody(e.target.value)}/>
+        <div
+            onClick={() => dispatch(closeModal())} 
+            className="post-modal-bg">
+            <div className="post-form-modal-container">
+                <form className="post-form">
+                    <div className="close-modal-button">
+                        <button onClick={() => dispatch(closeModal())}>X</button>
                     </div>
-                ) : <div className="form-body">
-                        <TextareaAutoSize 
-                            className="form-textarea" 
-                            minRows="1" 
-                            maxRows="6" 
-                            name="body" 
-                            value={body} 
-                            onChange={(e) => setBody(e.target.value)}/>
-                    </div> }
-                <div className="form-img-container">
-                    { photoUploader ? 
-                    <form className="photo-uploader-container">
-                        <div className="photo-preview-container">
-                            { preview ? preview : 
-                            <i class="fa-solid fa-arrow-up-from-bracket fa-2xl"></i>
-                            }
+                    <div className="form-header">
+                        {modal === "edit-post" ? 
+                            (<label>Edit post</label>) : 
+                            (<label>Create post</label>)}
+                    </div>
+                    <div className="form-sub-header">
+                        <img 
+                            src={allUsers[currentUser.id]?.avatarSrc}
+                            className="profile-avatar"></img>
+                        <p className="form-user-name">
+                            {currentUser.firstName} {currentUser.lastName}
+                        </p>
+                    </div>
+                    { body === "" ? (
+                        <div className="form-body">
+                            <TextareaAutoSize 
+                                className="form-textarea"
+                                minRows="1"
+                                maxRows="6" 
+                                name="body" 
+                                placeholder={`What's on your mind, ${currentUser.firstName}?`} 
+                                value={body} 
+                                onChange={(e) => setBody(e.target.value)}/>
                         </div>
-                            <input 
-                                ref={originalRef}
-                                className="photo-uploader"
-                                onChange={handleFile}
-                                type="file">
-                            </input>
-                        <button 
-                            className="remove-photo-button"
-                            onClick={handleRemovePhoto}>
-                                <i class="fa-solid fa-circle-xmark fa-2xl"/></button>
-                    </form>
-                    : null }
-                </div>
-                <div className="form-icon-container">
-                    <div className="icons-label">
-                        Add to your post
+                    ) : <div className="form-body">
+                            <TextareaAutoSize 
+                                className="form-textarea" 
+                                minRows="1" 
+                                maxRows="6" 
+                                name="body" 
+                                value={body} 
+                                onChange={(e) => setBody(e.target.value)}/>
+                        </div> }
+                    <div className="form-img-container">
+                        { photoUploader ? 
+                        <form className="photo-uploader-container">
+                            <div className="photo-preview-container">
+                                { preview ? preview : 
+                                <i class="fa-solid fa-arrow-up-from-bracket fa-2xl"></i>
+                                }
+                            </div>
+                                <input 
+                                    ref={originalRef}
+                                    className="photo-uploader"
+                                    onChange={handleFile}
+                                    type="file">
+                                </input>
+                            <button 
+                                className="remove-photo-button"
+                                onClick={handleRemovePhoto}>
+                                    <i class="fa-solid fa-circle-xmark fa-2xl"/></button>
+                        </form>
+                        : null }
                     </div>
-                    <img
-                        onClick={() => setPhotoUploader(true)} 
-                        src="https://static.xx.fbcdn.net/rsrc.php/v3/yQ/r/74AG-EvEtBm.png"/>
-                </div>
-                <div className="form-submit">
-                    { body === "" && photoFile === null ? 
-                    (<button 
-                        className="disabled-button" 
-                        type="button" 
-                        disabled>
-                            {buttonLabel}
-                        </button>) :
-                    (<button 
-                        type="submit" 
-                        onClick={handleSubmit}>
-                            {buttonLabel}
-                        </button> )}
-                </div>
-            </form>
+                    <div className="form-icon-container">
+                        <div className="icons-label">
+                            Add to your post
+                        </div>
+                        <img
+                            onClick={() => setPhotoUploader(true)} 
+                            src="https://static.xx.fbcdn.net/rsrc.php/v3/yQ/r/74AG-EvEtBm.png"/>
+                    </div>
+                    <div className="form-submit">
+                        { body === "" && photoFile === null ? 
+                        (<button 
+                            className="disabled-button" 
+                            type="button" 
+                            disabled>
+                                {buttonLabel}
+                            </button>) :
+                        (<button 
+                            type="submit" 
+                            onClick={handleSubmit}>
+                                {buttonLabel}
+                            </button> )}
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }

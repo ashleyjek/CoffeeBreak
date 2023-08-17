@@ -8,17 +8,16 @@ import { createLike, deleteLike } from '../../store/likes';
 const CommentItem = ({comment, post, allUsers}) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.currentUser);
-    const firstName = allUsers[comment.authorId].firstName;
-    const lastName = allUsers[comment.authorId].lastName;
+    const firstName = allUsers[comment.authorId]?.firstName;
+    const lastName = allUsers[comment.authorId]?.lastName;
     const allLikes = useSelector(state => state.entities.likes);
-    const commentLikes = comment.likes.length;
     const [openForm, setOpenForm] = useState(false);
     const [liked, setLiked] = useState("");
     const [likeId, setLikeId] = useState(null);
 
     let commentLike;
     useEffect(() => {
-        for (let i = 0; i < comment.likes.length; i++) {
+        for (let i = 0; i < comment.likes?.length; i++) {
             commentLike = comment.likes[i];
             if (allLikes[commentLike].likerId === currentUser.id) {
                 setLikeId(commentLike);
@@ -28,7 +27,7 @@ const CommentItem = ({comment, post, allUsers}) => {
                 setLiked(false);
             }
         };
-    }, []);
+    }, [allLikes]);
 
     const handleLike = (e) => {
         e.preventDefault();
@@ -68,7 +67,7 @@ const CommentItem = ({comment, post, allUsers}) => {
                         <p className="comment-body">{comment.body}</p>
                     </div>
             )} 
-                    { comment.likes.length > 0 && 
+                    { comment.likes?.length > 0 && !openForm && 
                     <div className="comment-likes-count">
                         <div className="comment-likes">
                             <i class="fa-solid fa-thumbs-up"/> &nbsp;
@@ -76,6 +75,7 @@ const CommentItem = ({comment, post, allUsers}) => {
                         </div>
                     </div>
                     }
+                { !openForm && 
                 <div className="comment-like-button">
                     { liked ? 
                         <button 
@@ -88,6 +88,7 @@ const CommentItem = ({comment, post, allUsers}) => {
                             >Like</button>    
                     }
                 </div>
+                }    
             </div>
             { comment.authorId === currentUser.id ? (
                 <CommentMenu 
