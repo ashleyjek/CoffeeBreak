@@ -13,7 +13,6 @@ const SignInForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [inputClass, setInputClass] = useState("");
-    console.log(inputClass)
     useEffect(() => {
         if (errors[0]) {
             setInputClass("errors-input-container");
