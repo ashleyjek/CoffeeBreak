@@ -42,6 +42,15 @@ export const fetchPosts = () => async (dispatch) => {
     }
 };
 
+export const fetchUserPosts = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/${userId}/posts`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(receivePosts(data.posts, data.comments, data.likes));
+        return res;
+    }
+};
+
 export const fetchPost = (post) => async (dispatch) => {
     const res = await csrfFetch(`/api/posts/${post.id}`);
     if (res.ok) {

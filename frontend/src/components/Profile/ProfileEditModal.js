@@ -29,24 +29,33 @@ const ProfileEditModal = ({currentUser}) => {
     };
 
     return (
-        <form className="edit-profile-form-container">
-            <div className="edit-profile-form-header">
-                <h1>Edit Bio</h1>
-                <button><i class="fa-solid fa-circle-xmark"></i></button>
+        <>
+            <div 
+                onClick={() => dispatch(closeModal())}
+                className="edit-bio-modal-bg">
             </div>
-            <div className="edit-profile-body-container">
-                <TextareaAutoSize
-                    minRows="4"
-                    maxRows="10"
-                    type="text"
-                    placeholder={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                    className="edit-bio-input"/>
-            </div>
-            <button 
-                onClick={handleSubmit}
-                className="edit-profile-submit">Save</button>
-        </form>
+            <form className="edit-profile-form-container">
+                <div className="edit-profile-form-header">
+                    <h1>Edit Bio</h1>
+                    <button
+                        onClick={() => dispatch(closeModal())}>
+                            <i class="fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div>
+                <div className="edit-profile-body-container">
+                    <TextareaAutoSize
+                        minRows="4"
+                        maxRows="10"
+                        type="text"
+                        value={bio}
+                        onChange={(e) => setBio(e.target.value)}
+                        className="edit-bio-input"/>
+                </div>
+                <button 
+                    onClick={handleSubmit}
+                    className="edit-profile-submit">Save</button>
+            </form>
+        </>
     )
 }
 

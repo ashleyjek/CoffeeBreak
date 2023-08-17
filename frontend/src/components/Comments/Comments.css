@@ -20,7 +20,6 @@
     align-items: center;
     border-radius: 20px;
     border-color: transparent;
-    padding-left: 15px;
     color: black;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     font-size: 14px; 
@@ -37,7 +36,7 @@
     margin-left: 10px;
     vertical-align: bottom;
     width: 530px;
-    padding-right: 21px;
+    padding-right: 26px;
 }
 
 
@@ -83,8 +82,8 @@
     position: absolute;
     border-radius: 20px;
     border-color: transparent;
-    right: 12px;
-    bottom: 20px;
+    right: 0;
+    bottom: 18px;
     color: rgb(112, 112, 112);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
     font-size: 14px;
@@ -344,7 +343,7 @@
     margin: 0;
     padding: 0;
     background-color: rgb(33, 106, 231);
-    font-size: 13px;
+    font-size: 12px;
     border-radius: 50%;
     padding: 3px 4px 7px 4px;
     

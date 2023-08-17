@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState} from "react"; 
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { logout } from "../../store/session";
 import './Navigation.css';
 import { FaDoorOpen } from "react-icons/fa";
@@ -47,22 +47,15 @@ const NavDropDown = () => {
             {showMenu && (
                 <ul className="profile-dropdown-container">
                     <li key="p-link" className="profile-links-container">
-                        <div className="profile-name-container">
+                        <p className="profile-name-container">
                         {currentUser && (
-                            <div className="name-container">
-                                <a href={'/users/' + currentUser.id}>
-                                    <img src={allUsers[currentUser.id]?.avatarSrc} className="profile-dropdown-icon"></img>
-                                    <span id="profile-name">{currentUser.firstName}</span>
-                                    <span id="profile-name">{currentUser.lastName}</span>
-                                </a>
-                            </div>
+                            <Link to={'/users/' + currentUser.id} className="name-container">
+                                        <img src={allUsers[currentUser.id]?.avatarSrc} className="profile-dropdown-icon"></img>
+                                        <span id="profile-name">{currentUser.firstName}</span>&nbsp;
+                                        <span id="profile-name">{currentUser.lastName}</span>
+                            </Link>
                             )}
-                            <div className="view-profile-text-container">
-                                <a href={'/users/' + currentUser.id}>
-                                    <div className="view-profile-text">View your Profile</div>
-                                </a>
-                            </div>
-                        </div>
+                        </p>
                     </li>
                     <li key="logout-button" className="logout-tab">
                         <div className="logout-button-container">
