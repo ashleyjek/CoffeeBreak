@@ -1,6 +1,6 @@
 json.user do
     json.extract! @user, :id, :email, :first_name, :last_name, :birthday, :gender, :bio
-    json.avatarSrc @user.avatar.attached? ? @user.avatar.url : nil
+    json.avatarSrc @user.avatar.attached? ? @user.avatar.url : "https://coffeebook-dev.s3.amazonaws.com/default+photo.png"
     json.coverSrc @user.cover.attached? ? @user.cover.url : nil
 end
 
@@ -10,7 +10,7 @@ json.users do
     friends.each do |friend|
         json.set! friend.id do 
             json.extract! friend, :id, :email, :first_name, :last_name, :birthday, :gender, :bio
-            json.avatarSrc friend.avatar.attached? ? friend.avatar.url : nil
+            json.avatarSrc friend.avatar.attached? ? friend.avatar.url : "https://coffeebook-dev.s3.amazonaws.com/default+photo.png"
             json.coverSrc friend.cover.attached? ? friend.cover.url : nil
         end
     end

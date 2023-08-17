@@ -17,10 +17,19 @@
     width: auto;
 }
 
+.journease-link img {
+    height: 40px;
+    width: auto;
+}
+
+.linked-in-link i {
+    color: rgb(33, 106, 231);
+}
+
 .newsfeed-links-container {
     margin-top: 75px;
     width: 380px;
-    height: 255px;
+    height: 310px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);

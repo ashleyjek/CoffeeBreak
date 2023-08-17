@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { openModal } from "../../store/ui";
 import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt, FaPersonBooth, FaUser } from "react-icons/fa";
 import { removeFriend, createFriend } from "../../store/friendships";
+import { closeModal } from "../../store/ui";
+import moment from "moment-timezone";
 import "../Profile/Profile.css"
 import PostItem from "../Posts/PostItem";
 import { fetchPosts } from "../../store/posts";
@@ -22,18 +24,13 @@ const Profile = () => {
     const users = useSelector(state => state.entities.users);
     const [friendStatus, setFriendStatus] = useState("");
     const friendIds = Object.keys(useSelector(state => state.entities.friendships));
-    const posts = useSelector(state => state.entities.posts)
-    const allPosts = Object.values(posts).reverse();
+    const posts = useSelector(state => state.entities.posts);
+    const userPosts = Object.values(posts).filter(post => post.authorId === user.id)
     const allFriends = useSelector(state => state.entities.users)
-    // const [avatarSrc, setAvatarSrc] = useState(user?.avatarSrc)
+
     useEffect(() => {
         dispatch(fetchProfileUser(userId));
-        // if (!user.avatarSrc) {
-        //     setAvatarSrc("https://coffeebook-dev.s3.amazonaws.com/default+photo.png")
-        // } else (
-        //     setAvatarSrc(user.avatarSrc)
-        // )
-         //fetch user friends method?
+        dispatch(fetchPosts());
     }, [])
 
     useEffect(() => {
@@ -66,14 +63,15 @@ const Profile = () => {
         <>
         { user ?
         <>
-            { modal.modal ? 
-                <div className="post-form-modal-bg">
+            { modal.modal && 
+            <div 
+                className="showpage-modal-bg">
                     <Modal 
                         modal={modal.modal}
                         post={modal.post} 
                         user={modal.user} />
-                </div> 
-            : null }
+            </div>
+            }
             <Navigation />
             <div className="user-profile-bg">
                 <div className="profile-header-bg">
@@ -155,7 +153,7 @@ const Profile = () => {
                                         </div>
                                         <div classname="details-info-container">
                                             <p className="user-info">{user.email}</p>
-                                            <p className="user-info">{user.birthday}</p>
+                                            <p className="user-info">{moment(user.birthday).format('MMMM d, yyyy')}</p>
                                         </div>
                                     </div>
                             </div>
@@ -193,13 +191,12 @@ const Profile = () => {
                                             onClick={() => dispatch(openModal("create-post"))}/>
                                 </div>
                                 : null }
-                                <Posts />
-                                {/* { allPosts.map((post) => {
+                                { userPosts.reverse().map((post) => {
                                     return (<PostItem
                                                 post={post}
                                                 allUsers={allFriends}
                                                 />)
-                                })} */}
+                                })}
                             </div>
                         </div>
                     </div>

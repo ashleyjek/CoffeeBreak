@@ -21,7 +21,7 @@ const PostItem = ({post, allUsers}) => {
 
     let eachLikeId;
     useEffect(() => {
-        for (let i = 0; i < post.likes.length; i ++) {
+        for (let i = 0; i < post.likes?.length; i ++) {
             eachLikeId = post.likes[i];
             if (allLikes[eachLikeId].likerId === currentUser.id) {
                 setLikeId(eachLikeId)
@@ -77,8 +77,8 @@ const PostItem = ({post, allUsers}) => {
                     </a>
                     <div className="post-details-container">
                         <div className="post-author">
-                            {allUsers[post?.authorId].firstName} &nbsp;
-                            {allUsers[post?.authorId].lastName}
+                            {allUsers[post.authorId]?.firstName} &nbsp;
+                            {allUsers[post.authorId]?.lastName}
                             </div>
                         <div className="post-date-time">
                             {timeStamp}&nbsp;<i class="fa-solid fa-earth-americas"></i></div>

@@ -25,6 +25,11 @@ const Newsfeed = () => {
                         &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-linkedin fa-2xl"></i> &nbsp; LinkedIn
 
                         </div></a>
+                    <a href="https://journease.onrender.com/">
+                        <div className="journease-link">
+                        &nbsp;&nbsp;<img src="https://journease-artemplv.s3.amazonaws.com/public/favicon.png"></img>&nbsp;Journease
+                        </div>
+                    </a>
                     <a href="https://ashleyjek.github.io/WhaleWatch/">
                         <div className="whale-watch-link">
                         &nbsp;<img src="https://coffeebook-dev.s3.amazonaws.com/whale+icon.png"></img>WhaleWatch
