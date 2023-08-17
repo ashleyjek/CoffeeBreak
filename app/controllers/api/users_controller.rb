@@ -30,7 +30,7 @@ class Api::UsersController < ApplicationController
     def search
         query = params[:query]
 
-        @users = User.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{query}%", "%#{query}%")
+        @users = User.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{query}%", "%#{query}%").limit(8)
 
         render :search
     end

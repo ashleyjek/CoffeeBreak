@@ -44,7 +44,6 @@ const SearchBar = () => {
                 className="home-search-bar"
                 placeholder="Search Coffeebook"
                 value={searchText}/>
-            {/* <button id="search-buton">Search</button> */}
             { searchText && searchResults && 
                 <ul 
                     id="search-dropdown">
