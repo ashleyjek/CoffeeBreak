@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import Comments from '../Comments';
-import PostsIndexHeader from './PostsIndexHeader';
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteLike, createLike } from '../../store/likes';
 import { FaThumbsUp } from 'react-icons/fa';
+import moment from 'moment-timezone';
+import PostsIndexHeader from './PostsIndexHeader';
+import Comments from '../Comments';
 import './Posts.css';
 
 const PostItem = ({post, allUsers}) => {
@@ -16,6 +17,7 @@ const PostItem = ({post, allUsers}) => {
     const [likeId, setLikeId] = useState(null);
     const [numLikes, setNumLikes] = useState(postLikes);
     const [liked, setLiked] = useState(null);
+    const [timeStamp, setTimeStamp] = useState("");
 
     let eachLikeId;
     useEffect(() => {
@@ -29,6 +31,7 @@ const PostItem = ({post, allUsers}) => {
                 setLiked(false);
             }
         }
+        setTimeStamp(moment(post.createdAt).format('MMMM d [at] h:MM A ·'))
     }, [post]);
 
     const handleRefClick = () => {
@@ -55,7 +58,6 @@ const PostItem = ({post, allUsers}) => {
             .then((resp) => { if (resp.ok) {
                 setLiked(false);
                 setNumLikes(numLikes - 1);
-                console.log(numLikes)
             }})
         }
     }
@@ -79,7 +81,7 @@ const PostItem = ({post, allUsers}) => {
                             {allUsers[post?.authorId].lastName}
                             </div>
                         <div className="post-date-time">
-                            {post.createdAt}</div>
+                            {timeStamp}&nbsp;<i class="fa-solid fa-earth-americas"></i></div>
                         </div>
                     </div>
                     <div className="post-body-container">
