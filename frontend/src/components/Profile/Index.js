@@ -153,7 +153,7 @@ const Profile = () => {
                                         </div>
                                         <div classname="details-info-container">
                                             <p className="user-info">{user.email}</p>
-                                            <p className="user-info">{moment(user.birthday).format('MMMM d, yyyy')}</p>
+                                            <p className="user-info">{moment(user.birthday).format('MMMM DD, yyyy')}</p>
                                         </div>
                                     </div>
                             </div>
