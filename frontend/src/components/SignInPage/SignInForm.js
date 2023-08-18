@@ -39,7 +39,7 @@ const SignInForm = () => {
     
     const handleDemoUser = () => {
         dispatch(login({
-            email: "demo@email.com", 
+            email: "cat@email.com", 
             password: "password"
         })).then(() => history.push("/"));
         dispatch(removeErrors());
