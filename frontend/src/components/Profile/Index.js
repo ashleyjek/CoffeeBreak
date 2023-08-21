@@ -1,18 +1,16 @@
 import Modal from "../Modal/Modal";
 import Navigation from '../Navigation/index';
-import Posts from "../Posts/index";
+import PostItem from "../Posts/PostItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { fetchProfileUser } from '../../store/users'
 import { useEffect, useState } from "react";
 import { openModal } from "../../store/ui";
-import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt, FaPersonBooth, FaUser } from "react-icons/fa";
+import { fetchProfileUser } from '../../store/users'
+import { fetchPosts } from "../../store/posts";
 import { removeFriend, createFriend } from "../../store/friendships";
-import { closeModal } from "../../store/ui";
+import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt, FaPersonBooth, FaUser } from "react-icons/fa";
 import moment from "moment-timezone";
 import "../Profile/Profile.css"
-import PostItem from "../Posts/PostItem";
-import { fetchPosts } from "../../store/posts";
 
 const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser)
@@ -25,7 +23,7 @@ const Profile = () => {
     const [friendStatus, setFriendStatus] = useState("");
     const friendIds = Object.keys(useSelector(state => state.entities.friendships));
     const posts = useSelector(state => state.entities.posts);
-    const userPosts = Object.values(posts).filter(post => post.authorId === user.id)
+    const userPosts = Object.values(posts)?.filter(post => post.authorId === user.id)
     const allFriends = useSelector(state => state.entities.users)
 
     useEffect(() => {
