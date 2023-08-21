@@ -119,7 +119,7 @@ const PostFormModal = ({modal, post}) => {
                         <form className="photo-uploader-container">
                             <div className="photo-preview-container">
                                 { preview ? preview : 
-                                <i class="fa-solid fa-arrow-up-from-bracket fa-2xl"></i>
+                                <i className="fa-solid fa-arrow-up-from-bracket fa-2xl"></i>
                                 }
                             </div>
                                 <input 
@@ -131,7 +131,7 @@ const PostFormModal = ({modal, post}) => {
                             <button 
                                 className="remove-photo-button"
                                 onClick={handleRemovePhoto}>
-                                    <i class="fa-solid fa-circle-xmark fa-2xl"/></button>
+                                    <i className="fa-solid fa-circle-xmark fa-2xl"/></button>
                         </form>
                         : null }
                     </div>

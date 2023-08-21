@@ -14,6 +14,7 @@ const CommentItem = ({comment, post, allUsers}) => {
     const [openForm, setOpenForm] = useState(false);
     const [liked, setLiked] = useState("");
     const [likeId, setLikeId] = useState(null);
+    const [likePending, setLikePending] = useState(false);
 
     let commentLike;
     useEffect(() => {
@@ -31,17 +32,20 @@ const CommentItem = ({comment, post, allUsers}) => {
 
     const handleLike = (e) => {
         e.preventDefault();
-        if (!liked) {
+        if (!liked && !likePending) {
+            setLikePending(true);
             dispatch(createLike({
                 likeableType: "Comment",
                 likeableId: comment.id
             })).then((resp) => { if (resp.ok) {
                 setLiked(true);
+                setLikePending(false);
             }})
-        } else {
+        } else if (!likePending) {
             dispatch(deleteLike(allLikes[likeId]))
             .then((resp) => { if (resp.ok) {
                 setLiked(false);
+                setLikePending(false);
             }})
         }
     }
@@ -70,7 +74,7 @@ const CommentItem = ({comment, post, allUsers}) => {
                     { comment.likes?.length > 0 && !openForm && 
                     <div className="comment-likes-count">
                         <div className="comment-likes">
-                            <i class="fa-solid fa-thumbs-up"/> &nbsp;
+                            <i className="fa-solid fa-thumbs-up"/> &nbsp;
                             <p>{comment.likes.length}</p>
                         </div>
                     </div>
@@ -90,13 +94,13 @@ const CommentItem = ({comment, post, allUsers}) => {
                 </div>
                 }    
             </div>
-            { comment.authorId === currentUser.id ? (
+            { comment.authorId === currentUser.id && (
                 <CommentMenu 
                     comment={comment} 
                     openForm={openForm} 
                     setOpenForm={setOpenForm}
                     />
-            ) : null }
+            )}
         </div>     
         </>
     )

@@ -1,10 +1,8 @@
 
     @posts.each do |post|
-        # post_like_ids = []
         post_likes = post.likes.pluck(:id)
         json.likes do 
             post.likes.each do |like|
-                # post_like_ids << like.id
                 json.set! like.id do 
                     json.extract! like, :id, :liker_id, :likeable_type, :likeable_id
                 end

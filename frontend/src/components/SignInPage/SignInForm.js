@@ -57,14 +57,14 @@ const SignInForm = () => {
                                 name={email} 
                                 placeholder="Email" 
                                 onChange={(e) => setEmail(e.target.value)}/>                              
-                                {errors[0] && <i class="fa-solid fa-triangle-exclamation"></i>}
+                                {errors[0] && <i className="fa-solid fa-triangle-exclamation"></i>}
                             <input 
                                 className="signin-input"
                                 type="password" 
                                 name={password} 
                                 placeholder="Password" 
                                 onChange={(e) => setPassword(e.target.value)}/>
-                                {errors[0] && <i class="fa-solid fa-triangle-exclamation"></i>}
+                                {errors[0] && <i className="fa-solid fa-triangle-exclamation"></i>}
                         </p>
                     </form>
                     <button 

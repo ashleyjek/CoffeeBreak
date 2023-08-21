@@ -53,7 +53,7 @@ const EditCommentForm = ({post, comment, formType, openForm, setOpenForm}) => {
                 onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    maxlength="150"
+                    maxLength="150"
                     className="edit-comment-textarea"
                     placeholder="Write a comment..."
                     value={body}

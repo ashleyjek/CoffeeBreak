@@ -2,8 +2,8 @@ class Api::FriendshipsController < ApplicationController
     wrap_parameters include: Friendship.attribute_names + ['friend_id']
 
     def index
-        # @friends = current_user.friends
-        @friendships = Friendship.all
+        @friendships = current_user.friendships
+        # @friendships = Friendship.all
         render :index
     end
 

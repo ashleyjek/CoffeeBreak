@@ -33,7 +33,7 @@ return (
             className="create-comment-avatar"></img>
         <TextareaAutoSize
             className="create-comment-textarea"
-            maxlength="150"
+            maxLength="150"
             maxRows="6" 
             minRows="1"
             ref={inputRef}

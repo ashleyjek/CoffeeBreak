@@ -8,10 +8,11 @@ import '../SignUpForm/SignUpModal.css';
 const SignInPage = ({currentUser}) => {
     const history = useHistory();
     const modal = useSelector(state => state.ui.modal);
+    
     if (currentUser) {
-        history.push("/")
+        history.push("/");
     }
-
+ 
     return (
     <>
         <div className="signin-container">

@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf"
 import { receiveErrors } from "./errors"
 import { RECEIVE_POSTS } from "./posts";
 import { RECEIVE_LIKE, REMOVE_LIKE } from "./likes";
+import { RECEIVE_PROFILE_USER } from "./users";
 
 const RECEIVE_COMMENTS = 'comments/RECEIVE_COMMENTS';
 const RECEIVE_COMMENT = 'comments/RECEIVE_COMMENT';
@@ -116,6 +117,11 @@ const commentsReducer = ( state = {}, action ) => {
     Object.freeze(state);
     const nextState = {...state};
     switch (action.type) {
+        case RECEIVE_PROFILE_USER:
+            return {
+                ...nextState,
+                ...action.comments
+            }
         case RECEIVE_COMMENT:
             return {
                 ...nextState,

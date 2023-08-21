@@ -15,11 +15,13 @@ const receiveUser = (user) => ({
     user
 })
 
-const receiveProfileUser = (user, friendships, posts) => ({
+const receiveProfileUser = (user, friendships, posts, comments, likes) => ({
     type: RECEIVE_PROFILE_USER,
     user,
     friendships,
-    posts
+    posts,
+    comments,
+    likes
 })
 
 export const getUsers = (state) => {
@@ -51,7 +53,6 @@ export const updateUserBio = (user) => async (dispatch) => {
         body: JSON.stringify(user)
     });
     const data = await res.json();
-    // debugger
     if (res.ok) {
         dispatch(receiveProfileUser(data.user));
         return res;
@@ -72,9 +73,14 @@ export const fetchUser = (user) => async (dispatch) => {
 
 export const fetchProfileUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`);
+    const data = await res.json();
     if (res.ok) {
-        const data = await res.json();
-        dispatch(receiveProfileUser(data.user, data.friendships, data.posts));
+        dispatch(receiveProfileUser(
+                data.userS, 
+                data.friendships, 
+                data.posts, 
+                data.comments,
+                data.likes));
         dispatch(receiveUsers(data.users))
         return res;
     }
@@ -85,7 +91,6 @@ export const fetchUsers = () => async (dispatch) => {
     const data = await res.json();
     if (res.ok) {
         dispatch(receiveUsers(data.users, data.friendships));
-        
         return res;
     }
 }
@@ -102,7 +107,7 @@ const usersReducer = ( state = {}, action ) => {
         case RECEIVE_PROFILE_USER:
             return {
                 ...nextState,
-                [action.user.id]: action.user
+                ...action.users
             }
         case RECEIVE_USERS:
             return {
@@ -113,5 +118,4 @@ const usersReducer = ( state = {}, action ) => {
             return nextState;
     }
 }
-
 export default usersReducer;
