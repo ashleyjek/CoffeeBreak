@@ -9,18 +9,19 @@ const Comments = ({post, allUsers, inputRef, handleRefClick, currentUser}) => {
     const modal = useSelector(state => state.ui);
     return (
         <>
-           {postComments.map((comment) => 
             <div className="all-comments-container">
-            <div key={comment.id} 
-                className="comments-show-container">
+                <div
+                    className="comments-show-container">
+           {postComments.map((comment) => 
                 <CommentItem 
+                    key={comment.id}
                     currentUser={currentUser}
                     post={post} 
                     comment={comment}
                     allUsers={allUsers}/>
+                    )}
                 </div>
             </div>
-           )}
             <div className="create-comment-container">
                 <CreateCommentForm 
                     currentUser={currentUser}

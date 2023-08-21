@@ -3,9 +3,7 @@ import SignInPage from './components/SignInPage/Index';
 import SplashPage from './components/Splash/Index';
 import { Redirect, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import Profile from './components/Profile/Index.js';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser } from './store/users';
+import { useSelector } from 'react-redux';
 
 function App() {
   const currentUser = useSelector(state => state.session.currentUser)

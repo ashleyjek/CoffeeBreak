@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Navigation from "../Navigation/index";
+import Navigation from "../Navigation/Index";
 import Newsfeed from "../Newsfeed";
 import { useEffect } from "react";
 import { fetchUser } from "../../store/users";
@@ -13,7 +13,7 @@ const SplashPage = () => {
     
     if (!currentUser) {
         history.push("/login");
-    } 
+    }
     
     return (
         <div className="splash-index">

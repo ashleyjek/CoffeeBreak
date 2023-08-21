@@ -39,7 +39,7 @@ const ProfileEditModal = ({currentUser}) => {
                     <h1>Edit Bio</h1>
                     <button
                         onClick={() => dispatch(closeModal())}>
-                            <i class="fa-solid fa-circle-xmark"></i>
+                            <i className="fa-solid fa-circle-xmark"></i>
                     </button>
                 </div>
                 <div className="edit-profile-body-container">

@@ -5,7 +5,7 @@ import { deleteLike, createLike } from '../../store/likes';
 import { FaThumbsUp } from 'react-icons/fa';
 import moment from 'moment-timezone';
 import PostsIndexHeader from './PostsIndexHeader';
-import Comments from '../Comments';
+import Comments from '../Comments/Index';
 import './Posts.css';
 
 const PostItem = ({post, allUsers}) => {
@@ -18,6 +18,7 @@ const PostItem = ({post, allUsers}) => {
     const [numLikes, setNumLikes] = useState(postLikes);
     const [liked, setLiked] = useState(null);
     const [timeStamp, setTimeStamp] = useState("");
+    const [likePending, setLikePending] = useState(false);
 
     let eachLikeId;
     useEffect(() => {
@@ -44,20 +45,23 @@ const PostItem = ({post, allUsers}) => {
 
     const handleLike = (e) => {
         e.preventDefault();
-        if (!liked) {
+        if (!liked && !likePending) {
+            setLikePending(true);
             dispatch(createLike({
                 likeableType: "Post",
                 likeableId: post.id
             })).then((resp) => { if (resp.ok) {
                 setLiked(true);
                 setNumLikes(numLikes + 1);
-
+                setLikePending(false);
             }})
-        } else {
+        } else if (!likePending) {
+            setLikePending(true);
             dispatch(deleteLike(allLikes[likeId]))
             .then((resp) => { if (resp.ok) {
                 setLiked(false);
                 setNumLikes(numLikes - 1);
+                setLikePending(false);
             }})
         }
     }
@@ -81,7 +85,9 @@ const PostItem = ({post, allUsers}) => {
                             {allUsers[post.authorId]?.lastName}
                             </div>
                         <div className="post-date-time">
-                            {timeStamp}&nbsp;<i class="fa-solid fa-earth-americas"></i></div>
+                            {timeStamp}&nbsp;
+                            <i className="fa-solid fa-earth-americas"></i>
+                            </div>
                         </div>
                     </div>
                     <div className="post-body-container">

@@ -44,8 +44,8 @@ export const fetchPosts = () => async (dispatch) => {
 
 export const fetchUserPosts = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/${userId}/posts`);
+    const data = await res.json();
     if (res.ok) {
-        const data = await res.json();
         dispatch(receivePosts(data.posts, data.comments, data.likes));
         return res;
     }
@@ -137,7 +137,6 @@ const postsReducer = ( state = {}, action ) => {
                 }
             };
         case REMOVE_LIKE:
-            // debugger
             if (action.like.likeableType === "Post") {
                 return {
                     ...nextState,

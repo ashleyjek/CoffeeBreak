@@ -1,15 +1,22 @@
-import Posts from '../Posts/index';
+import Posts from '../Posts/Index';
 import Modal from '../Modal/Modal'
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import './Newsfeed.css'
 import { FaCoffee, FaGithub, FaLinkedin, FaUserFriends } from 'react-icons/fa';
+import { useEffect } from 'react';
+import { fetchFriendships } from '../../store/friendships';
+import { useDispatch } from 'react-redux';
 
 const Newsfeed = () => {
-    // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.currentUser);
     const modal = useSelector(state => state.ui);
     const allUsers = useSelector(state => state.entities.users);
-    const friendIds = useSelector(state => state.entities.users[currentUser?.id]?.friends);
+    const friends = Object.values(useSelector(state => state.entities.friendships))
+
+    useEffect(() => {
+        dispatch(fetchFriendships());
+    }, []);
 
     return (
         <>
@@ -18,11 +25,11 @@ const Newsfeed = () => {
                     <h1 className="newsfeed-links-header">&nbsp; <FaCoffee/> &nbsp; Links</h1>
                     <a href="https://github.com/ashleyjek">
                         <div className="git-hub-link">
-                        &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-github fa-2xl"></i> &nbsp; GitHub
+                        &nbsp;&nbsp;&nbsp; <i className="fa-brands fa-github fa-2xl"></i> &nbsp; GitHub
                         </div>
                     </a>
                     <a href="https://www.linkedin.com/in/ashleyjek/"><div className="linked-in-link">
-                        &nbsp;&nbsp;&nbsp; <i class="fa-brands fa-linkedin fa-2xl"></i> &nbsp; LinkedIn
+                        &nbsp;&nbsp;&nbsp; <i className="fa-brands fa-linkedin fa-2xl"></i> &nbsp; LinkedIn
 
                         </div></a>
                     <a href="https://journease.onrender.com/">
@@ -46,13 +53,16 @@ const Newsfeed = () => {
                     <h1 className="my-friends">
                         <FaUserFriends/>&nbsp; My Friends</h1>
                     <ul className="my-friends-list">
-                        { friendIds?.map((friendId) => {
+                        { friends?.map((friend) => {
                             return (
-                                <a href={'/users/' + friendId}>
-                                    <li className="each-friend-list-item">
-                                            <img src={allUsers[friendId]?.avatarSrc}></img> &nbsp;&nbsp;
+                                <a 
+                                    key={friend.id}
+                                    href={'/users/' + friend.friendId}>
+                                    <li 
+                                        className="each-friend-list-item">
+                                            <img src={allUsers[friend.friendId]?.avatarSrc}></img> &nbsp;&nbsp;
                                             <p className="online-icon"/>
-                                        <p>{allUsers[friendId]?.firstName} {allUsers[friendId]?.lastName}</p>
+                                        <p>{allUsers[friend.friendId]?.firstName} {allUsers[friend.friendId]?.lastName}</p>
                                     </li>
                                 </a>
                             )

@@ -1,55 +1,62 @@
 import Modal from "../Modal/Modal";
-import Navigation from '../Navigation/index';
+import Navigation from '../Navigation/Index';
 import PostItem from "../Posts/PostItem";
+import ProfileInfo from "./ProfileInfo";
+import ProfileFriendsList from "./ProfileFriendsList";
+import CreatePostForm from "../Posts/CreatePostForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from "react";
 import { openModal } from "../../store/ui";
 import { fetchProfileUser } from '../../store/users'
-import { fetchPosts } from "../../store/posts";
 import { removeFriend, createFriend } from "../../store/friendships";
-import { FaBirthdayCake, FaCamera, FaMailBulk, FaPencilAlt, FaPersonBooth, FaUser } from "react-icons/fa";
-import moment from "moment-timezone";
+import { FaCamera, FaPencilAlt, FaUser } from "react-icons/fa";
 import "../Profile/Profile.css"
+
 
 const Profile = () => {
     const currentUser = useSelector(state => state.session.currentUser)
     const dispatch = useDispatch();
     const { userId } = useParams();
     const modal = useSelector(state => state.ui);
-    const user = useSelector(state => state.entities.users[userId])
-    const friendship = useSelector(state => state.entities.friendships[currentUser?.id]);
     const users = useSelector(state => state.entities.users);
-    const [friendStatus, setFriendStatus] = useState("");
-    const friendIds = Object.keys(useSelector(state => state.entities.friendships));
+    const user = useSelector(state => state.entities.users[userId])
+    const friendship = useSelector(state => state.entities.friendships[currentUser.id]);
     const posts = useSelector(state => state.entities.posts);
-    const userPosts = Object.values(posts)?.filter(post => post.authorId === user.id)
+    const userPosts = Object.values(posts)?.filter(post => post.authorId === user.id);
+    const [friendStatus, setFriendStatus] = useState("");
     const allFriends = useSelector(state => state.entities.users)
 
     useEffect(() => {
         dispatch(fetchProfileUser(userId));
-        dispatch(fetchPosts());
-    }, [])
+    }, [friendStatus])
 
     useEffect(() => {
-        if (friendship && friendship.id) {
+        if (friendship) {
             setFriendStatus(true)
         } else {
             setFriendStatus(false)
-        } 
-    }, [users])
+        }
+    }, [friendship])
 
     const removeFriendHandler = () => {
-        dispatch(removeFriend(friendship.id));
-        setFriendStatus(false);
-    }
+        dispatch(removeFriend(friendship.id))
+        .then((resp) => {
+            if (resp.ok) {
+                setFriendStatus(false);
+            }
+        });
+    };
     
     const addFriendHandler = () => {
         dispatch(createFriend({
             friend_id: userId
-        }));
-        setFriendStatus(true);
-    }
+        })).then((resp) => {
+            if (resp.ok) {
+                setFriendStatus(true);
+            }
+        });
+    };
  
     // else {
         //check if request not yet accepted
@@ -59,15 +66,14 @@ const Profile = () => {
     
     return (
         <>
-        { user ?
+        { user &&
         <>
             { modal.modal && 
-            <div 
-                className="showpage-modal-bg">
-                    <Modal 
-                        modal={modal.modal}
-                        post={modal.post} 
-                        user={modal.user} />
+            <div className="showpage-modal-bg">
+                <Modal 
+                    modal={modal.modal}
+                    post={modal.post} 
+                    user={modal.user} />
             </div>
             }
             <Navigation />
@@ -79,31 +85,41 @@ const Profile = () => {
                                 <img src={user.coverSrc}></img>
                             </div>
                             <div className="cover-photo-buttons-container">
-                                { currentUser?.id == userId ? 
-                                // <label className="add-cover-photo-label"> 
+                                { currentUser?.id == userId && 
                                 <button 
-                                    onClick={() => dispatch(openModal("update-cover", null, null, currentUser))}
+                                    onClick={() => dispatch(openModal(
+                                                        "update-cover", 
+                                                        null, 
+                                                        null, 
+                                                        currentUser))}
                                     className="add-cover-photo">
-                                            <FaCamera/> Add cover photo
-                                    </button> : null }
-                                {/* </label>  */}
+                                        <FaCamera/> Add cover photo
+                                    </button> }
                             </div>
                         </div>
                         <div className="profile-header-container">
                             <div className="profile-photo-container">
-                                {user?.avatarSrc ? 
-                                    <img src={user?.avatarSrc} className="profile-photo"></img>
-                                    : null }
-                                { currentUser.id == userId ? 
+                                { user?.avatarSrc && 
+                                    <img 
+                                        src={user?.avatarSrc} 
+                                        className="profile-photo"/>
+                                    }
+                                { currentUser.id == userId &&
                                     <button
-                                        onClick={() => dispatch(openModal("update-avatar", null, null, currentUser))} 
+                                        onClick={() => dispatch(openModal(
+                                                            "update-avatar", 
+                                                            null, 
+                                                            null, 
+                                                            currentUser))} 
                                         className="profile-photo-cam-button">
                                         <FaCamera/> 
-                                    </button> : null }
+                                    </button> 
+                                    }
                             </div>
                             <div className="profile-header-name-container">
                                 <p className="profile-name-header">
-                                    {user.firstName} {user.lastName}
+                                    {user.firstName}&nbsp;
+                                    {user.lastName}
                                 </p>
                             </div>
                             <div className="profile-buttons">
@@ -114,12 +130,12 @@ const Profile = () => {
                                             className="profile-edit-button">
                                         <FaPencilAlt/> Edit profile bio
                                         </button>
-                                    </div>
-                                :   <div className="friend-button">
+                                    </div> :   
+                                    <div className="friend-button">
                                         {friendStatus ? 
                                         <button 
-                                        onClick={removeFriendHandler}
-                                        className="remove-friend"> Remove Friend </button>
+                                            onClick={removeFriendHandler}
+                                            className="remove-friend"> Remove Friend </button>
                                         :
                                         <button 
                                             onClick={addFriendHandler}
@@ -134,66 +150,24 @@ const Profile = () => {
                 <div className="profile-body-bg">
                     <div className="profile-body-container">
                         <div className="profile-left-container">
-                            <div className="profile-intro-container">
-                                    <div className="intro-header">
-                                    Intro 
-                                    </div>
-                                    <div className="bio-section">
-                                    {user?.bio}
-                                    </div>
-                                    <div className="details-header">
-                                            Details
-                                    </div>
-                                    <div className="about-me-details">
-                                        <div classname="details-labels-container">
-                                            <p className="user-labels"><FaMailBulk/> </p>
-                                            <p className="user-labels"><FaBirthdayCake/> </p>
-                                        </div>
-                                        <div classname="details-info-container">
-                                            <p className="user-info">{user.email}</p>
-                                            <p className="user-info">{moment(user.birthday).format('MMMM DD, yyyy')}</p>
-                                        </div>
-                                    </div>
-                            </div>
-                            <div className="profile-friends-list">
-                                <div className='friends-header'>
-                                    Friends
-                                </div>
-                                <div className="friends-list-links">
-                                    <ul className="friends-list">
-                                     { friendIds.map((friendId) => {
-                                        return (
-                                            <li className="each-friend-container">
-                                                <a id="friend-links-nf" href={'/users/' + friendId}><img src={users[friendId]?.avatarSrc}/></a>
-                                                <h1>{users[friendId]?.firstName} {users[friendId]?.lastName}</h1>
-                                            </li>
-                                        )
-                                     })}
-
-                                    </ul>
-                                </div>
-                            </div>
+                            <ProfileInfo user={user}/>
+                            <ProfileFriendsList/>
                         </div>
                         <div className="profile-right-container">
                             <div className="posts-container">
-                                { friendStatus || currentUser.id === user.id ? 
-                                <div className="create-post-container">
-                                    <a href={'/users/' + currentUser.id}>
-                                        <img 
-                                            src={users[currentUser.id]?.avatarSrc}
-                                            className="create-post-profile-icon"></img>
-                                    </a>
-                                        <input 
-                                            className="create-post-input"
-                                            placeholder={`What's on your mind?`}
-                                            onClick={() => dispatch(openModal("create-post"))}/>
-                                </div>
-                                : null }
+                                { friendStatus || currentUser.id == userId &&
+                                    <CreatePostForm 
+                                        currentUser={currentUser}
+                                        users={users}/>
+                                }
                                 { userPosts.reverse().map((post) => {
-                                    return (<PostItem
-                                                post={post}
-                                                allUsers={allFriends}
-                                                />)
+                                    return (
+                                        <PostItem
+                                            key={post.id}
+                                            post={post}
+                                            allUsers={allFriends}
+                                            />
+                                        )
                                 })}
                             </div>
                         </div>
@@ -202,7 +176,7 @@ const Profile = () => {
             </div>
             
         </>
-        : null }  
+        }  
         </>
     )
 }

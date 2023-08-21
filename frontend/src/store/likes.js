@@ -1,5 +1,6 @@
-import { RECEIVE_POSTS } from "./posts";
+import { RECEIVE_POST, RECEIVE_POSTS } from "./posts";
 import { csrfFetch } from "./csrf";
+import { RECEIVE_PROFILE_USER } from "./users";
 
 export const RECEIVE_LIKE = 'likes/RECEIVE_LIKE';
 export const REMOVE_LIKE = 'likes/REMOVE_LIKE';
@@ -47,6 +48,11 @@ const likesReducer = (initialState = {}, action) => {
     Object.freeze(initialState);
     const nextState = {...initialState}
     switch (action.type) {
+        case RECEIVE_PROFILE_USER:
+            return {
+                ...nextState, 
+                ...action.likes
+            }
         case RECEIVE_LIKE:
             return {
                 ...nextState,
