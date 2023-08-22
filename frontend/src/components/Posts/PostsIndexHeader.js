@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../store/ui';
-import { deletePost } from '../../store/posts';
 import { FaPencilAlt, FaRegTrashAlt } from 'react-icons/fa';
 import OutsideAlerter from '../util/OutsideAlerter';
 
@@ -10,10 +9,6 @@ const PostsIndexHeader = ({currentUser, post}) => {
 
     const editClickHandler = (post) => {
         dispatch(openModal("edit-post", post));
-    }
-
-    const deleteClickHandler = (postId) => {
-        dispatch(deletePost(postId))
     }
 
     return (
@@ -34,7 +29,10 @@ const PostsIndexHeader = ({currentUser, post}) => {
                         Edit post</button>
                 <button 
                     className="delete-post-button" 
-                    onClick={() => deleteClickHandler(post.id)}> 
+                    onClick={() => 
+                                dispatch(openModal(
+                                    "delete-post", 
+                                    post))}> 
                         <FaRegTrashAlt/> 
                         Move to trash</button>
             </div> : null }

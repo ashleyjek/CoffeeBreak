@@ -33,15 +33,17 @@ const PostFormModal = ({modal, post}) => {
         e.preventDefault();
         const newPost = new FormData();
         newPost.append('post[body]', body);
-        if (userId) {
-            newPost.append('post[profileUserId]', userId);
-        }
         if (photoFile) {
             newPost.append('post[photo]', photoFile);
         } else if (photoUrl === null) {
             newPost.append('post[photo]', null);
         }
         if (modal === "create-post") {
+            if (userId) {
+                newPost.append('post[profileUserId]', userId);
+            } else {
+                newPost.append('post[profileUserId', currentUser.id);
+            }
             dispatch(createPost(newPost));
         } else {
             newPost.append('post[id]', post.id);
