@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Navigation from "../Navigation/Index";
-import Newsfeed from "../Newsfeed";
+import Navigation from "../Navigation/Navigation";
+import Newsfeed from "../Newsfeed/Newsfeed";
 import { useEffect } from "react";
 import { fetchUser } from "../../store/users";
 import { useSelector } from "react-redux";

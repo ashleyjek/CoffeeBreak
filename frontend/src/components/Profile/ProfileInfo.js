@@ -1,5 +1,6 @@
 import { FaBirthdayCake, FaMailBulk } from "react-icons/fa";
 import moment from "moment-timezone";
+import Profile from "./ProfileIndex";
 
 const ProfileInfo = ({user}) => {
     return (

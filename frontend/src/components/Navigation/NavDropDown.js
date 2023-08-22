@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState} from "react"; 
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { logout } from "../../store/session";
-import './Navigation.css';
 import { FaDoorOpen } from "react-icons/fa";
+import './Navigation.css';
 
 const NavDropDown = () => {
     // const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));

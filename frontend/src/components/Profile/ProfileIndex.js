@@ -1,5 +1,5 @@
 import Modal from "../Modal/Modal";
-import Navigation from '../Navigation/Index';
+import Navigation from '../Navigation/Navigation';
 import PostItem from "../Posts/PostItem";
 import ProfileInfo from "./ProfileInfo";
 import ProfileFriendsList from "./ProfileFriendsList";
@@ -21,9 +21,9 @@ const Profile = () => {
     const modal = useSelector(state => state.ui);
     const users = useSelector(state => state.entities.users);
     const user = useSelector(state => state.entities.users[userId])
-    const friendship = useSelector(state => state.entities.friendships[currentUser.id]);
+    const friendship = useSelector(state => state.entities?.friendships[currentUser?.id]);
     const posts = useSelector(state => state.entities.posts);
-    const userPosts = Object.values(posts)?.filter(post => post.authorId === user.id);
+    const userPosts = Object.values(posts)?.filter(post => post.authorId === user?.id);
     const [friendStatus, setFriendStatus] = useState("");
     const allFriends = useSelector(state => state.entities.users)
 

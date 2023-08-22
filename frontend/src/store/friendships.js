@@ -75,8 +75,8 @@ const friendshipsReducer = ( initialState = {}, action) => {
                 ...action.friendships
             }
         case REMOVE_FRIEND: 
-            delete nextState[action.friendship.friendId];
-            delete nextState[action.inverseFriendship.friendId];
+            delete nextState[action.friendship.id];
+            delete nextState[action.inverseFriendship.id];
             return nextState;
         case RECEIVE_FRIENDSHIPS:
             return {

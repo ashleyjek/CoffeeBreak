@@ -76,7 +76,7 @@ export const fetchProfileUser = (userId) => async (dispatch) => {
     const data = await res.json();
     if (res.ok) {
         dispatch(receiveProfileUser(
-                data.userS, 
+                data.users, 
                 data.friendships, 
                 data.posts, 
                 data.comments,

@@ -5,7 +5,7 @@ class Api::SessionsController < ApplicationController
     def show 
         @user = current_user
         if @user
-            render 'api/users/show'
+            render 'api/sessions/show'
         else
             render json: { user: nil }
         end
@@ -17,7 +17,7 @@ class Api::SessionsController < ApplicationController
         @user = User.find_by_credentials(email, password)
         if @user
             login(@user)
-            render 'api/users/show'
+            render 'api/sessions/show'
         else
             render json: { errors: ['Invalid Email or Password!'] }, status: 422
         end

@@ -5,7 +5,7 @@ import { deleteLike, createLike } from '../../store/likes';
 import { FaThumbsUp } from 'react-icons/fa';
 import moment from 'moment-timezone';
 import PostsIndexHeader from './PostsIndexHeader';
-import Comments from '../Comments/Index';
+import Comments from '../Comments/CommentsIndex';
 import './Posts.css';
 
 const PostItem = ({post, allUsers}) => {

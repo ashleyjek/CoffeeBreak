@@ -1,9 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { login } from "../../store/session";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { openModal } from "../../store/ui";
-import { useEffect } from "react";
 import { removeErrors } from "../../store/errors";
 
 const SignInForm = () => {
@@ -13,6 +12,7 @@ const SignInForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [inputClass, setInputClass] = useState("");
+
     useEffect(() => {
         if (errors[0]) {
             setInputClass("errors-input-container");
@@ -20,6 +20,7 @@ const SignInForm = () => {
             setInputClass("signin-input-container")
         }
     }, [errors[0]])
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         dispatch(login({
