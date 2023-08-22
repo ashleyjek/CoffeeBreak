@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../store/ui";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import TextareaAutoSize from 'react-textarea-autosize';
 
 const PostFormModal = ({modal, post}) => {
@@ -15,6 +16,7 @@ const PostFormModal = ({modal, post}) => {
     const [buttonLabel, setButtonLabel] = useState("Post");
     const [photoUploader, setPhotoUploader] = useState(false);
     const originalRef = useRef();
+    const { userId } = useParams();
         
     useEffect(() => {
         if (modal === 'edit-post') {
@@ -29,6 +31,9 @@ const PostFormModal = ({modal, post}) => {
         e.preventDefault();
         const newPost = new FormData();
         newPost.append('post[body]', body);
+        if (userId) {
+            newPost.append('post[profileUserId]', userId);
+        }
         if (photoFile) {
             newPost.append('post[photo]', photoFile);
         } else if (photoUrl === null) {

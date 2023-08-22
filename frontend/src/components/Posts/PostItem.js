@@ -7,6 +7,7 @@ import moment from 'moment-timezone';
 import PostsIndexHeader from './PostsIndexHeader';
 import Comments from '../Comments/CommentsIndex';
 import './Posts.css';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const PostItem = ({post, allUsers}) => {
     const dispatch = useDispatch();
@@ -81,8 +82,20 @@ const PostItem = ({post, allUsers}) => {
                     </a>
                     <div className="post-details-container">
                         <div className="post-author">
-                            {allUsers[post.authorId]?.firstName} &nbsp;
-                            {allUsers[post.authorId]?.lastName}
+                            {allUsers[post.authorId]?.firstName}&nbsp;
+                            {allUsers[post.authorId]?.lastName}&nbsp;
+                            { (post.profileUserId && post.profileUserId !== post.authorId) && 
+                                <>
+                                    <Link 
+                                        to={'/users/' + post.profileUserId}
+                                        style={{ textDecoration: 'none', color: '#000000' }}>
+                                            <i className="fa-solid fa-caret-right"/>&nbsp;
+                                            {allUsers[post.profileUserId].firstName}&nbsp;
+                                            {allUsers[post.profileUserId].lastName}&nbsp;
+                                    </Link>
+                                    
+                                </>
+                            }
                             </div>
                         <div className="post-date-time">
                             {timeStamp}&nbsp;

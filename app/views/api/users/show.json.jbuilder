@@ -7,11 +7,11 @@ json.users do
         json.coverSrc @user.cover.attached? ? @user.cover.url : nil
     end
 
-    json.set! @current_user.id do
-        json.extract! @current_user, :id, :email, :first_name, :last_name, :birthday, :gender, :bio
-        json.avatarSrc @current_user.avatar.attached? ? @current_user.avatar.url : "https://coffeebook-dev.s3.amazonaws.com/default+photo.png"
-        json.coverSrc @current_user.cover.attached? ? @current_user.cover.url : nil
-    end
+    # json.set! @current_user.id do
+    #     json.extract! @current_user, :id, :email, :first_name, :last_name, :birthday, :gender, :bio
+    #     json.avatarSrc @current_user.avatar.attached? ? @current_user.avatar.url : "https://coffeebook-dev.s3.amazonaws.com/default+photo.png"
+    #     json.coverSrc @current_user.cover.attached? ? @current_user.cover.url : nil
+    # end
     
     friends.each do |friend|
         json.set! friend.id do 
@@ -22,7 +22,7 @@ json.users do
     end
 end
 
-user_posts = @user.posts
+user_posts = @user.wall_posts
 friends_posts = @user.friends_posts
 
 # json.posts do 
@@ -62,7 +62,7 @@ user_posts.each do |post|
 
     json.posts do 
         json.set! post.id do
-            json.extract! post, :id, :author_id, :body, :created_at
+            json.extract! post, :id, :author_id, :body, :profile_user_id, :created_at
             json.photoSrc post.photo.attached? ? post.photo.url : nil
             json.likes do 
                 json.array! post_likes

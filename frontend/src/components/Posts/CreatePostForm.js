@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 
 const CreatePostForm = ({currentUser, users}) => {
     const dispatch = useDispatch();
-
     return (
         <div className="create-post-container">
             <a href={'/users/' + currentUser.id}>
