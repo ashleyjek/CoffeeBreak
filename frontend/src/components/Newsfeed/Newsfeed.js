@@ -1,8 +1,8 @@
-import Posts from '../Posts/Index';
+import Posts from '../Posts/PostsIndex';
 import Modal from '../Modal/Modal'
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import './Newsfeed.css'
-import { FaCoffee, FaGithub, FaLinkedin, FaUserFriends } from 'react-icons/fa';
+import { FaCoffee, FaUserFriends } from 'react-icons/fa';
 import { useEffect } from 'react';
 import { fetchFriendships } from '../../store/friendships';
 import { useDispatch } from 'react-redux';

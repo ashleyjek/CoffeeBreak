@@ -72,7 +72,6 @@ export const signUp = (user) => async (dispatch) => {
         }
 };
 
-
 const initialState = {
     currentUser: JSON.parse(sessionStorage.getItem('currentUser'))
 }
