@@ -18,7 +18,7 @@
 
         json.posts do 
             json.set! post.id do
-                json.extract! post, :id, :author_id, :body, :created_at
+                json.extract! post, :id, :author_id, :body, :profile_user_id, :created_at
                 json.photoSrc post.photo.attached? ? post.photo.url : nil
                 json.likes do 
                     json.array! post_likes

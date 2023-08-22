@@ -19,12 +19,11 @@ const Profile = () => {
     const modal = useSelector(state => state.ui);
     const users = useSelector(state => state.entities.users);
     const user = useSelector(state => state.entities.users[userId]);
-    const posts = useSelector(state => state.entities.posts);
+    const posts = Object.values(useSelector(state => state.entities.posts));
     const friendship = useSelector(state => state.entities?.friendships[currentUser?.id]);
     const allFriends = useSelector(state => state.entities.users);
-    const userPosts = Object.values(posts)?.filter(post => post.authorId === user?.id);
     const [friendStatus, setFriendStatus] = useState("");
-
+    
     useEffect(() => {
         dispatch(fetchProfileUser(userId));
     }, [friendStatus]);
@@ -66,12 +65,12 @@ const Profile = () => {
                         </div>
                         <div className="profile-right-container">
                             <div className="posts-container">
-                                { friendStatus || currentUser.id == userId &&
+                                { (friendStatus || currentUser.id == userId) &&
                                     <CreatePostForm 
                                         currentUser={currentUser}
                                         users={users}/>
                                 }
-                                { userPosts.reverse().map((post) => {
+                                { posts.reverse().map((post) => {
                                     return (
                                         <PostItem
                                             key={post.id}

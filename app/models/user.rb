@@ -12,6 +12,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  bio             :text
 #
 class User < ApplicationRecord
     validates :email,
@@ -26,6 +27,11 @@ class User < ApplicationRecord
     has_many :posts,
     foreign_key: :author_id,
     class_name: :Post,
+    dependent: :destroy
+
+    has_many :wall_posts,
+    foreign_key: :profile_user_id,
+    class_name: :Post, 
     dependent: :destroy
 
     has_many :comments,

@@ -106,7 +106,6 @@ const postsReducer = ( state = {}, action ) => {
     switch (action.type) {
         case RECEIVE_PROFILE_USER:
             return {
-                ...nextState,
                 ...action.posts
             }
         case RECEIVE_POST:
