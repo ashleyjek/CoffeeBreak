@@ -1,11 +1,12 @@
+import { useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchPosts } from '../../store/posts';
 import { fetchUsers } from '../../store/users';
 import { openModal } from '../../store/ui';
+import Modal from '../Modal/Modal';
 import PostItem from './PostItem';
 import './Posts.css';
-import { useLocation, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Posts = () => {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Posts = () => {
     const allPosts = Object.values(posts).reverse();
     const allUsers = useSelector(state => state.entities.users);
     const currentUser = useSelector(state => state.session.currentUser);
+    const modal = useSelector(state => state.entities.ui);
 
     useEffect(() => {
         dispatch(fetchUsers())
@@ -42,16 +44,19 @@ const Posts = () => {
                     placeholder={`What's on your mind, ${currentUser.firstName}?`}
                     onClick={() => dispatch(openModal("create-post"))}/>
             </div>
-        : null }
+        : null 
+        }
 
-            {allPosts.map((post) => {
-                return (
-                    <PostItem 
-                    key={post.id}
-                    post={post} 
-                    allUsers={allUsers} />
-                    )})
-                }
+        {allPosts.map((post) => {
+            return (
+                <PostItem 
+                key={post.id}
+                post={post} 
+                allUsers={allUsers} />
+            )})
+        }
+
+        { modal ? <Modal/> : null }
         </>
     )
 }

@@ -3,13 +3,15 @@ import PostFormModal from "../Posts/PostFormModal";
 import DeleteCommentModal from "../Comments/DeleteCommentModal";
 import PhotoUploaderModal from "../Profile/PhotoUploaderModal";
 import ProfileEditModal from "../Profile/ProfileEditModal";
+import DeletePostModal from "../Posts/DeletePostModal";
 import { useSelector } from "react-redux";
 
 const Modal = ({modal, post, user}) => {
-    const currentUser = useSelector(state => state.session.currentUser)
+    const currentUser = useSelector(state => state.session.currentUser);
+
     if (!modal) {
         return null;
-    }
+    } 
 
     let component;
     switch(modal) {
@@ -33,6 +35,9 @@ const Modal = ({modal, post, user}) => {
             break;
         case "edit-profile":
             component = <ProfileEditModal currentUser={currentUser}/>
+            break;
+        case "delete-post":
+            component = <DeletePostModal/>
             break;
         default:
             return null;

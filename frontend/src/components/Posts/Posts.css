@@ -240,27 +240,6 @@
     cursor: pointer;
 }
 
-/* .post-form-modal-bg-create,
-.post-form-modal-bg-update {
-    position: fixed;
-    height: 100vh;
-    width: 200vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 4;
-} */
-
-/* .post-form-modal-bg-create {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.post-form-modal-bg-update {
-    background-color: rgba(255, 255, 255, 0.6);
-
-} */
-
 .post-form-modal-container {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     width: 500px;
@@ -482,6 +461,55 @@
     align-items: center;
     position: fixed;
     z-index: 0;
+}
+
+
+.delete-post-bg {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-post-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    width: 525px;
+    height: 185px;
+    background-color: white;
+    border-radius: 8px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+}
+
+.delete-post-header {
+    height: 60px;
+    border-bottom: rgb(218, 218, 218) solid 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 19.5px;
+    font-weight: bold;
+    position: relative;
+}
+
+.delete-post-body-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+    width: 100%;
+}
+
+.delete-post-body {
+    margin: 10px 0 0 15px;
+    font-size: 14px;
+}
+
+.delete-post-buttons {
+    display: flex;
+    justify-content: flex-end;
 }
 
 

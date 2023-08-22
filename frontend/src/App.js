@@ -1,13 +1,13 @@
+import { useSelector } from 'react-redux';
 import { Route } from 'react-router-dom';
+import { Redirect, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import SignInPage from './components/SignInPage/SignInPage';
 import SplashPage from './components/Splash/Splash';
-import { Redirect, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import Profile from './components/Profile/ProfileIndex.js';
-import { useSelector } from 'react-redux';
 
 function App() {
   const currentUser = useSelector(state => state.session.currentUser)
-
+  
   { currentUser ? <Redirect to="/"/> : <Redirect to="/login"/> }
 
   return (
