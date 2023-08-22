@@ -51,6 +51,10 @@ class User < ApplicationRecord
     through: :friends, 
     source: :posts
 
+    has_many :wall_post_authors,
+    through: :wall_posts,
+    source: :author
+
     has_secure_password
 
     before_validation :ensure_session_token
