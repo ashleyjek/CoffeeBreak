@@ -32,7 +32,7 @@ const PostItem = ({post, allUsers}) => {
             } else {
                 setLiked(false);
             }
-        }
+        };
         setTimeStamp(moment(post.createdAt).format('MMMM d [at] h:MM A ·'))
     }, [post]);
 
