@@ -22,6 +22,7 @@ class User < ApplicationRecord
     validates :session_token, presence: true, uniqueness: true
     validates :first_name, :last_name, :gender, :password_digest, presence: true
     validates :password, length: { minimum: 6 }, allow_nil: true
+    validates :gender, inclusion: { in: ["Female", "Male", "She", "He", "They"], message: "Please select a gender" }
     validate :birthday_valid?
 
     has_many :posts,
@@ -50,6 +51,10 @@ class User < ApplicationRecord
     has_many :friends_posts,
     through: :friends, 
     source: :posts
+
+    has_many :wall_post_authors,
+    through: :wall_posts,
+    source: :author
 
     has_secure_password
 

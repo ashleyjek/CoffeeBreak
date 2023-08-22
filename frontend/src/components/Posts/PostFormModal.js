@@ -17,6 +17,7 @@ const PostFormModal = ({modal, post}) => {
     const [photoUploader, setPhotoUploader] = useState(false);
     const originalRef = useRef();
     const { userId } = useParams();
+    const [wallId, setWallId] = useState(null);
         
     useEffect(() => {
         if (modal === 'edit-post') {
@@ -24,6 +25,7 @@ const PostFormModal = ({modal, post}) => {
             setButtonLabel("Save");
             setPhotoUrl(post.photoSrc);
             setPhotoUploader(true);
+            setWallId(post.profileUserId);
         }
     }, [modal])
 

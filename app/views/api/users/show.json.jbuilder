@@ -1,4 +1,5 @@
 friends = @user.friends
+post_authors = @user.wall_post_authors
 
 json.users do 
     json.set! @user.id do
@@ -6,12 +7,14 @@ json.users do
         json.avatarSrc @user.avatar.attached? ? @user.avatar.url : "https://coffeebook-dev.s3.amazonaws.com/default+photo.png"
         json.coverSrc @user.cover.attached? ? @user.cover.url : nil
     end
-
-    # json.set! @current_user.id do
-    #     json.extract! @current_user, :id, :email, :first_name, :last_name, :birthday, :gender, :bio
-    #     json.avatarSrc @current_user.avatar.attached? ? @current_user.avatar.url : "https://coffeebook-dev.s3.amazonaws.com/default+photo.png"
-    #     json.coverSrc @current_user.cover.attached? ? @current_user.cover.url : nil
-    # end
+    
+    post_authors.each do |author| 
+        json.set! author.id do
+            json.extract! author, :id, :email, :first_name, :last_name, :birthday, :gender, :bio
+            json.avatarSrc author.avatar.attached? ? author.avatar.url : "https://coffeebook-dev.s3.amazonaws.com/default+photo.png"
+            json.coverSrc author.cover.attached? ? author.cover.url : nil
+        end
+    end
     
     friends.each do |friend|
         json.set! friend.id do 
