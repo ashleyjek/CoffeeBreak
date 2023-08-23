@@ -5,13 +5,19 @@ import PhotoUploaderModal from "../Profile/PhotoUploaderModal";
 import ProfileEditModal from "../Profile/ProfileEditModal";
 import DeletePostModal from "../Posts/DeletePostModal";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 const Modal = ({modal, post, user}) => {
     const currentUser = useSelector(state => state.session.currentUser);
 
-    if (!modal) {
-        return null;
-    } 
+    useEffect(() => {
+        if (modal) {
+            document.body.style.overflow = 'hidden';
+        }
+        return () => {
+          document.body.style.overflow = 'unset';
+        }
+      }, []);
 
     let component;
     switch(modal) {

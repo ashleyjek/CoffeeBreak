@@ -1,0 +1,49 @@
+.not-found-bg {
+    display: flex;
+    justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+}
+
+.not-found-container {
+    margin-top: 35vh;
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.not-found-container h1 {
+    color: #65676b;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 1vh;
+}
+
+.not-found-container p {
+    color: #65676b;
+    font-size: 17px;
+    line-height: 1.25;
+    margin-bottom: 1vh;
+}
+
+.not-found-container img {
+    width: 125px;
+    height: auto;
+    margin-bottom: 2vh;
+}
+
+.not-found-container button {
+    background-color: rgb(154, 137, 120);
+    border-color: transparent;
+    border-radius: 8px;
+    height: 45px;
+    width: 170px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px 15px 10px 0;
+    cursor: pointer;
+}

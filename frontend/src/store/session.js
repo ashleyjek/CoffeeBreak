@@ -21,6 +21,15 @@ const storeCurrentUser = (user) => {
     };
 };
 
+export const getCurrentUser = () => async (dispatch) => {
+    const res = await csrfFetch('/api/session')
+    const data = await res.json();
+    if (res.ok) {
+        dispatch(recieveCurrentUser(data.user));
+        return true;
+    }
+};
+
 export const login = (user) => async (dispatch) => {
     const res = await csrfFetch('/api/session', {
         method: 'POST',

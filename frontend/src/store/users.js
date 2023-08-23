@@ -83,8 +83,8 @@ export const fetchProfileUser = (userId) => async (dispatch) => {
                 data.likes));
         dispatch(receiveUsers(data.users))
         return res;
-    }
-}
+    };
+};
 
 export const fetchUsers = () => async (dispatch) => {
     const res = await csrfFetch('/api/users');

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import OutsideAlerter from "../util/OutsideAlerter";
+import { fetchProfileUser } from "../../store/users";
 
 const SearchBar = () => {
     const history = useHistory();
@@ -30,6 +31,7 @@ const SearchBar = () => {
     const handleClick = (id) => {
         return (e) => {
             e.preventDefault()
+            dispatch(fetchProfileUser(id));
             history.push(`/users/${id}`)
         }
     };
@@ -50,7 +52,9 @@ const SearchBar = () => {
                         {searchResults.map((user) => {
                             if (!clickedOutside) {
                                 return (
-                                    <li className="search-result"
+                                    <li 
+                                        key={user.id}
+                                        className="search-result"
                                         onClick={handleClick(user.id)}>
                                             <img src={user.avatarSrc}></img>
                                             {user.firstName} {user.lastName}</li>

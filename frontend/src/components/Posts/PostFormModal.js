@@ -124,7 +124,7 @@ const PostFormModal = ({modal, post}) => {
                                 onChange={(e) => setBody(e.target.value)}/>
                         </div> }
                     <div className="form-img-container">
-                        { photoUploader ? 
+                        { photoUploader &&
                         <form className="photo-uploader-container">
                             <div className="photo-preview-container">
                                 { preview ? preview : 
@@ -141,8 +141,8 @@ const PostFormModal = ({modal, post}) => {
                                 className="remove-photo-button"
                                 onClick={handleRemovePhoto}>
                                     <i className="fa-solid fa-circle-xmark fa-2xl"/></button>
-                        </form>
-                        : null }
+                        </form> 
+                        }
                     </div>
                     <div className="form-icon-container">
                         <div className="icons-label">

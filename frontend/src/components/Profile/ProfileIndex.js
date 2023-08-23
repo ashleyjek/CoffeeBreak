@@ -6,15 +6,15 @@ import ProfileFriendsList from "./ProfileFriendsList";
 import ProfileHeader from "./ProfileHeader";
 import CreatePostForm from "../Posts/CreatePostForm";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect, useState } from "react";
 import { fetchProfileUser } from '../../store/users'
 import "../Profile/Profile.css"
 
-
 const Profile = () => {
     const { userId } = useParams();
     const dispatch = useDispatch();
+    const history = useHistory();
     const currentUser = useSelector(state => state.session.currentUser)
     const modal = useSelector(state => state.ui);
     const users = useSelector(state => state.entities.users);
@@ -23,9 +23,17 @@ const Profile = () => {
     const friendship = useSelector(state => state.entities?.friendships[currentUser?.id]);
     const allFriends = useSelector(state => state.entities.users);
     const [friendStatus, setFriendStatus] = useState("");
-    
+    const [loaded, setLoaded] = useState(false);
+
     useEffect(() => {
-        dispatch(fetchProfileUser(userId));
+        const getUser = async () => {
+            try {
+                await dispatch(fetchProfileUser(userId));
+            } catch(err) {
+                history.push('/notfound')
+            }
+        };
+        getUser();
     }, [friendStatus]);
 
     useEffect(() => {
