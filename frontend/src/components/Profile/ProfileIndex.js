@@ -34,7 +34,7 @@ const Profile = () => {
             }
         };
         getUser();
-    }, [friendStatus]);
+    }, [friendStatus, user]);
 
     useEffect(() => {
         if (friendship) {
