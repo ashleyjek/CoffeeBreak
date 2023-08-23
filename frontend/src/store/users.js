@@ -64,8 +64,9 @@ export const updateUserBio = (user) => async (dispatch) => {
 
 export const fetchUser = (user) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${user.id}`);
+    const data = await res.json();
+    debugger
     if (res.ok) {
-        const data = await res.json();
         dispatch(receiveUser(data.user));
         return res;
     }
@@ -74,9 +75,11 @@ export const fetchUser = (user) => async (dispatch) => {
 export const fetchProfileUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`);
     const data = await res.json();
+    debugger
     if (res.ok) {
         dispatch(receiveProfileUser(
                 data.users, 
+                // data.user,
                 data.friendships, 
                 data.posts, 
                 data.comments,

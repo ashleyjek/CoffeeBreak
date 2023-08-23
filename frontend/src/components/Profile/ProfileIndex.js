@@ -23,7 +23,6 @@ const Profile = () => {
     const friendship = useSelector(state => state.entities?.friendships[currentUser?.id]);
     const allFriends = useSelector(state => state.entities.users);
     const [friendStatus, setFriendStatus] = useState("");
-    const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         const getUser = async () => {
@@ -34,7 +33,7 @@ const Profile = () => {
             }
         };
         getUser();
-    }, [friendStatus, user]);
+    }, [friendStatus]);
 
     useEffect(() => {
         if (friendship) {
@@ -44,7 +43,7 @@ const Profile = () => {
         }
     }, [friendship]);
 
-    if (!currentUser) return null;
+    // if (!currentUser) return null;
     
     return (
         <>
