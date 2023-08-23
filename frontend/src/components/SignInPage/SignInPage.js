@@ -24,15 +24,15 @@ const SignInPage = ({currentUser}) => {
                 </div>
                 <SignInForm/>
             </div>
+            <div className="footer">
+                <p>
+                    &copy; Miriam (Ashley) Kim 2023 |
+                    <a href="https://www.linkedin.com/in/ashleyjek/"> LinkedIn</a> |
+                    <a href="https://github.com/ashleyjek"> GitHub </a>|
+                    <a href="https://github.com/ashleyjek/Coffeebook"> Coffeebook Repo</a>
+                </p>
+            </div>
                 <Modal modal={modal}/>
-        </div>
-        <div className="footer">
-            <p>
-                &copy; Miriam (Ashley) Kim 2023 |
-                <a href="https://www.linkedin.com/in/ashleyjek/"> LinkedIn</a> |
-                <a href="https://github.com/ashleyjek"> GitHub </a>|
-                <a href="https://github.com/ashleyjek/Coffeebook"> Coffeebook Repo</a>
-            </p>
         </div>
     </>
     )
