@@ -11,7 +11,7 @@ const NotFoundPage = () => {
         <div
             className="not-found-bg">
                 <div className="not-found-container">
-                    <img src="/brokenlink.png"/>
+                    <img src="https://coffeebook-dev.s3.amazonaws.com/brokenlink.png"/>
                     <div className="not-found-desc">
                         <h1>This Page Isn't Available</h1>
                         <p>The link may be broken, or the page may have been removed. Check to see if the link you're trying to open is correct.</p>
