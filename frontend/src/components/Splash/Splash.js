@@ -11,9 +11,9 @@ const SplashPage = () => {
     const currentUser = useSelector(state => state.session.currentUser)
     const history = useHistory();
     
-    if (!currentUser) {
-        history.push("/login");
-    }
+    // if (!currentUser) {
+    //     history.push("/login");
+    // }
     
     return (
         <div className="splash-index">

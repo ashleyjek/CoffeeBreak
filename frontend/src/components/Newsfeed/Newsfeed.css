@@ -27,14 +27,13 @@
 }
 
 .newsfeed-links-container {
-    margin-top: 75px;
     width: 380px;
     height: 310px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     position: sticky;
-    top: 75px;
+    margin-top: 65px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
 }
 
@@ -110,7 +109,7 @@
 }
 
 .newsfeed-friends-list {
-    margin-top: 75px;
+    margin-top: 65px;
     width: 380px;
     height: fit-content;
     overflow: hidden;
@@ -118,7 +117,6 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     position: sticky;
-    top: 75px;
     font-weight: bold;
 }
 

@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { restoreSession } from './store/csrf';
 import { csrfFetch } from './store/csrf';
-import { login, signUp, logout } from './store/session';
+import { login, signUp, logout, getCurrentUser } from './store/session';
 import configureStore from './store/index'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -37,6 +37,7 @@ if (process.env.NODE_ENV !== "production") {
   window.removeFriend = removeFriend;
   window.likeActions = likeActions;
   window.updateUser = updateUser;
+  window.getCurrentUser = getCurrentUser;
   
 };
 //

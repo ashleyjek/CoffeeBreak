@@ -13,6 +13,7 @@
     background-color: white;
     display: flex;
     height: 560px;
+    margin-bottom: 10px;
     justify-content: center;
     border-bottom: 1px solid rgb(215, 218, 222);
 }
@@ -231,7 +232,7 @@
 .profile-intro-container {
     width: 90%;
     height: auto;
-    margin: 20px;
+    margin: 10px 20px 20px 20px;
     border-radius: 8px;;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
@@ -249,7 +250,7 @@
 .profile-friends-list {
     width: 90%;
     height: auto;
-    margin: 20px;
+    margin: 0 20px 20px 20px;
     border-radius: 8px;;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
@@ -293,7 +294,7 @@
 }
 
 .create-post-container {
-    margin-top: 20px;
+    margin: 10px 0 0 0;
     position: unset;
 }
 
@@ -421,18 +422,22 @@
     font-weight: bold;
     font-size: 16px;
     margin: 0 0 15px 0;
+    cursor: pointer;
 }
 
 #file-input {
-    display: none;
-    height: 40px;
+    height: 50px;
     width: 300px;
-    background-color: yellow;
+    /* background-color: yellow; */
     position: absolute;
     left: 0;
     top: -20px;
     margin: 15px 0 15px 0;
+    cursor: pointer;
+    color: transparent;
 }
+
+
 #file-input-label {
     cursor: pointer;
 }
@@ -448,13 +453,15 @@
 .close-pp-modal-button button {
     border-color: transparent;
     color: rgb(112, 112, 112);
-    font-size: 20px;
+    background-color: transparent;
+    font-size: 28px;
     height: 35px;
     width: 35px;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     margin: 23px 15px 10px 15px;
     position: absolute;
-    top: -10px;
+    top: -12px;
+    right: -5px;
     display: flex;
     justify-content: center;
     align-items: center;

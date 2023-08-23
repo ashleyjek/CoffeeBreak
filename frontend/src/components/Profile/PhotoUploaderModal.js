@@ -57,16 +57,18 @@ const PhotoUploaderModal = ({modal, user}) => {
     return (
         <div className="profile-photo-selector-bg">
             <div className="close-pp-modal-button">
-                <button onClick={() => dispatch(closeModal())}>X</button>
+                <button onClick={() => dispatch(closeModal())}>
+                    <i className="fa-solid fa-circle-xmark"></i>
+                </button>
             </div>
             <div className="pp-modal-header">
-                Update {formType} picture
+                Update {formType} photo
             </div>
-            { preview ? 
-            <div className="pp-preview-container">
-                {preview}
-            </div>
-            : null }
+            { preview && 
+                <div className="pp-preview-container">
+                    {preview}
+                </div>
+            }
             <div className="file-input-container">
                 <label id="file-input-label" for="file-input">
                         Upload photo
@@ -75,11 +77,11 @@ const PhotoUploaderModal = ({modal, user}) => {
                     type="file" id="file-input" name="file-input" />
                 </label>
             </div>
-            { preview ? 
+            { preview && 
             <button
                 onClick={handleSubmit} 
                 className="pp-photo-save">Save</button>
-            : null }
+            }
         </div>
 
     )
