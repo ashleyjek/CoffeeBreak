@@ -15,9 +15,9 @@ const receiveUser = (user) => ({
     user
 })
 
-const receiveProfileUser = (user, friendships, posts, comments, likes) => ({
+const receiveProfileUser = (users, friendships, posts, comments, likes) => ({
     type: RECEIVE_PROFILE_USER,
-    user,
+    users,
     friendships,
     posts,
     comments,
@@ -39,10 +39,15 @@ export const updateUser = (user) => async (dispatch) => {
     });
     const data = await res.json();
     if (res.ok) {
-        dispatch(receiveProfileUser(data.user));
+        dispatch(receiveProfileUser(
+            data.users, 
+            data.friendships, 
+            data.posts, 
+            data.comments,
+            data.likes));
         return res;
     } else {
-        dispatch(receiveErrors(data.user));
+        dispatch(receiveErrors(data.users));
         return res;
     }
 }
@@ -54,10 +59,15 @@ export const updateUserBio = (user) => async (dispatch) => {
     });
     const data = await res.json();
     if (res.ok) {
-        dispatch(receiveProfileUser(data.user));
+        dispatch(receiveProfileUser(
+            data.users, 
+            data.friendships, 
+            data.posts, 
+            data.comments,
+            data.likes));
         return res;
     } else {
-        dispatch(receiveErrors(data.user));
+        dispatch(receiveErrors(data.users));
         return res;
     }
 }
@@ -65,7 +75,6 @@ export const updateUserBio = (user) => async (dispatch) => {
 export const fetchUser = (user) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${user.id}`);
     const data = await res.json();
-    debugger
     if (res.ok) {
         dispatch(receiveUser(data.user));
         return res;
@@ -75,11 +84,9 @@ export const fetchUser = (user) => async (dispatch) => {
 export const fetchProfileUser = (userId) => async (dispatch) => {
     const res = await csrfFetch(`/api/users/${userId}`);
     const data = await res.json();
-    debugger
     if (res.ok) {
         dispatch(receiveProfileUser(
                 data.users, 
-                // data.user,
                 data.friendships, 
                 data.posts, 
                 data.comments,

@@ -70,7 +70,7 @@ const PhotoUploaderModal = ({modal, user}) => {
                 </div>
             }
             <div className="file-input-container">
-                <label id="file-input-label" for="file-input">
+                <label id="file-input-label">
                         Upload photo
                 <input
                     onChange={handleFile} 
