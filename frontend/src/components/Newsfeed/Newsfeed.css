@@ -84,7 +84,7 @@
     height: 20px;
 }
 
-.newsfeed-links-container a {
+.newsfeed-links-container div {
     text-decoration: none;
     font-weight: bold;
     color: black;

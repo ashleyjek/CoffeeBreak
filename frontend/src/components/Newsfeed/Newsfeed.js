@@ -23,25 +23,26 @@ const Newsfeed = () => {
             <div className="left-side-bar-container">
                 <div className="newsfeed-links-container">
                     <h1 className="newsfeed-links-header">&nbsp; <FaCoffee/> &nbsp; Links</h1>
-                    <a href="https://github.com/ashleyjek">
+                    <p onClick={() => window.open('https://github.com/ashleyjek')}>
                         <div className="git-hub-link">
                         &nbsp;&nbsp;&nbsp; <i className="fa-brands fa-github fa-2xl"></i> &nbsp; GitHub
                         </div>
-                    </a>
-                    <a href="https://www.linkedin.com/in/ashleyjek/"><div className="linked-in-link">
+                    </p>
+                    <p onClick={() => window.open('https://www.linkedin.com/in/ashleyjek/')}>
+                        <div className="linked-in-link">
                         &nbsp;&nbsp;&nbsp; <i className="fa-brands fa-linkedin fa-2xl"></i> &nbsp; LinkedIn
 
-                        </div></a>
-                    <a href="https://journease.onrender.com/">
+                        </div></p>
+                    <p onClick={() => window.open('https://github.com/artemplv/Journease')}>
                         <div className="journease-link">
                         &nbsp;&nbsp;<img src="https://journease-artemplv.s3.amazonaws.com/public/favicon.png"></img>&nbsp;Journease
                         </div>
-                    </a>
-                    <a href="https://ashleyjek.github.io/WhaleWatch/">
+                    </p>
+                    <p onClick={() => window.open('https://github.com/ashleyjek/WhaleWatch')}>
                         <div className="whale-watch-link">
-                        &nbsp;<img src="https://coffeebook-dev.s3.amazonaws.com/whale+icon.png"></img>WhaleWatch
+                        &nbsp;<img src="https://coffeebook-dev.s3.amazonaws.com/whale+icon.png"></img>Whale Watch
                         </div>
-                    </a>
+                    </p>
                 </div>
             </div>
             <div className="newsfeed-container">
