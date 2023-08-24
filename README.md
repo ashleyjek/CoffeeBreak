@@ -14,7 +14,7 @@ Coffeebook is a fullstack clone of the popular social media website, Facebook. I
 * Frontend and State management: React, React Redux
 * Database: PostgreSQL
 * Hosting: Render
-* Asset Storage: AWS Simple Cloud Stoage (S3)
+* Asset Storage: AWS Simple Cloud Storage (S3)
 
 ## Features
 
