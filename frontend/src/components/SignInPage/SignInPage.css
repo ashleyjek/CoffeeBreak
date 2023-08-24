@@ -56,12 +56,14 @@
     justify-content: flex-start;
 }
 
-.logo-box h1 {
-    font-family: Klavika;
+.logo-box img {
+    /* font-family: Klavika;
     font-weight: bold;
     font-size: 62px;
     color: rgb(154, 137, 120);
-    padding-bottom: 6px;
+    padding-bottom: 6px; */
+    height: 70px;
+    margin-left: -5px;
 }
 
 .logo-box h2 {
