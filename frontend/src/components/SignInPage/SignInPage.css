@@ -127,6 +127,12 @@
     cursor: pointer;
 }
 
+button.login-button:active,
+button.demo-login-button:active,
+button.create-acct-button:active {
+    transform: scale(.98);
+}
+
 .create-acct-button {
     border-radius: 6px;
     font-size: 17px;
