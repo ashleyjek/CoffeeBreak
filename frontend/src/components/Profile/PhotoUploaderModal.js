@@ -55,35 +55,39 @@ const PhotoUploaderModal = ({modal, user}) => {
     }
 
     return (
-        <div className="profile-photo-selector-bg">
-            <div className="close-pp-modal-button">
-                <button onClick={() => dispatch(closeModal())}>
-                    <i className="fa-solid fa-circle-xmark"></i>
-                </button>
-            </div>
-            <div className="pp-modal-header">
-                Update {formType} photo
-            </div>
-            { preview && 
-                <div className="pp-preview-container">
-                    {preview}
+        <>
+            <div className="profile-photo-selector-bg">
+                <div className="close-pp-modal-button">
+                    <button onClick={() => dispatch(closeModal())}>
+                        <i className="fa-solid fa-circle-xmark"></i>
+                    </button>
                 </div>
-            }
-            <div className="file-input-container">
-                <label id="file-input-label">
-                        Upload photo
-                <input
-                    onChange={handleFile} 
-                    type="file" id="file-input" name="file-input" />
-                </label>
+                <div className="pp-modal-header">
+                    Update {formType} photo
+                </div>
+                { preview && 
+                    <div className="pp-preview-container">
+                        {preview}
+                    </div>
+                }
+                <div className="file-input-container">
+                    <label id="file-input-label">
+                            Upload photo
+                    <input
+                        onChange={handleFile} 
+                        type="file" id="file-input" name="file-input" />
+                    </label>
+                </div>
+                { preview && 
+                <button
+                    onClick={handleSubmit} 
+                    className="pp-photo-save">Save</button>
+                }
             </div>
-            { preview && 
-            <button
-                onClick={handleSubmit} 
-                className="pp-photo-save">Save</button>
-            }
-        </div>
-
+            <div 
+                className="post-upload-close-bg"
+                onClick={() => dispatch(closeModal())}/>
+        </>
     )
 }
 

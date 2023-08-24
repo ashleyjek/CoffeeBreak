@@ -107,6 +107,7 @@ const PostFormModal = ({modal, post}) => {
                         <div className="form-body">
                             <TextareaAutoSize 
                                 className="form-textarea"
+                                maxLength="500"
                                 minRows="1"
                                 maxRows="6" 
                                 name="body" 
@@ -117,6 +118,7 @@ const PostFormModal = ({modal, post}) => {
                     ) : <div className="form-body">
                             <TextareaAutoSize 
                                 className="form-textarea" 
+                                maxLength="500"
                                 minRows="1" 
                                 maxRows="6" 
                                 name="body" 

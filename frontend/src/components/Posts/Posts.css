@@ -159,7 +159,9 @@
     height: auto;
     width: 640px;
     font-size: 20px;
+    line-height: 1.5;
     padding: 5px 10px 10px 10px;
+    overflow-wrap: break-word;
 }
 
 .post-photo-bg {

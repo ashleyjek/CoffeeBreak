@@ -11,6 +11,7 @@ const SearchBar = () => {
     const [searchText, setSearchText] = useState("");
     const [timer, setTimer] = useState(0);
     const searchResults = useSelector(state => Object.values(state.entities.search));
+
     const {
         ref: searchRef,
         handleClickInside: handleClickInside,
@@ -49,19 +50,20 @@ const SearchBar = () => {
             { searchText && searchResults && 
                 <ul 
                     id="search-dropdown">
-                        {searchResults.map((user) => {
-                            if (!clickedOutside) {
-                                return (
-                                    <li 
-                                        key={user.id}
-                                        className="search-result"
-                                        onClick={handleClick(user.id)}>
-                                            <img src={user.avatarSrc}></img>
-                                            {user.firstName} {user.lastName}</li>
-                                )
-                            }
-                        })}
-                </ul>
+                    {searchResults.map((user) => {
+                        if (!clickedOutside) {
+                            return (
+                                <li 
+                                    key={user.id}
+                                    className="search-result"
+                                    onClick={handleClick(user.id)}>
+                                        <img src={user.avatarSrc}/>
+                                        {user.firstName} {user.lastName}
+                                    </li>
+                            )
+                        }
+                    })}
+                    </ul>
             }
             
         </div>

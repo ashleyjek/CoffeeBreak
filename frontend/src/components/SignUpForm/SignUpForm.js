@@ -77,11 +77,12 @@ const SignUpForm = () => {
                 </div>
                     <form className="signup-form">
                         <div className="signup-name-error">
-                            {errors.first_name && 
+                            {errors.first_name ? 
                             <p className="fname-error">
                                 First name {errors.first_name[0]} &nbsp;
                                 <i className="fa-solid fa-circle-exclamation"></i>
-                                </p> }
+                                </p> 
+                            : <p></p> }
                             {errors.last_name && 
                             <p className="lname-error"> 
                                 Last name {errors.last_name[0]} &nbsp;

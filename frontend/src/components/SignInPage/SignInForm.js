@@ -37,6 +37,11 @@ const SignInForm = () => {
         })
     };
     
+    const handleEnterKey = (e) =>{
+        if (e.key === 'Enter'){
+            handleSubmit(e)
+        }
+    };
     
     const handleDemoUser = () => {
         dispatch(login({
@@ -50,7 +55,9 @@ const SignInForm = () => {
         <>
             <div className="signin-form-container">
                 <div className="signin-form-box">
-                    <form className="signin-form">
+                    <form 
+                        onKeyDown={handleEnterKey}
+                        className="signin-form">
                         <p className={inputClass}>{errors[0]}
                             <input 
                                 className="signin-input"

@@ -82,8 +82,12 @@ const PostItem = ({post, allUsers}) => {
                     </a>
                     <div className="post-details-container">
                         <div className="post-author">
-                            {allUsers[post.authorId]?.firstName}&nbsp;
-                            {allUsers[post.authorId]?.lastName}&nbsp;
+                            <Link 
+                                to={'/users/' + post.authorId}
+                                style={{ textDecoration: 'none', color: '#000000' }}>
+                                {allUsers[post.authorId]?.firstName}&nbsp;
+                                {allUsers[post.authorId]?.lastName}&nbsp;
+                                </Link>
                             { (post.profileUserId && post.profileUserId !== post.authorId) && 
                                 <>
                                     <Link 

@@ -3,7 +3,8 @@ import CommentItem from './CommentItem';
 import CreateCommentForm from './CreateCommentForm';
 import Modal from '../Modal/Modal'
 
-const Comments = ({post, allUsers, inputRef, handleRefClick, currentUser}) => {
+const Comments = (props) => {
+    const { post, allUsers, inputRef, handleRefClick, currentUser } = props;
     const comments = useSelector(state => state.entities.comments);
     const postComments = Object.values(comments).filter((comment) => comment.postId === post.id);
     const modal = useSelector(state => state.ui);
@@ -12,14 +13,14 @@ const Comments = ({post, allUsers, inputRef, handleRefClick, currentUser}) => {
             <div className="all-comments-container">
                 <div
                     className="comments-show-container">
-           {postComments.map((comment) => 
+                {postComments.map((comment) => 
                 <CommentItem 
                     key={comment.id}
                     currentUser={currentUser}
                     post={post} 
                     comment={comment}
                     allUsers={allUsers}/>
-                    )}
+                )}
                 </div>
             </div>
             <div className="create-comment-container">

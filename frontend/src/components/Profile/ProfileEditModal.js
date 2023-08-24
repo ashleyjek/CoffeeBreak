@@ -44,6 +44,7 @@ const ProfileEditModal = ({currentUser}) => {
                 </div>
                 <div className="edit-profile-body-container">
                     <TextareaAutoSize
+                        maxLength="400"
                         minRows="4"
                         maxRows="10"
                         type="text"
