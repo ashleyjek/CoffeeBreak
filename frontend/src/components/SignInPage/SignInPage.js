@@ -28,9 +28,9 @@ const SignInPage = ({currentUser}) => {
             <div className="footer">
                 <p>
                     &copy; Miriam (Ashley) Kim 2023 |
-                    <a href="https://www.linkedin.com/in/ashleyjek/"> LinkedIn</a> |
-                    <a href="https://github.com/ashleyjek"> GitHub </a>|
-                    <a href="https://github.com/ashleyjek/Coffeebook"> Coffeebook Repo</a>
+                    <span onClick={() => window.open('https://www.linkedin.com/in/ashleyjek/')}> LinkedIn |</span>
+                    <span onClick={() => window.open('https://github.com/ashleyjek')}> GitHub |</span>
+                    <span onClick={() => window.open('https://github.com/ashleyjek/Coffeebook')}> Coffeebook Repo</span>
                 </p>
             </div>
                 <Modal modal={modal}/>
