@@ -29,7 +29,12 @@
     background-color: rgb(237, 239, 243);
     padding: 10px 15px 10px 15px;
     overflow: scroll;
-    cursor: pointer;
+    cursor: pointer; 
+}
+
+.create-comment-textarea::-webkit-scrollbar,
+.edit-comment-textarea::-webkit-scrollbar {
+    display: none;
 }
 
 .edit-comment-textarea {

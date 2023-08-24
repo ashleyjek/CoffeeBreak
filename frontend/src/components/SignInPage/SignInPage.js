@@ -18,7 +18,8 @@ const SignInPage = ({currentUser}) => {
         <div className="signin-container">
             <div className="signin-page">
                 <div className="logo-box">
-                    <h1>coffeebook</h1>
+                    {/* <h1>coffeebook</h1> */}
+                    <img src="https://coffeebook-dev.s3.amazonaws.com/Screenshot+2023-08-23+at+11.11.04+PM.png"/>
                     <h2>Connect with coffee lovers around</h2>
                     <h2>the world on Coffeebook.</h2>
                 </div>
