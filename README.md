@@ -1,6 +1,7 @@
 # Welcome to Coffeebook!
 
-[Visit the live site!](https://coffeebook.onrender.com/)
+
+<a href="https://coffeebook.onrender.com/" target="_blank">Visit the live site!</a>
 
 ## Introduction
 
