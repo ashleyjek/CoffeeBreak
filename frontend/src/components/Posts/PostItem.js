@@ -33,7 +33,7 @@ const PostItem = ({post, allUsers}) => {
                 setLiked(false);
             }
         };
-        setTimeStamp(moment(post.createdAt).format('MMMM d [at] h:MM A ·'))
+        setTimeStamp(moment(post.createdAt).format('MMMM DD [at] h:MM A ·'))
     }, [post]);
 
     const handleRefClick = () => {
