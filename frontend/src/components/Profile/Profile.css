@@ -223,25 +223,25 @@
 }
 
 .profile-left-container {
-    width: 50%;
+    width: 26vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: hidden;
 }
 
 .profile-intro-container {
     width: 90%;
     height: auto;
-    margin: 10px 20px 20px 20px;
+    margin: 10px 0 20px 20px;
     border-radius: 8px;;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
-    /* position: sticky; */
-    /* top: 65px; */
+    overflow: hidden;
 }
 
 .profile-right-container {
-    width: 70%;
+    width: 37vw;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -250,7 +250,7 @@
 .profile-friends-list {
     width: 90%;
     height: auto;
-    margin: 0 20px 20px 20px;
+    margin: 0 0 20px 20px;
     border-radius: 8px;;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
@@ -349,7 +349,7 @@
     padding: 10px;
     font-size: 17px;
     line-height: 1.5;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
     width: 360px;
     height: auto;
     /* background-color: green; */
@@ -357,6 +357,7 @@
     justify-content: flex-start;
     align-items: center;
     font-weight: bold;
+    overflow: hidden;
 }
 
 
@@ -526,6 +527,7 @@
 .edit-profile-body-container {
     display: flex;
     justify-content: center;
+    width: 50vw;
 }
 
 .edit-bio-input {

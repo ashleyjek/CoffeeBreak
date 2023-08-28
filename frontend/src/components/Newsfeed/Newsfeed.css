@@ -10,6 +10,7 @@
     justify-content: flex-end;
     width: 700px;
     height: auto;
+    padding: 0 1vw 0 1vw;
 }
 
 .whale-watch-link img {
@@ -157,6 +158,7 @@
     height: auto; 
     display: flex;
     justify-content: flex-start;
+    padding: 0 1vw 0 1vw;
 }
 
 .post-form-modal-bg {
