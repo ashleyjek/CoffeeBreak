@@ -33,8 +33,9 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
     position: sticky;
-    margin-top: 65px;
+    top: 65px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular', sans-serif;
+    margin-right: 1vw;
 }
 
 .newsfeed-links-container div {
@@ -109,7 +110,8 @@
 }
 
 .newsfeed-friends-list {
-    margin-top: 65px;
+    top: 65px;
+    margin-left: 1vw;
     width: 380px;
     height: fit-content;
     overflow: hidden;
